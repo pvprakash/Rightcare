@@ -216,7 +216,7 @@ $(function()
 	/**/
 	/* fancybox */
 	/**/
-	// $(".fancybox").fancybox();
+	$(".fancybox").fancybox();
 	
 	
 	/**/
