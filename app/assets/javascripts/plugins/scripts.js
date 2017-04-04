@@ -265,30 +265,37 @@ $(function()
 	/**/
 	/* slider */
 	/**/
+
+
+
+
+
+
+
      $("#slider").layerSlider({
             width : '100%',
             height : '680px',
             responsive : true,
             responsiveUnder : 1920,
             sublayerContainer : 1920,
-            autoStart : true,
+            autoStart : false,
             pauseOnHover : true,
             firstLayer : 1,
             animateFirstLayer : true,
             randomSlideshow : false,
-            twoWaySlideshow : true,
+            twoWaySlideshow : false,
             loops : 0,
             forceLoopNum : true,
-            autoPlayVideos : true,
+            autoPlayVideos : false,
             autoPauseSlideshow : 'auto',
             touchNav : true,
-            skin : 'fullwidth',
-            skinsPath : '/plugins/', 
+            skin : '/assets',
+            skinsPath : '/assets/', 
             navPrevNext : false,
             showBarTimer : false,
-            showCircleTimer : true,
+            showCircleTimer : false,
             thumbnailNavigation : 'disabled',
-            imgPreload : true,
+            imgPreload : false,
             yourLogoLink : false,
             yourLogoTarget : '_self',
             cbInit : function(element) { },
