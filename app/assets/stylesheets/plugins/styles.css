@@ -605,14 +605,33 @@ margin-right:4px;
 	FONT-WEIGHT: BOLD;
 	font-size: 16px;
 }
+a.phone-box.clear-box.text-center:hover{
+	text-decoration: none;
+	color: #ddd;
+}
 .mail img {
 	width: auto;
 	vertical-align: middle;
 	margin-right: 10px;
 }
+.mt-10{margin-top: 10px;}
+.mt-20{margin-top: 20px;}
+.m-phonebox {
+    width: 172% !important;
+    float: none !important;
+    padding-top: 0px !important;
+    line-height: 44px !important;
+    height: 44px;
+}
+.m-phonebox span{
+	margin-left: 7%;
+    margin: 0;
+}
+.shared-links{margin-left: 34%;}
 .top-header {
 	border-bottom: 1px solid #ccc;
-	overflow-y: auto;
+/*	overflow-y: auto;*/
+    height: 45px;
 	width: 100%;
 }
 .page-header {
