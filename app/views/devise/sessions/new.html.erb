@@ -1,0 +1,46 @@
+<div class="container mt-20">
+  <div class="row">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),html: {class: "form-horizontal"}) do |f| %>
+    <fieldset>
+    <div class="form-group">
+      <%= f.label :email,class: "col-md-4 control-label" %>
+      <div class="col-md-5">
+        <%= f.email_field :email, autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password,class: "col-md-4 control-label" %>
+      <% if @minimum_password_length %>
+       <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <div class="col-md-5">
+        <%= f.password_field :password, autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+    <div class="form-group">
+      <div class="col-md-4"></div>
+      <div class="col-md-5">
+        <div style="display: inline-flex;">
+        <%= f.check_box :remember_me %> &nbsp; <%= f.label :remember_me %>
+        </div>
+    </div>
+    </div>
+     <div class="form-group">
+      <label class="col-md-4 control-label" for="confirmation"></label>
+      <div class="col-md-4">
+        <%= f.submit "Sign In", class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end -%>
+
+
+    </fieldset>
+<%end%>
+<div class="shared-links">
+<%= render "devise/shared/links" %>
+</div>
+  </div>
+</div>
