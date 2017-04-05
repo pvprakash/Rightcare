@@ -646,6 +646,7 @@ a.phone-box.clear-box.text-center:hover{
 	width: 32%;
 	line-height: normal;
 	float: right;
+	border-radius: 0px;
 }
 .phone-box img {
 	float: left;
