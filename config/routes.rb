@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       get 'terms_condition'
     end
   end
+  resources :users do
+    collection do
+      get 'patients'
+    end
+  end
 
    
   # The priority is based upon order of creation: first created -> highest priority.

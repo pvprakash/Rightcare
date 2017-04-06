@@ -1,7 +1,14 @@
 class User < ActiveRecord::Base
   rolify
+
+  validate :patient_validation
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :patient, :foreign_key => :patient_id,  :class_name => "User"
+  has_one :user, :foreign_key => :patient_id, :class_name => "User", :dependent  => :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -21,5 +28,12 @@ class User < ActiveRecord::Base
 
   def role?
   	self.roles.first.name
+  end
+
+  private
+  def patient_validation
+    if self.patient_id.zero?
+      errors.add(:patient_id, 'please select patient')
+    end
   end
 end

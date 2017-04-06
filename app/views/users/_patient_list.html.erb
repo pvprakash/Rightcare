@@ -1,0 +1,6 @@
+<div class="form-group">
+  <%= label_tag "patient",nil, class: "col-md-4 control-label" %>
+    <div class="col-md-5">
+    <%= select_tag :patient_id, options_from_collection_for_select(@patients, "id", "first_name"),{class: "form-control input-md",prompt: 'Select patient',style: "width: 75%"} %>
+    </div>
+</div>

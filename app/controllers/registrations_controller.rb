@@ -2,6 +2,8 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     build_resource(sign_up_params)
+    
+    resource.patient_id = params[:patient_id] unless params[:patient_id].nil?
     if resource.save 
       resource.add_role params[:role] if params[:role].present?
     end
@@ -27,10 +29,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
 
+
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :patient_id)
   end
 
   def account_update_params
