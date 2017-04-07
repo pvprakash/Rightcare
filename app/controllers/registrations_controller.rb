@@ -1,13 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
   
   def create
-    build_resource(sign_up_params)
-    
-    resource.patient_id = params[:patient_id] unless params[:patient_id].nil?
+    build_resource(sign_up_params)    
     if resource.save 
-      resource.add_role params[:role] if params[:role].present?
+      resource.add_role 'user'
     end
-
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
@@ -31,7 +28,10 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   private
-
+  
+  def after_sign_up_path_for(resource)
+    "/users/#{resource.id}/patients/new"
+  end
   def sign_up_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :patient_id)
   end

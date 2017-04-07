@@ -41,13 +41,21 @@
         <%= f.password_field :password_confirmation, autofocus: true,class: "form-control input-md"%> 
       </div>
     </div>
+
     <div class="form-group">
-      <%= f.label :role,class: "col-md-4 control-label" %>
+      <%= f.label :mobile_number,class: "col-md-4 control-label" %>
       <div class="col-md-5">
-        <%= select_tag "role", options_for_select(User::ROLES,"patient"),class: "form-control input-md",style: "width: 75%" %>
+        <%= f.text_field :mobile_number, autofocus: true,class: "form-control input-md"%> 
       </div>
     </div>
-    <div id="patient_list"></div>
+
+    <div class="form-group">
+      <%= label_tag "",nil,class: "col-md-4 control-label" %>
+      <div class="col-md-5">
+        <%= select_tag :care_for, options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: "form-control input-md" %>
+      </div>
+    </div>
+
     <div class="form-group">
       <div class="col-md-4"></div>
       <div class="col-md-5">
@@ -71,6 +79,8 @@
 </div>
 
 <script>
+
+
  function checkForm(form)
   {
     if(!form.agree.checked) {
@@ -80,4 +90,5 @@
     }
     return true;
   }
+
 </script>

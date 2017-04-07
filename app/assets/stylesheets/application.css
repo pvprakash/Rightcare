@@ -10,6 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
+*= require plugins/bootstrap.min
+*= require plugins/select2-style
+*= require plugins/color-blue
+*= require plugins/font-awesome
+*= require plugins/jquery.fancybox
+*= require plugins/jquery.mCustomScrollbar
+*= require plugins/layerslider
+*= require plugins/owl.carousel
+*= require plugins/styles
+
  */

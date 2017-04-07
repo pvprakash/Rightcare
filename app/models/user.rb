@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   rolify
 
-  validate :patient_validation
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,7 +14,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   ROLES = [["Patient", "patient"],["User", "user"]]
-
+  CAREFOR = ["Mother","Father","Husband","Wife","Grandmother","Grandfather","Myself","Sister","Brother","Daughter","Son","Relative","Friend","Neighor","Other"]
 
   def is_patient?
   	self.roles.first.name.eql?("patient")
@@ -29,11 +27,8 @@ class User < ActiveRecord::Base
   def role?
   	self.roles.first.name
   end
-
-  private
-  def patient_validation
-    if self.patient_id.zero?
-      errors.add(:patient_id, 'please select patient')
-    end
-  end
 end
+
+
+
+
