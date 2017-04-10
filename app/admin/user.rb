@@ -33,7 +33,7 @@ index do
 
   controller do
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar])
+     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount])
      if user.save
        user.add_role params[:role]
        redirect_to admin_users_path

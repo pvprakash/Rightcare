@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # belongs_to :patient, :foreign_key => :patient_id,  :class_name => "User"
   # has_one :user, :foreign_key => :patient_id, :class_name => "User", :dependent  => :destroy
   has_one :patient
+  has_many :payments
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
 
   ROLES = [["Patient", "patient"],["User", "user"]]
   CAREFOR = ["Mother","Father","Husband","Wife","Grandmother","Grandfather","Myself","Sister","Brother","Daughter","Son","Relative","Friend","Neighor","Other"]
-
+  AMOUNT = [["ENTRY LEVEL CAREGIVERS - 600/day", 600],["EXPERIENCED CAREGIVERS - 900/day", 900],["SPECIALIZED CAREGIVERS - 1200/day", 1200],["QUALIFIED NURSES - 2400/day", 2400]]
   def is_patient?
   	self.roles.first.name.eql?("patient")
   end

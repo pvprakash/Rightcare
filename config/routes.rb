@@ -16,7 +16,15 @@ Rails.application.routes.draw do
       get 'patients'
       get 'list_caregiver'
     end
+    member do
+      get 'show_caregiver'
+    end
     resources :patients
+    resources :payment, only: [:show] do
+      collection do
+      post 'purchase_status'
+      end
+    end
   end
 
    

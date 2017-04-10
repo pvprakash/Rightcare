@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410064758) do
+ActiveRecord::Schema.define(version: 20170410114901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20170410064758) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "caregiver_id"
+    t.integer  "user_id"
+    t.integer  "price"
+    t.string   "status"
+    t.string   "payment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -94,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170410064758) do
     t.integer  "mobile_number"
     t.string   "care_for"
     t.boolean  "assign",                 default: false
+    t.decimal  "amount"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
