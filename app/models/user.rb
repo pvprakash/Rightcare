@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  belongs_to :patient, :foreign_key => :patient_id,  :class_name => "User"
-  has_one :user, :foreign_key => :patient_id, :class_name => "User", :dependent  => :destroy
-
+  # belongs_to :patient, :foreign_key => :patient_id,  :class_name => "User"
+  # has_one :user, :foreign_key => :patient_id, :class_name => "User", :dependent  => :destroy
+  has_one :patient
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
