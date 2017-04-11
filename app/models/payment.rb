@@ -14,7 +14,8 @@ class Payment < ActiveRecord::Base
         razorpay_pmnt_obj.capture({amount: (caregiver.amount.to_i*100)})
         razorpay_pmnt_obj = fetch_payment(params[:payment_id])
         params.merge!({status: razorpay_pmnt_obj.status, price: (razorpay_pmnt_obj.amount/100).to_f})
-        Payment.create(params)
+        caregiver.update_attributes(assign: true)
+        Payment.create(params)      
       else
         raise StandardError, "UNable to capture payment"
       end

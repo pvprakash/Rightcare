@@ -36,8 +36,8 @@ index do
      user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount])
      if user.save
        user.add_role params[:role]
-       redirect_to admin_users_path
      end
+       redirect_to admin_users_path
     end 
   end 
 

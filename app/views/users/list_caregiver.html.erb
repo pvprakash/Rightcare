@@ -39,6 +39,8 @@
 									<% end %>
 								</tbody>
 							</table>
+
+							<%= "<div class='alert alert-warning'>There is no caregivers</div>".html_safe unless @caregivers.present? %>
 						</div>
 					</div>
 				</div>

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
     def show_caregiver
     	@caregiver = User.find(params[:id])
+        @has_payment = Payment.find_by(user_id: current_user.id,caregiver_id: @caregiver.id)
     end
 
     

@@ -23,7 +23,7 @@
 														<%= image_tag @caregiver.avatar.url, class: "media-photo", width: '200px',height: "150px"%>
 													</a>
 													<div class="media-body">
-														<span class="media-meta pull-right"><%#=link_to( image_tag("/assets/razorpay.png"), "#", id:"rzp-button1", :class=>"work razorpay-payment-button") %>
+														<span class="media-meta pull-right"><%=payment_link %>
                             </span>
 														<h4 class="title">
 																First-name: <%=@caregiver.first_name%><br>
@@ -32,20 +32,7 @@
 														</h4>
 													</div>
 										      <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST">
-										      <script
-										          src="https://checkout.razorpay.com/v1/checkout.js"
-										          data-key="<%= "#{ENV['RAZORPAY_KEYID']}" %>"
-
-										          data-amount="<%= "#{@caregiver.amount.to_f*100}" %>"
-										          data-name="<%= "#{@caregiver.first_name}" %>"
-										          data-description="<%= "" %>"
-										          data-image= "<%= "#{@caregiver.avatar.url}" %>"
-
-										          data-prefill.name="<%= "#{current_user.first_name}" %>"
-										          data-prefill.email="<%= "#{current_user.email}" %>"
-										          data-theme.color="#F37254"
-										      >
-										      </script>
+										      
 										      <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
 										      <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
 										      </form><br>
@@ -86,9 +73,22 @@
   height: 24px;
 }
 </style>
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="<%= "#{ENV['RAZORPAY_KEYID']}" %>"
 
+    data-amount="<%= "#{@caregiver.amount.to_f*100}" %>"
+    data-name="<%= "#{@caregiver.first_name}" %>"
+    data-description="<%= "" %>"
+    data-image= "<%= "#{@caregiver.avatar.url}" %>"
+
+    data-prefill.name="<%= "#{current_user.first_name}" %>"
+    data-prefill.email="<%= "#{current_user.email}" %>"
+    data-theme.color="#F37254">
+</script>
 <script>
 $(document).ready(function(){
+
   var options = {
       "key": "<%= ENV['RAZORPAY_KEYID'] %>",
       "amount": "<%= @caregiver.amount.to_f*100%>",
@@ -122,6 +122,7 @@ $(document).ready(function(){
         mapForm.appendChild(mapInput3);
 
         mapForm.submit();
+        $(".razorpay-payment-button").hide()
 
       },
       "prefill": {
