@@ -1,0 +1,35 @@
+<%= form_tag(url: admin_users_refund_path(@user,@payment), method: "post",  :multipart => true, class: 'formtastic post') do %>
+  <fieldset>
+  <div class="form-group">
+    <%= label_tag "Partial Refund", nil, class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= check_box_tag "partial_refund",nil %>
+    </div>
+  </div>
+
+  <input type="hidden" name="full_amount" id="full_amount" value="<%= @payment.price%>">
+
+  <div id="refund-field">
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="confirmation"></label>
+    <div class="col-md-4">
+      <%= submit_tag "Sign up", class: "btn btn-primary"%>
+    </div>
+  </div>
+  </fieldset>
+<%end%>
+
+
+<script>
+$(document).ready(function(){
+  $("#partial_refund").click(function(){
+    if(this.checked)
+    {  
+      $("#refund-field").html("<div class='form-group'> <%=j label_tag 'Refund Amount', nil, class: 'col-md-3 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'refund_amount',nil, autofocus: true,class: 'form-control input-md'%> </div> </div>")
+    }
+    else{$("#refund-field").html('')}
+  })
+})
+</script>

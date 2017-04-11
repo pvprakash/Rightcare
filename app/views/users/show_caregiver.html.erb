@@ -23,7 +23,7 @@
 														<%= image_tag @caregiver.avatar.url, class: "media-photo", width: '200px',height: "150px"%>
 													</a>
 													<div class="media-body">
-														<span class="media-meta pull-right"><%=payment_link %>
+														<span class="media-meta pull-right"><%=payment_link(@caregiver) %>
                             </span>
 														<h4 class="title">
 																First-name: <%=@caregiver.first_name%><br>

@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   	self.roles.first.name.eql?("patient")
   end
 
+  def is_caregiver?
+    self.roles.first.name.eql?("caregiver")
+  end
+
   def is_user?
   	self.roles.first.name.eql?("user")
   end

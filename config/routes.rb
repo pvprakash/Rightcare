@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  match "/admin/users/:id/refund/:payment_id" => 'admin/users#refund', via: [:get,:post], as: "admin_users_refund"
+  match "/admin/users/:id/payment_details" => 'admin/users#payment_details', via: :get, as: "admin_users_payment_details"
+
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -18,7 +22,9 @@ Rails.application.routes.draw do
     end
     member do
       get 'show_caregiver'
+      get 'replacement'
     end
+
     resources :patients
     resources :payment, only: [:show] do
       collection do
