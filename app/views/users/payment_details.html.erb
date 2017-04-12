@@ -6,7 +6,6 @@
           <th>Caregiver</th>
           <th>Price</th>
           <th>Status</th>
-          <th>Refund</th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +15,6 @@
         <td><%= User.find(payment.caregiver_id).first_name%></td>
         <td><%= payment.price%></td>
         <td><span class="label label-info"><%= payment.status%></span></td>
-        <td><%= link_to "Refund", admin_users_refund_path(@user,payment) %></td>
       </tr>
       <tr style="padding:0">
         <td style="padding:0"></td>
@@ -100,4 +98,3 @@ $(document).ready(function() {
     text-align: center;
 }
 </style>
-

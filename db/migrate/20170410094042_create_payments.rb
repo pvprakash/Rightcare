@@ -6,6 +6,7 @@ class CreatePayments < ActiveRecord::Migration
       t.integer :price
       t.string :status
       t.string :payment_id
+      t.string :extra_records
       t.timestamps null: false
     end
   end

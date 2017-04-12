@@ -35,6 +35,27 @@
     </div>
   </div>
 
+  <div class="form-group">
+      <%= label_tag :mobile,nil,class: "col-md-4 control-label"%>
+      <div class="col-md-5">
+        <%= number_field_tag :mobile, autofocus: true,class: "form-control input-md"%> 
+      </div>
+  </div>
+
+  <div class="form-group">
+      <%= label_tag :address,nil,class: "col-md-4 control-label"%>
+      <div class="col-md-5">
+        <%= text_field_tag :address,nil, autofocus: true,class: "form-control input-md"%> 
+      </div>
+  </div>
+
+    <div class="form-group">
+      <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
+      <div class="col-md-5">
+        <%= number_field_tag :pin_code, autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+
 
      <div class="form-group">
       <%= label_tag :role,nil,class: "col-md-4 control-label" %>

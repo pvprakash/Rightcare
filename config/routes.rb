@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations'}
   resources :pages do 
     collection do
       # get 'home'
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     collection do
       get 'patients'
       get 'list_caregiver'
+      get 'payment_details'
     end
     member do
       get 'show_caregiver'

@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
    include PaymentConcerns::Razorpay
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -66,17 +67,10 @@ index do
     def refund
         @user = User.find params[:id]
         @payment = Payment.find params[:payment_id]
-        # refund_amount = params[:refund_amount]*100
-        refund_amount = (@payment.price*15/100)*100*3
-        payment_id = @payment.payment_id
-        begin
-        fetch_payment = Razorpay::Payment.fetch(payment_id)
-        fetch_payment.refund({amount: refund_amount}) if refund_amount.present? 
-        # fetch_payment.refund unless refund_amount.present?
-        record = Payment.find_by_payment_id(payment_id)
-        record.update_attributes(status: fetch_payment.status)
+        result = @payment.delay(run_at: 360.hours.from_now).refund_at
+        if result
         flash[:notice] = "15% amount has refunded"
-        rescue Exception
+        else
         flash[:notice] = "already refunded"
         end
         redirect_to admin_users_payment_details_path(@user)

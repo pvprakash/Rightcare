@@ -10,11 +10,12 @@ class UsersController < ApplicationController
         code_hash = {"en" => 600, "ex" => 900, "sc" => 1200, "qn" =>2400}
         amount = code_hash[params["code"]]
     	# @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND (users.assign = false AND users.amount = #{amount})")
-        @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND (users.assign = false AND users.amount = #{amount})")
+        @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
+        @caregivers = @caregivers.where(pin_code: current_user.pin_code)  if current_user.pin_code.present? 
     end
 
     def show_caregiver
-    	@caregiver = User.find(params[:id])
+    	  @caregiver = User.find(params[:id])
         @has_payment = Payment.find_by(user_id: current_user.id)
     end
 
@@ -29,5 +30,10 @@ class UsersController < ApplicationController
        replacement.save
        flash[:notice] = "Successfully replacement"
        redirect_to root_path
+    end
+
+
+    def payment_details
+     @payments = current_user.payments
     end
 end
