@@ -66,6 +66,7 @@
                   <td>Created At :</td>
                   <td class="right-col"><%= payment.created_at.strftime('%d-%m-%Y')%></td>
                 </tr>
+                <tr><td><%= link_to 'Receipt', admin_users_payment_receipt_path(@user,payment, format: :pdf), class: 'btn btn-primary' %></td></tr>
               </tbody>
             </table>
           </div>

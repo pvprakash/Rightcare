@@ -64,6 +64,19 @@ index do
       @payments = @user.payments
     end
 
+    def payment_receipt
+      @payment = Payment.find(params[:id])
+      kit = WickedPdf.new.pdf_from_string(render_to_string('payment/payment_receipt.html.erb', layout: 'pdf.html.erb'))
+      send_data kit,
+      filename: "Reciept #{Date.today.strftime('%Y%m%d')}.pdf",
+      type: 'application/pdf'
+      # respond_to do |format|
+      #   format.pdf do
+      #     render pdf: "file_name", template: 'payment/payment_receipt.html.erb' # Excluding ".pdf" extension.
+      #   end
+      # end
+    end
+
     def refund
         @user = User.find params[:id]
         @payment = Payment.find params[:payment_id]

@@ -22,6 +22,10 @@ gem "paperclip"
 gem 'cancan'
 gem 'razorpay'
 gem 'delayed_job_active_record'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-heroku'
+gem 'wkhtmltopdf-binary'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -47,9 +51,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-group :development do
+group :production do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

@@ -34,8 +34,7 @@ class Payment < ActiveRecord::Base
         caregiver.update_attributes(assign: true)
         rpo = razorpay_pmnt_obj
         extra_records = {entity: rpo.entity, currency: rpo.currency, refund_status:  rpo.refund_status, amount_refunded: rpo.amount_refunded, bank: rpo.bank, email: rpo.email, contact: rpo.contact,fee: rpo.fee, service_tax: rpo.service_tax ,created_at: rpo.created_at}
-        p = Payment.new(params.merge(extra_records: extra_records))
-        p.save     
+        Payment.create(params.merge(extra_records: extra_records))    
       else
         raise StandardError, "UNable to capture payment"
       end

@@ -10,8 +10,9 @@ class UsersController < ApplicationController
         code_hash = {"en" => 600, "ex" => 900, "sc" => 1200, "qn" =>2400}
         amount = code_hash[params["code"]]
     	# @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND (users.assign = false AND users.amount = #{amount})")
-        @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
-        @caregivers = @caregivers.where(pin_code: current_user.pin_code)  if current_user.pin_code.present? 
+        @caregiver_list = User.joins(:roles).where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
+        @caregivers = @caregiver_list.where(pin_code: current_user.pin_code)  if current_user.pin_code.present? 
+        @caregivers = @caregiver_list  unless @caregivers.present? 
     end
 
     def show_caregiver
@@ -36,4 +37,5 @@ class UsersController < ApplicationController
     def payment_details
      @payments = current_user.payments
     end
+
 end

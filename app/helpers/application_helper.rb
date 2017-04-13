@@ -15,4 +15,5 @@ module ApplicationHelper
      end
     return html.html_safe
   end
+
 end

@@ -1,0 +1,69 @@
+<div class="deliverable-infos" id="details_1">
+<table class="table table-condensed table-user-content" id="hidden_table_1">
+  <tbody>
+  	<tr>
+      <td>Payment id :</td>
+      <td class="right-col"><%= @payment.payment_id%></td>
+    </tr>
+    <tr>
+      <td>Caregiver :</td>
+      <td class="right-col"><%= User.find(@payment.caregiver_id).first_name%></td>
+    </tr>
+    <tr>
+      <td>Price :</td>
+      <td class="right-col"><%= @payment.price%></td>
+    </tr>
+    <tr>
+      <td>Status :</td>
+      <td class="right-col"><%= @payment.status%></td>
+    </tr>
+    <tr>
+      <td>Entity :</td>
+      <td class="right-col"><%= @payment.extra_records["entity"]%></td>
+    </tr>
+    <tr>
+      <td>Currency :</td>
+      <td class="right-col"><%= @payment.extra_records["currency"]%></td>
+    </tr>
+    <tr>
+      <td>Refund Status :</td>
+      <td class="right-col">fsafsa</td>
+    </tr>
+    <tr>
+      <td>Amount Refunded:</td>
+      <td class="right-col"><%= @payment.extra_records["amount_refunded"]%></td>
+    </tr>
+    <tr>
+      <td>Bank :</td>
+      <td class="right-col"><%= @payment.extra_records["bank"]%></td>
+    </tr>
+
+    <tr>
+      <td>Email :</td>
+      <td class="right-col"><%= @payment.extra_records["email"]%></td>
+    </tr>
+
+    <tr>
+      <td>Contact :</td>
+      <td class="right-col"><%= @payment.extra_records["contact"]%></td>
+    </tr>
+    <tr>
+      <td>Fee :</td>
+      <td class="right-col"><%= @payment.extra_records["fee"]/100.to_f %></td>
+    </tr>
+    <tr>
+      <td>Service Tax :</td>
+      <td class="right-col"><%= @payment.extra_records["service_tax"]/100.to_f%></td>
+    </tr>
+    <tr>
+      <td>Created At :</td>
+      <td class="right-col"><%= @payment.created_at.strftime('%d-%m-%Y')%></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+
+<style>
+<style>
