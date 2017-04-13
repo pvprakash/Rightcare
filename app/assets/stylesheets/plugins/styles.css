@@ -1175,8 +1175,7 @@ button.wpb_btn-mini, span.wpb_btn-mini {
 	font-size: 11px;
 	line-height: 14px;
 }
-
- ---------------------------------------------------------- */ @media screen and (max-width:479px) {
+ @media screen and (max-width:479px) {
  .vc_progress_bar .vc_label {
  display:block !important;
  margin-top:20px !important;
