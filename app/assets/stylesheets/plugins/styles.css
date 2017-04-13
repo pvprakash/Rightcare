@@ -1079,7 +1079,6 @@ form.registration-form fieldset {
 }
 .top-header {
 	border-bottom: 1px solid #ccc;
-	overflow-y: auto;
 	width: 100%;
 }
 .page-header {

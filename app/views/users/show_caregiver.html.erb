@@ -77,7 +77,7 @@
     src="https://checkout.razorpay.com/v1/checkout.js"
     data-key="<%= "#{ENV['RAZORPAY_KEYID']}" %>"
 
-    data-amount="<%= "#{@caregiver.amount.to_f*100}" %>"
+    data-amount="<%= "#{@caregiver.amount.to_f*100*15}" %>"
     data-name="<%= "#{@caregiver.first_name}" %>"
     data-description="<%= "" %>"
     data-image= "<%= "#{@caregiver.avatar.url}" %>"
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
   var options = {
       "key": "<%= ENV['RAZORPAY_KEYID'] %>",
-      "amount": "<%= @caregiver.amount.to_f*100%>",
+      "amount": "<%= @caregiver.amount.to_f*100*15%>",
       "name": "<%= "#{@caregiver.first_name}" %>",
       "description": "<%= "fg" %>",
       "image": "<%= @caregiver.avatar.url%>",

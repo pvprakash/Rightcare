@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # has_one :user, :foreign_key => :patient_id, :class_name => "User", :dependent  => :destroy
   has_one :patient
   has_many :payments
+  has_one :assign_caregiver ,:foreign_key => :caregiver_id, :class_name => "AssignCaregiver", :dependent  => :destroy
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable

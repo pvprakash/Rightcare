@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
  belongs_to :user
+ has_one :assign_caregiver
  
 
 serialize :health_conditions, Array
