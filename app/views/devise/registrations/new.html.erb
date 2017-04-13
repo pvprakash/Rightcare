@@ -1,100 +1,68 @@
+  <section class="register-box">
+    <div>
+      <div class="container">
+        <div class="col-md-8 col-md-offset-2  register-form clear-box">
+          <h4>Client Registration</h4>
+          <div class="apply-form  ">
+          	<%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: {onsubmit: "return checkForm(this)"}) do |f| %>
+          	<%= devise_error_messages! %>
+              <div class="form-group float-label-control">
+                <%= f.text_field :first_name, autofocus: true,class: "form-control", placeholder: "First Name"%> 
+              </div>
+              <div class="form-group float-label-control">
+                <%= f.text_field :last_name, autofocus: true,class: "form-control ", placeholder: "Last Name"%>
+              </div>
+              <div class="form-group float-label-control">
+                <%= f.number_field :mobile_number, autofocus: true,class: "form-control", placeholder: "Mobile Number"%> 
+              </div>
+              <div class="form-group float-label-control">
+                <%= f.email_field :email, autofocus: true,class: "form-control" ,placeholder: "Email"%>
+              </div>
+              <div class="form-group float-label-control">
+              	<% if @minimum_password_length %>
+       						<!-- (<%= @minimum_password_length %> characters minimum) -->
+                <% end %>
+        				<%= f.password_field :password, autofocus: true,class: "form-control", placeholder: "Password "%> 
+              </div>
+              <div class="form-group float-label-control">
+                <%= f.password_field :password_confirmation, autofocus: true,class: "form-control", placeholder: "Password Confirmation"%> 
+              </div>
+              <div class="form-group float-label-control">
+                <%= select_tag :care_for, options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: " selectBox" %>
+              </div>
+              <div class="form-group float-label-control">
+               <%= f.text_field :address, autofocus: true,class: "form-control input-md", placeholder: "Address"%> 
+              </div>
+               <div class="form-group float-label-control">
+               <%= f.number_field :pin_code, autofocus: true,class: "form-control input-md", placeholder: "Pin Code"%>
+             	</div>
 
-<div class="container mt-20">
-  <div class="row">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: {class: "form-horizontal", onsubmit: "return checkForm(this)"}) do |f| %>
-    <%= devise_error_messages! %>
-    <fieldset>
-    <div class="form-group">
-      <%= f.label :first_name,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.text_field :first_name, autofocus: true,class: "form-control input-md"%> 
+              <div class="form-group float-label-control">
+                <div class="squaredTwo">
+                	<%= check_box_tag "agree",nil ,id: "squaredTwo" %>
+                  <label for="squaredTwo"></label>
+                </div>
+                <p> <%= label_tag "I agree to Rightcare's ",nil %> <%= link_to 'Terms & Conditions',terms_condition_pages_path%> </p>
+              </div>
+              <br>
+              </br>
+              <br>
+              </br>
+              <div class="clearfix"></div>
+              <div class="form-group ">
+              	<center>
+                <%= f.submit "Sign up", class: "button"%>
+                </center>
+              </div>
+           		<%end%>
+             <%= render "devise/shared/links" %>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="form-group">
-      <%= f.label :last_name,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.text_field :last_name, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :email,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.email_field :email, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password,class: "col-md-4 control-label" %>
-      <% if @minimum_password_length %>
-       <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <div class="col-md-5">
-        <%= f.password_field :password, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password_confirmation,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.password_field :password_confirmation, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :mobile_number,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.number_field :mobile_number, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :address,class: "col-md-4 control-label"%>
-      <div class="col-md-5">
-        <%= f.text_field :address, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :pin_code,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= f.number_field :pin_code, autofocus: true,class: "form-control input-md"%> 
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag "",nil,class: "col-md-4 control-label" %>
-      <div class="col-md-5">
-        <%= select_tag :care_for, options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: "form-control input-md" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-md-4"></div>
-      <div class="col-md-5">
-      <div style="display: inline-flex;">
-          <%= check_box_tag "agree",nil %> &nbsp; <%= label_tag "I have read and agree to Agreement ",nil %> <%= link_to 'Terms & Conditions',terms_condition_pages_path%>
-      </div>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="confirmation"></label>
-      <div class="col-md-4">
-        <%= f.submit "Sign up", class: "btn btn-primary"%>
-        <%= render "devise/shared/links" %>
-      </div>
-    </div>
-    </fieldset>
-<%end%>
-
-  </div>
-</div>
-
-<script>
-
-
+  <script>
  function checkForm(form)
   {
     if(!form.agree.checked) {
