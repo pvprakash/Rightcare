@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :availble_patient 
+  before_action :availble_patient, except: :destroy 
 
   def availble_patient
   	if user_signed_in?

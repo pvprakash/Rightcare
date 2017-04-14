@@ -4047,3 +4047,38 @@ a.phone-box.clear-box.text-center:hover{
 	padding-top: 6px;
 	vertical-align: middle;
 }
+
+.notice{
+	margin-left: 1400px;
+	transition: all 0.3s ease;
+	/*width: 50%;*/
+	padding:20px;
+	position: absolute;
+	z-index: 999;
+	top:14%;
+	width: 100%;
+	max-width: 300px;
+	box-shadow: 0px 0px 3px 1px #ccc;
+}
+.notice_show{
+	margin-left: 77%;
+	transition: all 0.3s ease;
+}
+.cross{
+	position: absolute;
+	top:0;
+	cursor: pointer;
+	left: 88%;
+	padding: 10px;
+	font-weight: bold;
+	transition: all 0.3s ease;
+}
+.cross:hover{
+	color:#920f0f;
+	display: block;
+}
+
+.alert-error{
+	color: #d73814;
+	background: #ffdddd!important
+}

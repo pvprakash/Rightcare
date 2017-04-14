@@ -5,9 +5,12 @@ class PatientsController < ApplicationController
 
    def create
    	user = User.find params[:user_id]
-    patient = user.build_patient(patient_params)
-    patient.save
-    redirect_to root_path
+    @patient = user.build_patient(patient_params)
+    if @patient.save
+      redirect_to root_path
+    else
+      render :new
+    end
    end
    
    protected

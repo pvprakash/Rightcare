@@ -11,6 +11,7 @@ class PaymentController < ApplicationController
 		begin
 		  @payment = Payment.process_razorpayment(payment_params)
       UserMailer.payment_success(@payment.id).deliver_now
+      @payment.delay(run_at: 360.hours.from_now).caregiver_relase
 		  redirect_to user_payment_path(current_user,@payment)
 		rescue Exception
 		  flash[:alert] = "Unable to process payment."

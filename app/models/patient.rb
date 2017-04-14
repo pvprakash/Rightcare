@@ -2,7 +2,8 @@ class Patient < ActiveRecord::Base
  belongs_to :user
  has_one :assign_caregiver
  
-
+validates :first_name, presence: true
+validate :validate_health_condition,:validate_service
 serialize :health_conditions, Array
 serialize :speciality_services, Array
 
@@ -57,4 +58,19 @@ LANGUAGE =
 ["Tongan","18"],
 ["Vietnamese","19"],
 ["Other","20"]]
+
+
+def validate_health_condition
+	unless self.health_conditions.present? 
+		errors.add(:health_conditions, "Invalid Health Conditions")
+	end
 end
+
+def validate_service
+	unless self.health_conditions.present? 
+		errors.add(:speciality_services, "Invalid Service")
+	end
+end
+end
+
+

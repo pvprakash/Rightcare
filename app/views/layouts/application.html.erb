@@ -10,8 +10,12 @@
 <body>
 <%= render partial: 'layouts/header'%>
 <% if flash[:notice] %>
-	<div class="notice"><%= flash[:notice] %></div> 
+  <div class="alert alert-success notice">
+    <strong><%= flash[:notice] %></strong> 
+    <span class="glyphicon glyphicon-hand-up cross"></span>
+  </div>
 <% end %>
+
 
 <%= yield %>
 <%= render partial: 'layouts/footer'%>

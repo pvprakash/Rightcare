@@ -9,4 +9,11 @@ $(document).ready(function(){
       });
     }else{$("#patient_list").html("")}  
   })
+
+  $(".notice").addClass("notice_show");
+   $(".cross").click(function(){
+     $(".notice").fadeOut(500);
+   });
+
+  $(".notice").fadeOut(10000)
 })

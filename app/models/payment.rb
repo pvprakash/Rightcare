@@ -5,6 +5,16 @@ class Payment < ActiveRecord::Base
 	[:authorized, :captured, :refunded, :error].each do |scoped_key|
     scope scoped_key, -> { where('LOWER(status) = ?', scoped_key.to_s.downcase) }
   end
+ 
+  
+  def caregiver
+    User.find(self.caregiver_id)
+  end
+
+  def caregiver_relase
+    self.caregiver.update_attributes(assign: false)
+    self.user.patient.assign_caregiver.delete
+  end
 
   def refund_at
     # refund_amount = params[:refund_amount]*100
