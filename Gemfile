@@ -18,7 +18,8 @@ gem 'pg'
 gem 'devise'
 gem "rolify"
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-gem "paperclip"
+gem "paperclip", "<= 5.0.0"
+gem "paperclip-dropbox", ">= 1.1.7"
 gem 'cancan'
 gem 'razorpay'
 gem 'delayed_job_active_record'
