@@ -39,8 +39,7 @@ class UsersController < ApplicationController
     end
 
     def select_city
-      debugger
-      params[state_name]
+      @cities = CS.cities(params[:state_name])
       respond_to do |format|
         format.js
       end

@@ -36,13 +36,13 @@
               <div class="form-group float-label-control">
                 <%= select_tag "user[care_for]", options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: " selectBox" %>
               </div>
-              
+
               <div class="form-group float-label-control">
-                <%= select_tag "user[state]", options_for_select(User.states,"patient"),:prompt => "Select state",class: " selectBox" %>
+                <%= select_tag "user[state]", options_for_select(User.states,"patient"), :prompt => "Select State",class: " selectBox" %>
               </div>
 
               <div class="form-group float-label-control">
-                <%= select_tag "user[city]", options_for_select(User.states,"patient"),:prompt => "Select state",class: " selectBox" %>
+                <%= select_tag "user[city]", options_for_select([],"patient"),:prompt => "Select City",class: " selectBox" %>
               </div>
 
               <div class="form-group float-label-control">
@@ -91,17 +91,19 @@
     }
     return true;
   }
- 
 
  $(document).ready(function(){
   $("#user_state").change(function(){
-    debugger
-    $.ajax({
-      type: "GET",
-      url: "<%= select_city_users_path %>",
-      dataType: "js",
-      data: {'state_name': this.value}
-
+      $.ajax({
+        type: "GET",
+        url: "<%= select_city_users_path %>",
+        data: {'state_name': this.value},
+      success: function(html) {
+        $("#user_city").prepend("<option value='''>Select City</option>");
+      },
+      error: function(e){
+        console.log(e);
+      }
     })
   })
  })

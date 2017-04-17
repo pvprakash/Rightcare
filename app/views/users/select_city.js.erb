@@ -1,0 +1,1 @@
+$("#user_city").empty().append("<%= escape_javascript(render :partial => '/users/get_state', :locals => {:cities => @cities}) %>");
