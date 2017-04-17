@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       get 'patients'
       get 'list_caregiver'
       get 'payment_details'
+      get 'select_city'
+
       
     end
     member do

@@ -39,6 +39,11 @@ class User < ActiveRecord::Base
 
   end 
 
+  def self.states
+    states = CS.states(:in)
+    states.map{|k,v| [v,k]}
+  end
+
   def is_patient?
   	self.roles.first.name.eql?("patient")
   end

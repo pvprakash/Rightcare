@@ -36,8 +36,17 @@
               <div class="form-group float-label-control">
                 <%= select_tag "user[care_for]", options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: " selectBox" %>
               </div>
+              
               <div class="form-group float-label-control">
-               <%= f.text_field :address, autofocus: true,class: "form-control input-md", placeholder: "Address"%> 
+                <%= select_tag "user[state]", options_for_select(User.states,"patient"),:prompt => "Select state",class: " selectBox" %>
+              </div>
+
+              <div class="form-group float-label-control">
+                <%= select_tag "user[city]", options_for_select(User.states,"patient"),:prompt => "Select state",class: " selectBox" %>
+              </div>
+
+              <div class="form-group float-label-control">
+               <%#= f.text_field :address, autofocus: true,class: "form-control input-md", placeholder: "Address"%> 
               </div>
                <div class="form-group float-label-control">
                <%= f.number_field :pin_code, autofocus: true,class: "form-control input-md", placeholder: "Pin Code"%>
@@ -82,5 +91,18 @@
     }
     return true;
   }
+ 
 
+ $(document).ready(function(){
+  $("#user_state").change(function(){
+    debugger
+    $.ajax({
+      type: "GET",
+      url: "<%= select_city_users_path %>",
+      dataType: "js",
+      data: {'state_name': this.value}
+
+    })
+  })
+ })
 </script>

@@ -27,6 +27,9 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-heroku'
 gem 'wkhtmltopdf-binary'
 
+# gem 'country_state_select'
+gem 'city-state'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

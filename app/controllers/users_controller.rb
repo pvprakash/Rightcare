@@ -38,4 +38,12 @@ class UsersController < ApplicationController
      @payments = current_user.payments
     end
 
+    def select_city
+      debugger
+      params[state_name]
+      respond_to do |format|
+        format.js
+      end
+    end
+
 end
