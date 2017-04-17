@@ -10,4 +10,7 @@ class PagesController < ApplicationController
 
 	def terms_condition
 	end
+
+	def faqs
+	end
 end

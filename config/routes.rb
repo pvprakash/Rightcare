@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'about'
       get 'privacy_policy'
       get 'terms_condition'
+      get 'faqs'
     end
   end
   resources :users do
