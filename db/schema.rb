@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417111759) do
+ActiveRecord::Schema.define(version: 20170418064951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,8 +94,9 @@ ActiveRecord::Schema.define(version: 20170417111759) do
     t.string   "status"
     t.string   "payment_id"
     t.string   "extra_records"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "delayed_job_id"
   end
 
   create_table "replacements", force: :cascade do |t|

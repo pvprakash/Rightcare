@@ -5,8 +5,8 @@ class Payment < ActiveRecord::Base
 	[:authorized, :captured, :refunded, :error].each do |scoped_key|
     scope scoped_key, -> { where('LOWER(status) = ?', scoped_key.to_s.downcase) }
   end
- 
-  
+  belongs_to :delayed_job
+
   def caregiver
     User.find(self.caregiver_id)
   end

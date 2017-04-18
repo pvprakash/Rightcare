@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-condensed">
+    <% if @caregiver.present? %>
+      <tr>
+        <td>Caregive Name:</td><td><%= @caregiver.first_name.to_s + " " + @caregiver.last_name.to_s %></td>
+        <td>Photo:</td><td><%= image_tag @caregiver.avatar.url, class: "media-photo", width: '200px',height: "150px"%></td>
+        <td>Mobile No:</td><td><%= @caregiver.mobile_number %></td>
+        <td>Price</td><td><%= @caregiver.amount %></td>
+        <td>City</td><td><%= @caregiver.city %></td>
+        <td>State</td><td><%= @caregiver.state %></td>
+      </tr>
+      <% if (@remain_releasing_time <= 24) %>
+        <tr>
+          <td>
+            <b>Note:</b> Caregiver will be released after <b><%= @remain_releasing_time %> hour(s) </b> of time periods, Want to continue with same caregiver for next 15 days? 
+          </td>
+          <td colspan="2">
+            <%= link_to "Continue With Same Caregiver", show_caregiver_user_path(@caregiver.id, continue: true), class: "btn btn-primary" %>
+          <td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="2">Currently No Caregiver Assigned..</td>
+      </tr>
+    <% end %>
+  </table>
+</div>
