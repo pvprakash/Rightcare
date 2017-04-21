@@ -42,11 +42,25 @@
       </div>
   </div>
 
-  <div class="form-group">
-      <%= label_tag :address,nil,class: "col-md-4 control-label"%>
+<!--   <div class="form-group">
+      <%#= label_tag :address,nil,class: "col-md-4 control-label"%>
       <div class="col-md-5">
-        <%= text_field_tag :address,nil, autofocus: true,class: "form-control input-md"%> 
+        <%#= text_field_tag :address,nil, autofocus: true,class: "form-control input-md"%> 
       </div>
+  </div> -->
+
+  <div class="form-group">
+    <%= label_tag :state,nil,class: "col-md-4 control-label"%>
+    <div class="col-md-5">
+    <%= select_tag "state", options_for_select(User.states,"patient"), :prompt => "Select State",class: " selectBox" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :city,nil,class: "col-md-4 control-label"%>
+     <div class="col-md-5">
+    <%= select_tag "city", options_for_select([],"patient"),:prompt => "Select City",class: " selectBox" %>
+     </div>
   </div>
 
     <div class="form-group">
@@ -87,6 +101,21 @@ $(document).ready(function(){
       $("#caregiver-field").html("<div class='form-group'> <%=j label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j file_field_tag 'avatar',class: 'form-control input-md'%> </div> </div> <div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,600),class: 'form-control input-md'%> </div> </div>")
     }
     else{$("#caregiver-field").html('')}
+  })
+
+
+  $("#state").change(function(){
+      $.ajax({
+        type: "GET",
+        url: "<%= admin_users_select_city_path %>",
+        data: {'state_name': this.value},
+      success: function(html) {
+        $("#city").prepend("<option value='''>Select City</option>");
+      },
+      error: function(e){
+        console.log(e);
+      }
+    })
   })
 })
 </script>

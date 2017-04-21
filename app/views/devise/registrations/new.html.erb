@@ -30,9 +30,7 @@
                 <% end %>
         				<%= f.password_field :password, autofocus: true,class: "form-control", placeholder: "Password "%> 
               </div>
-              <div class="form-group float-label-control">
-                <%= f.password_field :password_confirmation, autofocus: true,class: "form-control", placeholder: "Password Confirmation"%> 
-              </div>
+             
               <div class="form-group float-label-control">
                 <%= select_tag "user[care_for]", options_for_select(User::CAREFOR,"patient"),:prompt => "Who is this care for ?",class: " selectBox" %>
               </div>
@@ -45,10 +43,10 @@
                 <%= select_tag "user[city]", options_for_select([],"patient"),:prompt => "Select City",class: " selectBox" %>
               </div>
 
-              <div class="form-group float-label-control">
+             <!--  <div class="form-group float-label-control"> -->
                <%#= f.text_field :address, autofocus: true,class: "form-control input-md", placeholder: "Address"%> 
-              </div>
-               <div class="form-group float-label-control">
+           <!--    </div> -->
+              <div class="form-group float-label-control">
                <%= f.number_field :pin_code, autofocus: true,class: "form-control input-md", placeholder: "Pin Code"%>
              	</div>
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   # layout false, :only => :show_caregiver
   def patients
     @patients = User.joins(:roles).where("roles.name = 'patient' AND users.assign = false")
     respond_to do |format|
@@ -13,9 +14,11 @@ class UsersController < ApplicationController
     @caregiver_list = User.joins(:roles).where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
     @caregivers = @caregiver_list.where(pin_code: current_user.pin_code)  if current_user.pin_code.present?
     @caregivers = @caregiver_list  unless @caregivers.present?
+    @caregivers = @caregivers.paginate(:page => params[:page], :per_page => 1).order(created_at: :desc)
   end
 
   def show_caregiver
+
     @continue_caregiver = params[:continue]
     @caregiver = User.find(params[:id])
     @has_payment = Payment.find_by(user_id: current_user.id)

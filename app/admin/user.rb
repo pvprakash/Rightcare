@@ -14,7 +14,7 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :first_name, :last_name, :email, :password, :password_confirmation, :role, :avatar
+permit_params :first_name, :last_name, :email, :password, :password_confirmation, :role, :avatar,:city,:state
 
 index do
     selectable_column
@@ -41,6 +41,8 @@ index do
       row :last_name
       row :user_id
       row :role
+      row :state 
+      row :city
       row :avatar do |p|
         image_tag p.avatar.url,width: '64px',height: "50px"
       end
@@ -53,7 +55,7 @@ index do
 
   controller do
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount], pin_code: params[:pin_code],address: params[:address])
+     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount], pin_code: params[:pin_code],state: params[:state],city: params[:city])
      if user.save(validate: false)
        user.add_role params[:role]
      end
@@ -88,6 +90,13 @@ index do
         flash[:notice] = "already refunded"
         end
         redirect_to admin_users_payment_details_path(@user)
+    end
+
+    def select_city
+      @cities = CS.cities(params[:state_name])
+        respond_to do |format|
+        format.js
+      end
     end
   end 
 

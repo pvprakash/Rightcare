@@ -14,6 +14,6 @@ $(document).ready(function(){
    $(".cross").click(function(){
      $(".notice").fadeOut(500);
    });
-
+ // setInterval(function(){ $(".notice").fadeOut(100) }, 3000);
   $(".notice").fadeOut(10000)
 })

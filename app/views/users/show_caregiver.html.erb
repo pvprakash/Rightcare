@@ -1,78 +1,40 @@
-<div class="container mt-20">
-	<div class="row">
-		<section class="content">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="pull-left">
-							<h1></h1>
-						</div>
-						<div class="pull-right">
-							<div class="btn-group">
-								<!-- <button type="button" class="btn btn-primary btn-filter" data-target="pagado">Available</button>
-								<button type="button" class="btn btn-default btn-filter" data-target="pendiente">Un-available</button> -->
-							</div>
-						</div>
-						<div class="table-container">
-							<table class="table table-filter">
-								<tbody>
-										<tr data-status="cancelado">
-											<td>
-												<div class="media">
-													<a href="#" class="pull-left">
-														<%= image_tag @caregiver.avatar.url, class: "media-photo", width: '200px',height: "150px"%>
-													</a>
-													<div class="media-body">
-														<span class="media-meta pull-right"><%=payment_link(@caregiver) %>
-                            </span>
-														<h4 class="title">
-																First-name: <%=@caregiver.first_name%><br>
-																Last-name: <%=@caregiver.last_name%></br>
-																Created-At: <%=@caregiver.created_at.strftime('%d-%m-%Y')%>
-														</h4>
-													</div>
-										      <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST">
-										      
-										      <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
-										      <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
-										      </form><br>
-										      
-												</div>
-											</td>
-										</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>	
-	</div>
-</div>
+<div class=" " id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-content-one">
+        <div class="modal-header">
+         
+          <%= link_to :back do %>
+            <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+          <% end %>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="col-md-4"> <div class="prof-img"><%= image_tag @caregiver.avatar.url%></div> </div>
+            <div class="col-md-8">
+               <div class="col-md-10 clear-box">
+                  <iframe width="100%" height="332" src="https://www.youtube.com/embed/yY5wSiOWDK4" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="clearfix">
+                </div>
+              <h1><%=@caregiver.first_name%> <%=@caregiver.last_name%></h1>
+              <p>Email: <%=@caregiver.email%></p>
+              <p>State: <%=@caregiver.state%></p>
+              <p>City: <%=@caregiver.city%></p>
+              <p>Pin-code: <%=@caregiver.pin_code%></p>
+              <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST"> 
+                  <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
+                  <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
+              </form>
+              <%=payment_link(@caregiver) %>
+              <%#= link_to "Hire Me" ,show_caregiver_user_path(@caregiver), class: 'btn btn-primary'%>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-<style>
-
-.razorpay-payment-button{
-
-}
-.table-filter .media .title {
-	color: #2BBCDE;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: normal;
-	margin: 0;
-}
-.table-filter .media .title span {
-	font-size: .8em;
-	margin-right: 20px;
-}
-.work img{
-	background-color: #0173bc;
-  width: 100px;
-  height: 24px;
-}
-</style>
 <script
     src="https://checkout.razorpay.com/v1/checkout.js"
     data-key="<%= "#{ENV['RAZORPAY_KEYID']}" %>"
@@ -144,3 +106,52 @@ $(document).ready(function(){
 
 });
 </script>
+
+<style>
+.prof-img {
+    height: 332px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-top: 35px;
+  }
+.modal-body h1{
+  color:#fff;
+  font-size: 28px;
+  margin-bottom: 5px;
+  text-align: left;
+  font-weight: 700;
+}
+.modal-dialog {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+ .modal-body{
+  height: auto;
+  padding-bottom: 50px;
+  color: white;
+ }
+
+ .modal-content{
+  border-radius: 0;
+ }
+ .modal-header{
+  border:none;
+  padding:30px 15px;
+ }.razorpay-payment-button{
+ display:  none;
+}
+.modal-header a span{
+    float: right;
+    font-size: 40px;
+    color: #fff;
+    font-weight: 900;
+  }
+ .modal-header a {
+    line-height: 0;
+}
+.prof-img{
+  margin-top:0;
+}
+ .work img{width: 80px; ,margin-top: 20px;}
+</style>

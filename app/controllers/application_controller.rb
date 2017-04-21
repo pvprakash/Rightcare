@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :availble_patient, except: :destroy 
 
+
   def availble_patient
   	if user_signed_in?
   		if current_user.patient.nil? && params[:controller] != "patients"

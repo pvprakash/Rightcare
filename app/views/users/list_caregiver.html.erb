@@ -1,70 +1,45 @@
-<div class="container mt-20">
-	<div class="row">
-		<section class="content">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="pull-left">
-							<h1>List of Caregivers</h1>
-						</div>
-						<div class="pull-right">
-							<div class="btn-group">
-								<!-- <button type="button" class="btn btn-primary btn-filter" data-target="pagado">Available</button>
-								<button type="button" class="btn btn-default btn-filter" data-target="pendiente">Un-available</button> -->
-							</div>
-						</div>
-						<div class="table-container">
-							<table class="table table-filter">
-								<tbody>
-									<% @caregivers.each do |cargiver|%>
-										<tr data-status="cancelado">
-											<td>
-												<div class="media">
-													<a href="#" class="pull-left">
-														<%= image_tag cargiver.avatar.url, class: "media-photo", width: '200px',height: "150px"%>
-													</a>
-													<div class="media-body">
-														<span class="media-meta pull-right"><%#=link_to( image_tag("/assets/razorpay.png"), "#", :class=>"work") %>
-															<%= link_to "view" ,show_caregiver_user_path(cargiver), class: 'btn btn-primary'%>
-                            </span>
-														<h4 class="title">
-																First-name: <%=cargiver.first_name%><br>
-																Last-name: <%=cargiver.last_name%></br>
-																Created-At: <%=cargiver.created_at.strftime('%d-%m-%Y')%>
-														</h4>
-													</div>
-												</div>
-											</td>
-										</tr>
-									<% end %>
-								</tbody>
-							</table>
+<section class="">
+<div>
+  <div class="container">
+    <div class="col-xs-12 col-md-12 ">
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1" role="tabpanel">
+          <div class="profile-caregiver">
+        		<h3>Our  Caregivers <span> Available</span>
+          <div>
+          <center>
+            <img src="/assets/seperation.png" height="14" width="85">
+          </center>
+        </div>
+        </h3>
+      </div>
+      <% @caregivers.each do |cargiver|%>
+      	<div class="col-sm-3">
+        <div class="thumbnail">
+          <div class="image"> 	<%= image_tag cargiver.avatar.url,width: '242px;'%></div>
+          <div class="caption">
+            <h3><%=cargiver.first_name%></h3>
+            <p><%=cargiver.last_name%></p>
+            <div class=" big-box" id="first-child">
+            	<%= link_to "Read more", show_caregiver_user_path(cargiver), class: 'btn btn-primary' %>
+              
+            </div>
+          </div>
+        </div>
+      	</div>
+      <%end%>
+      <%= will_paginate @caregivers %>
+    </div>
+  </div>
+  </div>
 
-							<%= "<div class='alert alert-warning'>There is no caregivers</div>".html_safe unless @caregivers.present? %>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>	
-	</div>
 </div>
-
-<style>
-
-.table-filter .media .title {
-	color: #2BBCDE;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: normal;
-	margin: 0;
-}
-.table-filter .media .title span {
-	font-size: .8em;
-	margin-right: 20px;
-}
-.work img{
-	background-color: #0173bc;
-  width: 100px;
-  height: 24px;
-}
-</style>
+</div>
+</section>
+<script>
+$(document).ready(function(){
+    $('li a').on('click',function(e){
+  	    goTo((e.target.innerHTML)-0);
+  });
+});
+</script>
