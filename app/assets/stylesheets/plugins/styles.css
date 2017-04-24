@@ -1,5 +1,42 @@
+#en5 .close{
+	position: absolute;
+    right: 0;
+    z-index: 1111;
+}
+#en5 .modal-dialog{
+     height: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius:0px;
+    width: 100%;
+	background-image:url(../img/login-bg.jpg);
+		background-position:center top -160px;
+	background-size:cover;
+}
+#en .modal-body , #ex .modal-body  , #sc  .modal-body , #qn .modal-body {
+	overflow-y: auto;
+	width:100%;
+}
+#en5 .modal-content{
+	background-color:rgba(0,0,0,0.2);
+	border-radius:0px;
+	box-shadow:none;
+	border:none;
+	position:relative;
+	height:100%;
 
+}
+#en .modal-dialog ,#ex .modal-dialog , #sc .modal-dialog , #qn .modal-dialog {
+	width: 80%;
+}
 /*profile-css*/
+
+.package-detail li {
+    color: #333;
+    font-size: 17px;
+    margin-bottom: 3px;
+    font-family: "Montserrat", sans-serif !important;
+}
 .package-detail h2 {
 	color:#0173BC;
 	font-size: 28px;
@@ -8,13 +45,31 @@
 }
 .package-detail button {
 	background-color: #0173bc;
-	border-radius: 6px;
-	color: #fff;
-	font-size: 22px;
-	margin-top: 20px;
-	padding: 7px;
-	width: 300px;
-	border:1px solid #0173bc;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 7px;
+    width: 200px;
+    border: 1px solid #0173bc;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.package-detail .btn-new {
+	background-color: #0173bc;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 7px;
+    width: 200px;
+    border: 1px solid #0173bc;
+    display: inline-block;
+    margin-right: 10px;
+    height: 49px;
+    margin: 50px;
+
 }
 .package-detail h3 span {
 	font-size:38px;
@@ -24,6 +79,10 @@
 .package-detail h3 {
 	font-size:20px;
 	color:#666;
+}
+.package-detail .btn-new:hover {
+	background-color: #fff;
+	color:  #0173bc;
 }
 .package-detail button:hover {
 	background-color: #fff;
@@ -4355,3 +4414,5 @@ a.phone-box.clear-box.text-center:hover{
 	color: #d73814;
 	background: #ffdddd!important
 }
+
+.modal-backdrop.in{position: relative; opacity: 0;}
