@@ -18,6 +18,28 @@
 
 
 <%= yield %>
+  <%unless user_signed_in? %>
+		<div id="login5" class="modal modal-wide">
+		 
+		</div>
+  <%end%>
+  <!-- /.modal-content --> 
+</div>
+    <!-- /.modal-dialog --> 
+  </div>
 <%= render partial: 'layouts/footer' unless params[:action] =="show_caregiver"%>
 </body>
 </html>
+
+
+<script>
+$(document).ready(function(){
+	$(".login-sec").click(function(){ 
+		$.ajax({
+			type: 'get',
+			url: "<%=new_user_session_path%>",
+		});
+	});
+})
+
+</script>

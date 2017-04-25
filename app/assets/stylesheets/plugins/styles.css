@@ -1,15 +1,15 @@
-#en5 .close{
+#login5 .close{
 	position: absolute;
     right: 0;
     z-index: 1111;
 }
-#en5 .modal-dialog{
+#login5 .modal-dialog{
      height: 100%;
     margin: 0;
     padding: 0;
     border-radius:0px;
     width: 100%;
-	background-image:url(../img/login-bg.jpg);
+	background-image:url(/assets/login-bg.jpg);
 		background-position:center top -160px;
 	background-size:cover;
 }
@@ -17,7 +17,7 @@
 	overflow-y: auto;
 	width:100%;
 }
-#en5 .modal-content{
+#login5 .modal-content{
 	background-color:rgba(0,0,0,0.2);
 	border-radius:0px;
 	box-shadow:none;
@@ -57,19 +57,18 @@
 }
 
 .package-detail .btn-new {
-	background-color: #0173bc;
+    background-color: #0173bc;
     border-radius: 6px;
     color: #fff;
     font-size: 22px;
-    margin-top: 20px;
+    margin-top: -5px;
     padding: 7px;
     width: 200px;
     border: 1px solid #0173bc;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 58px;
     height: 49px;
-    margin: 50px;
-
+    /* margin: 50px; */
 }
 .package-detail h3 span {
 	font-size:38px;
@@ -161,6 +160,7 @@
 	margin-right:40px;
 	margin-top:20px;
 }
+.modal{background-color: rgba(0,0,0,0.4)}
 .modal-header .close {
 	margin-top: 20px;
 }
@@ -1409,7 +1409,20 @@ form.registration-form fieldset {
 	padding: 12px 0;
 	width: 32%;
 	line-height: normal;
+    text-align: center;
 	float: right;
+}
+.phone-box:hover{
+	background-color: #22B6C9;
+	color: #fff;
+	font-size: 17px;
+	font-weight: normal;
+	padding: 12px 0;
+	width: 32%;
+	line-height: normal;
+    text-align: center;
+	float: right;
+	text-decoration: none;
 }
 .phone-box img {
 	float: left;
@@ -4416,3 +4429,119 @@ a.phone-box.clear-box.text-center:hover{
 }
 
 .modal-backdrop.in{position: relative; opacity: 0;}
+
+
+
+
+
+
+
+
+
+
+
+.login-form {
+	background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 0 0 0 3px #ccc;
+    margin: 140px auto 0;
+    padding: 0;
+    width: 42%;
+	
+}
+.login-form a{
+	font-size:17px;
+	text-decoration:none;
+}
+.login-form p a{
+	text-transform:uppercase;
+}
+.login-form .bt1n{
+	 background-color: #22B6B8;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 21px;
+    padding: 8px;
+    width: 100%;
+	margin:0px 0 15px;
+	
+}
+.login-form  p{
+	color: #333;
+    font-size: 21px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.login-form .squaredTwo {
+	width: 28px;
+	height: 28px;
+	background: #fcfff4;
+
+	
+	
+	
+	margin:10px 12px 5px;
+
+
+	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	position: relative;
+}
+
+.login-form .squaredTwo label {
+	cursor: pointer;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 4px;
+	top: 4px;
+
+	
+	background: #22b6b8;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.login-form .squaredTwo label:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 13px;
+	height: 7px;
+	background: transparent;
+	top: 4px;
+	left: 4px;
+	border: 3px solid #fcfff4;
+	border-top: none;
+	border-right: none;
+	transform: rotate(-45deg);
+}
+.login-form  span{
+	color: #333;
+    display: inline-block;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+
+
+
+.login-form input[type=checkbox] {
+	visibility: hidden;
+}
+.login-form .float-label-control{
+	float: none;
+    margin: 0 auto;
+    padding: 24px 0 0;
+    width: 90%;
+}
+.login-form  h5{
+	background-color: #0173bc;
+    color: #fff;
+    font-size: 26px;
+    padding: 12px 20px;
+    text-align: center;
+	margin-bottom:4px;
+	
+}

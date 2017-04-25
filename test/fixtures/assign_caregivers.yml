@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  caregiver_id: 1
+  assign: MyString
+  boolean: MyString
+  start_date: 2017-04-13 19:24:18
+  end_date: 2017-04-13 19:24:18
+
+two:
+  patient_id: 1
+  caregiver_id: 1
+  assign: MyString
+  boolean: MyString
+  start_date: 2017-04-13 19:24:18
+  end_date: 2017-04-13 19:24:18

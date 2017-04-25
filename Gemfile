@@ -26,6 +26,8 @@ gem 'delayed_job_active_record'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-heroku'
 gem 'wkhtmltopdf-binary'
+# gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # gem 'country_state_select'
 gem 'city-state'
