@@ -43,6 +43,7 @@ index do
       row :role
       row :state 
       row :city
+      row :active
       row :avatar do |p|
         image_tag p.avatar.url,width: '64px',height: "50px"
       end
@@ -55,7 +56,7 @@ index do
 
   controller do
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount], pin_code: params[:pin_code],state: params[:state],city: params[:city])
+     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,skills: params[:skills])
      if user.save(validate: false)
        user.add_role params[:role]
      end

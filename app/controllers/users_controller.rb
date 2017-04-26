@@ -11,17 +11,20 @@ class UsersController < ApplicationController
     code_hash = {"en" => 600, "ex" => 900, "sc" => 1200, "qn" =>2400}
     amount = code_hash[params["code"]]
   # @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND (users.assign = false AND users.amount = #{amount})")
-    @caregiver_list = User.joins(:roles).where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
+    @caregiver_list = User.joins(:roles).active.where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
     @caregivers = @caregiver_list.where(pin_code: current_user.pin_code)  if current_user.pin_code.present?
     @caregivers = @caregiver_list  unless @caregivers.present?
     @caregivers = @caregivers.paginate(:page => params[:page], :per_page => 16).order(created_at: :desc)
   end
 
   def show_caregiver
-
     @continue_caregiver = params[:continue]
-    @caregiver = User.find(params[:id])
+    @caregiver = User.find(params[:id]) 
     @has_payment = Payment.find_by(user_id: current_user.id)
+    unless @caregiver.active
+      flash[:notice] = "Something went wrong"
+      redirect_to root_path
+    end
   end
 
   def replacement
@@ -41,6 +44,10 @@ class UsersController < ApplicationController
     @payments = current_user.payments
   end
 
+  def patient_details
+    @patient = current_user.patient
+  end
+
   def caregiver_details
     if (caregiver_id = current_user.patient.try(:assign_caregiver).try(:caregiver_id)) && (current_user.patient.try(:assign_caregiver).try(:assign) == true)
       @caregiver = User.find(caregiver_id)
@@ -52,7 +59,9 @@ class UsersController < ApplicationController
   end
 
   def select_city
-    @cities = CS.cities(params[:state_name])
+    @all_cities = CS.cities(params[:state_name])
+    # @cities = @all_cities & ["Vidisha"]
+    @cities = @all_cities
     respond_to do |format|
       format.js
     end

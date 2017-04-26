@@ -21,6 +21,8 @@
               <p>State: <%=@caregiver.state%></p>
               <p>City: <%=@caregiver.city%></p>
               <p>Pin-code: <%=@caregiver.pin_code%></p>
+              <p>Experience: <%=caregiver_experience @caregiver%></p>
+              <p>Skills: <%=@caregiver.skills%></p>
               <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST"> 
                   <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
                   <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">

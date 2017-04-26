@@ -160,7 +160,8 @@
 	margin-right:40px;
 	margin-top:20px;
 }
-.modal{background-color: rgba(0,0,0,0.4)}
+.modal{background-color: rgba(0,0,0,0.4)
+}
 .modal-header .close {
 	margin-top: 20px;
 }

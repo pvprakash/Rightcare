@@ -18,9 +18,12 @@ class User < ActiveRecord::Base
   dropbox_credentials: "#{Rails.root}/config/dropbox.yml"
 
 
+  # scope :active, -> { joins(:roles).where('roles.name = ? AND active = ?','caregiver', false ) }
+  scope :active, -> { where('active = ?', true) }
+
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  validate :validate_care_for, :validate_pin_code, :on => :create
+  validate :validate_care_for,:validate_state,:validate_city, :validate_pin_code, :on => :create
 
   # validates :pin_code, :numericality => true, :allow_nil => true
   ROLES = [["Patient", "patient"],["User", "user"]]
@@ -57,9 +60,23 @@ class User < ActiveRecord::Base
 
   def validate_pin_code
     unless self.pin_code.to_s.length > 5
-      errors.add(:pin_code, "Pin Code is invalid")
+      errors.add(:pin_code, "is invalid")
     end
   end
+
+  def validate_state
+    unless self.state.present?
+      errors.add(:state, "is invalid")
+    end
+  end
+
+
+  def validate_city
+    unless self.city.present?
+      errors.add(:city, "is invalid")
+    end
+  end
+
 
   def is_caregiver?
     self.roles.first.name.eql?("caregiver")

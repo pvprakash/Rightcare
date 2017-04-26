@@ -10,4 +10,18 @@ module UsersHelper
     end
     html.html_safe
   end
+
+
+  def caregiver_experience caregiver
+    case caregiver.amount
+    when 600
+    "ENTRY LEVEL"
+    when 900
+    "EXPERIENCED"
+    when 1200
+    "SPECIALIZED CAREGIVERS"
+    when 2400
+    "QUALIFIED NURSE"
+    end
+  end
 end

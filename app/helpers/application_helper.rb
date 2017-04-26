@@ -12,6 +12,7 @@ module ApplicationHelper
       html += "<ul class='dropdown-menu' role='menu'> <li>#{link_to 'Logout',destroy_user_session_path, method: :delete }</li>"
       html += "<li>#{link_to 'Caregiver Details', caregiver_details_users_path }</li>" if user_signed_in?
       html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
+       html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
       html += "</ul>"
       html += "</div>"
      end

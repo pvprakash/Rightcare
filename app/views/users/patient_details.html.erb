@@ -1,0 +1,11 @@
+<div class="table-responsive">
+  <table class="table table-condensed">
+      <tr>
+        <td>Patient Name:</td><td><%= @patient.first_name.to_s + " " + @patient.last_name.to_s %></td>
+        <td>Gender</td><td><%= @patient.gender %></td>
+        <td>Date of Birth</td><td><%= @patient.dob %></td>
+        <td>Health Conditions</td><td><%= patient_get_health @patient %></td>
+        <td>speciality_services</td><td><%= patient_get_speciality_services @patient  %></td>
+      </tr>
+  </table>
+</div>
