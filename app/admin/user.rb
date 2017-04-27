@@ -56,11 +56,24 @@ index do
 
   controller do
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation],avatar: params[:avatar],amount: params[:amount], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,skills: params[:skills])
-     if user.save(validate: false)
-       user.add_role params[:role]
+     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true)
+     
+     if params[:role].eql?('caregiver')
+         user.avatar =  params[:avatar]
+         user.amount = params[:amount]
+         user.skills = params[:skills]
+         user.video_url = params[:url]
      end
+     if user.save
+       user.add_role params[:role]
        redirect_to admin_users_path
+     end
+       str = ""
+      user.errors.messages.each do |key, value|
+        str  << key.to_s+" "+value.join()+", "
+      end
+       flash[:error] =  str
+      redirect_to '/admin/users/new'
     end 
 
     def payment_details
@@ -97,6 +110,19 @@ index do
       @cities = CS.cities(params[:state_name])
         respond_to do |format|
         format.js
+      end
+    end
+
+    def check_video_url
+      begin 
+        video = VideoInfo.new(params[:video_url])
+        @message = "Valid URL" 
+      rescue Exception
+        # flash[:notice] = "video url invalid"
+        @message = "Invalid URL"
+      end
+        respond_to do |format|
+        format.json { render json: @message }
       end
     end
   end 

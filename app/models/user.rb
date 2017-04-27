@@ -23,8 +23,7 @@ class User < ActiveRecord::Base
 
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  validate :validate_care_for,:validate_state,:validate_city, :validate_pin_code, :on => :create
-
+  validate :validate_care_for,:validate_state,:validate_city, :validate_pin_code, :validate_video_url
   # validates :pin_code, :numericality => true, :allow_nil => true
   ROLES = [["Patient", "patient"],["User", "user"]]
   CAREFOR = ["Mother","Father","Husband","Wife","Grandmother","Grandfather","Myself","Sister","Brother","Daughter","Son","Relative","Friend","Neighor","Other"]
@@ -32,14 +31,13 @@ class User < ActiveRecord::Base
   
 
   def remove_assign
-  unless self.is_caregiver?
-    if self.patient.assign_caregiver.present?
-      caregiver_id = self.patient.assign_caregiver.caregiver_id
-      User.find(caregiver_id).update_attributes(assign: false)
-      self.patient.assign_caregiver.destroy
+    unless self.is_caregiver?
+      if self.patient.assign_caregiver.present?
+        caregiver_id = self.patient.assign_caregiver.caregiver_id
+        User.find(caregiver_id).update_attributes(assign: false)
+        self.patient.assign_caregiver.destroy
+      end
     end
-  end
-
   end 
 
   def self.states
@@ -53,6 +51,7 @@ class User < ActiveRecord::Base
   
 
   def validate_care_for
+    
     unless self.care_for.present?
       errors.add(:care_for, "Who is this care can't be empty")
     end
@@ -61,6 +60,17 @@ class User < ActiveRecord::Base
   def validate_pin_code
     unless self.pin_code.to_s.length > 5
       errors.add(:pin_code, "is invalid")
+    end
+  end
+
+  def validate_video_url
+    if self.video_url.present?
+      begin 
+        video = VideoInfo.new(self.video_url)
+      rescue Exception
+        errors.add(:video_url, "Invalid URL")
+        # @message = "invalid url"
+      end
     end
   end
 

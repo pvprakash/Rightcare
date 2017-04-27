@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match "/admin/users/:id/payment_details" => 'admin/users#payment_details', via: :get, as: "admin_users_payment_details"
   match "/admin/users/:id/payment_receipt/:payment_id" => 'admin/users#payment_receipt', via: :get, as: "admin_users_payment_receipt"
   match "/admin/users/select_city" => 'admin/users#select_city', via: :get, as: "admin_users_select_city"
+  match "/admin/users/check_video_url" => 'admin/users#check_video_url', via: :get, as: "admin_users_check_video_url"
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config
