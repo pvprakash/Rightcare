@@ -87,6 +87,12 @@
       form.agree.focus();
       return false;
     }
+    if($('#user_care_for').val()=="")
+    {
+      alert("please select care for")
+      $(this).focus();
+      return false
+    }
     return true;
   }
 

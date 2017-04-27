@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  validate :validate_care_for,:validate_state,:validate_city, :validate_pin_code, :validate_video_url
+  validate :validate_state,:validate_city, :validate_pin_code, :validate_video_url
   # validates :pin_code, :numericality => true, :allow_nil => true
   ROLES = [["Patient", "patient"],["User", "user"]]
   CAREFOR = ["Mother","Father","Husband","Wife","Grandmother","Grandfather","Myself","Sister","Brother","Daughter","Son","Relative","Friend","Neighor","Other"]

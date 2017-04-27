@@ -12,7 +12,7 @@
             <div class="col-md-4"> <div class="prof-img"><%= image_tag @caregiver.avatar.url%></div> </div>
             <div class="col-md-8">
                <div class="col-md-10 clear-box">
-                  <iframe width="100%" height="332" src="https://www.youtube.com/embed/yY5wSiOWDK4" frameborder="0" allowfullscreen></iframe>
+                  <%= VideoInfo.new(@caregiver.video_url).embed_code.html_safe if @caregiver.video_url.present? %>
                 </div>
                 <div class="clearfix">
                 </div>
@@ -156,4 +156,5 @@ $(document).ready(function(){
   margin-top:0;
 }
  .work img{width: 80px; ,margin-top: 20px;}
+ iframe{width:100%; height:332px;}
 </style>

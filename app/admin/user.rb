@@ -67,13 +67,14 @@ index do
      if user.save
        user.add_role params[:role]
        redirect_to admin_users_path
-     end
+     else
        str = ""
-      user.errors.messages.each do |key, value|
-        str  << key.to_s+" "+value.join()+", "
+        user.errors.messages.each do |key, value|
+          str  << key.to_s+" "+value.join()+", "
+        end
+        flash[:error] =  str
+        redirect_to '/admin/users/new'
       end
-       flash[:error] =  str
-      redirect_to '/admin/users/new'
     end 
 
     def payment_details
