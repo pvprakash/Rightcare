@@ -20,7 +20,8 @@ gem 'devise'
 gem "rolify"
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem "paperclip", "<= 5.0.0"
-gem "paperclip-dropbox", ">= 1.1.7"
+# gem "paperclip-dropbox", ">= 1.1.7"
+gem 'aws-sdk', '< 2.0'
 gem 'cancan'
 gem 'razorpay'
 gem 'delayed_job_active_record'
@@ -58,6 +59,12 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'dotenv-rails'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+
 end
 
 group :development do
