@@ -20,36 +20,22 @@
 #   <<: *default
 #   database: db/test.sqlite3
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
-
-
-
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
-  host: localhost
-  username: postgres
-  password: postgres
 
 development:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: rightcare1_development
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: rightcare1_test
 
 production:
-  <<: *default
-  database: rightcare1_production
-  #username: rails
-  #password: CO5LAMW8Uk
-  #host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: rightcare_production
+  pool: 5
+  username: postgres
+  password: rightcaredb
+  host: localhost
