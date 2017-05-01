@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     	<% @payments.each do |payment| %>
-      <tr class="clickable warning dropdown-deliverable" data-for="#details_1">
+      <tr class="clickable warning dropdown-deliverable" data-for="#details_<%=payment.id%>">
         <td><%= payment.payment_id%></td>
         <td><%= User.find(payment.caregiver_id).first_name%></td>
         <td><%= payment.price%></td>
@@ -20,7 +20,7 @@
       <tr style="padding:0">
         <td style="padding:0"></td>
         <td colspan=2 style="padding:0px;">
-          <div class="deliverable-infos" id="details_1">
+          <div class="deliverable-infos" id="details_<%=payment.id%>">
             <table class="table table-condensed table-user-content" id="hidden_table_1">
               <tbody>
                 <tr>
@@ -66,9 +66,11 @@
                   <td class="right-col"><%= payment.created_at.strftime('%d-%m-%Y')%></td>
                 </tr>
                 <tr><td><%= link_to 'Receipt', admin_users_payment_receipt_path(@user,payment, format: :pdf), class: 'btn btn-primary' %></td></tr>
-                <tr><td>
-                <%= link_to "Refund", admin_users_refund_path(@user,payment) %>
-              </td></tr>
+                <%if payment.active%>
+                  <tr><td>
+                  <%= link_to "Refund", admin_users_refund_path(@user,payment) %>
+                  </td></tr>
+                <%end%>
               </tbody>
             </table>
           </div>

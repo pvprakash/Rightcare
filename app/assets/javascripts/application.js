@@ -18,3 +18,10 @@
 //= require_tree .
 
 
+function close_modal(val)
+{
+ $(val).removeClass('in')
+ $(val).attr('aria-hidden',true)
+ $(val).hide();
+ $('body').removeClass('modal-open')
+}

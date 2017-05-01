@@ -18,9 +18,11 @@ class UsersController < ApplicationController
   end
 
   def show_caregiver
+    
     @continue_caregiver = params[:continue]
-    @caregiver = User.find(params[:id]) 
-    @has_payment = Payment.find_by(user_id: current_user.id)
+    @caregiver = User.find(params[:id])
+    @is_assign = current_user.patient.assign_caregiver
+    @has_payment = Payment.active.find_by(user_id: current_user.id) 
     unless @caregiver.active
       flash[:notice] = "Something went wrong"
       redirect_to root_path
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
 
   def replacement
     @caregiver = User.find(params[:id])
-    payment = Payment.find_by_user_id(current_user.id)
+    payment = Payment.active.find_by_user_id(current_user.id)
     last_caregiver = User.find(payment.caregiver_id)
     last_caregiver.update_attributes(assign: false)
     @caregiver.update_attributes(assign: true)

@@ -83,7 +83,7 @@ index do
     end
 
     def payment_receipt
-      @payment = Payment.find(params[:id])
+      @payment = Payment.find(params[:payment_id])
       kit = WickedPdf.new.pdf_from_string(render_to_string('payment/payment_receipt.html.erb', layout: 'pdf.html.erb'))
       send_data kit,
       filename: "Reciept #{Date.today.strftime('%Y%m%d')}.pdf",
@@ -98,6 +98,8 @@ index do
     def refund
         @user = User.find params[:id]
         @payment = Payment.find params[:payment_id]
+        @payment.caregiver_relase
+        @payment.update_attributes(active: false)
         result = @payment.delay(run_at: 360.hours.from_now).refund_at
         if result
         flash[:notice] = "15% amount has refunded"

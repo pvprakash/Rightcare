@@ -7,6 +7,8 @@ class Payment < ActiveRecord::Base
   end
   belongs_to :delayed_job
 
+  scope :active, -> { where('active = ?', true) }
+
   def caregiver
     User.find(self.caregiver_id)
   end
@@ -44,10 +46,14 @@ class Payment < ActiveRecord::Base
         params.merge!({status: razorpay_pmnt_obj.status, price: (razorpay_pmnt_obj.amount/100).to_f})       
         rpo = razorpay_pmnt_obj
         extra_records = {entity: rpo.entity, currency: rpo.currency, refund_status:  rpo.refund_status, amount_refunded: rpo.amount_refunded, bank: rpo.bank, email: rpo.email, contact: rpo.contact,fee: rpo.fee, service_tax: rpo.service_tax ,created_at: rpo.created_at}
-        payment  = Payment.create(params.merge(extra_records: extra_records))
-        assign_caregiver = user.patient.build_assign_caregiver(caregiver_id: caregiver.id, start_date: (Time.zone.now.to_datetime+1), end_date: (Time.zone.now.to_datetime+16), assign: true)
-        assign_caregiver.save
-        caregiver.update_attributes(assign: true)
+        user.payments unless user.payments.empty? 
+        payment  = Payment.new(params.merge(extra_records: extra_records))
+        if payment.save
+          user.payments.active.where.not(id: payment.id).update_all(active: false)
+          assign_caregiver = user.patient.build_assign_caregiver(caregiver_id: caregiver.id, start_date: (Time.zone.now.to_datetime+1), end_date: (Time.zone.now.to_datetime+16), assign: true)
+          assign_caregiver.save
+          caregiver.update_attributes(assign: true)
+        end
         return payment
       else
         raise StandardError, "UNable to capture payment"

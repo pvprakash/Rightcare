@@ -2,8 +2,8 @@ module PagesHelper
   def get_now_links(amount_code)
   	html = ""
   	if !user_signed_in?
-      html += link_to "get now", new_user_registration_path
-  	elsif current_user.is_user?
+   #    html += link_to "get now", new_user_registration_path
+  	# if current_user.is_user?
      return get_it_now_links(amount_code)
   		# html += "<a href='/users/list_caregiver?code=#{amount_code}'>get now</a>"
   	else
@@ -90,7 +90,7 @@ module PagesHelper
               <div class='clearfix'></div>
               <center>
                 #{continue('en')}
-                <button type='button' class='' data-dismiss='modal'>Close</button>
+                <button type='button' onclick=close_modal(\'#en\') data-dismiss='modal'>Close</button>
               </center>
             </div>
           </div>
@@ -132,7 +132,7 @@ module PagesHelper
               <div class='clearfix'></div>
               <center>
                 #{continue('ex')}
-                <button type='button' class='' data-dismiss='modal'>Close</button>
+                <button type='button' onclick=close_modal(\'#ex\') data-dismiss='modal'>Close</button>
               </center>
             </div>
           </div>
@@ -177,7 +177,7 @@ module PagesHelper
               <div class='clearfix'></div>
               <center>
                 #{continue('sc')}
-                <button type='button' class='' data-dismiss='modal'>Close</button>
+                <button type='button' onclick=close_modal(\'#sc\') data-dismiss='modal'>Close</button>
               </center>
             </div>
           </div>
@@ -223,7 +223,7 @@ module PagesHelper
               <div class='clearfix'></div>
               <center>
                 #{continue('qn')}
-                <button type='button' class='' data-dismiss='modal'>Close</button>
+                <button type='button' onclick=close_modal(\'#qn\') class='' data-dismiss='modal'>Close</button>
               </center>
             </div>
           </div>
