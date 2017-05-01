@@ -38,8 +38,11 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
-      #   execute :rake, 'cache:clear'
+        execute :touch, 'RAILS_ENV=production rake jobs:work &'
+        # execute :touch, 'RAILS_ENV=production /home/deploy/production/SouFudao/current/bin/delayed_job restart'
+        execute :touch, 'sudo service nginx restart'
       # end
     end
   end
+  after :publishing, :restart 
 end
