@@ -1,0 +1,20 @@
+<div>
+  <h4 class="comment"> Most Popular Blog </h4>
+  <%@popular_blogs.each do |blog|%>
+		<div class="sidePost">
+		  <div class="sidePostImg"> <%=image_tag blog.blog_pic.url %> </div>
+		  <div class="sidePostCont"> <%= blog.updated_at.strftime("%A,%d %B %Y")%>
+		    <p><%= blog.title%></p>
+		  </div>
+		</div>
+  <%end%>
+</div>
+<div>
+  <h4 class="comment"> Follow Us On </h4>
+  <ul class="social-icon">
+    <li> <i class="fa fa-facebook-square facebbok" aria-hidden="true"></i></li>
+    <li><i class="fa fa-twitter-square twitter" aria-hidden="true"></i> </li>
+    <li> <i class="fa fa-linkedin-square linked" aria-hidden="true"></i> </li>
+    <li> <i class="fa fa-google-plus-square googleplus" aria-hidden="true"></i> </li>
+  </ul>
+</div>

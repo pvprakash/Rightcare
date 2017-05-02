@@ -1,0 +1,122 @@
+<section class="blog-banner">
+    <div class="banner-content">
+      <div class="container">
+        <h3> Blog </h3>
+        <ul>
+          <li>Home</li>
+          <li>/</li>
+          <li class="active"><b>Blog</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="">
+  <div class="container">
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1" role="tabpanel">
+        <%= render partial: 'blogs/blogs'%>
+        <div class="col-md-4 col-sm-4">
+          <div>
+            <h4 class="comment"> Archive </h4>
+            <%= render partial: 'blogs/archive'%>
+          </div>
+          <div>
+            <h4 class="comment"> Subscribe By Mail </h4>
+            <form class="subscribe">
+              <div class="form-group">
+                <div class="col-md-7 clear-box">
+                  <input type="text" class="form-control" id="usr" placeholder="subscribe"/>
+                </div>
+                <div class="col-md-5">
+                  <button>Subscribe Us</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="clearfix"></div>
+          <%= render partial: 'blogs/popular_blogs'%>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab2" role="tabpanel">
+        <div class="col-md-8">
+          <div class="blog-post">
+            <div class="image"> <img src="img/diabetis.jpg" ></div>
+            <h3> Diabetes-How It Affects Your Foot </h3>
+            <h6>Saturday, 18 February 2017</h6>
+            <p> You must have heard that diabetes is a silent killer!
+              
+              Know about what it does to different body parts. Today we talk about the foot.
+              As it advances, it can affect several internal organs, including the kidneys, blood vessels supplying the heart and heart muscle, and peripheral nerves. When these organs are compromised, renal failure, heart attacks and nerve pain in the feet and hands can be seen.
+              
+              Foot problems come in all shapes and sizes and cause symptoms from tingling and pain to weakness in the foot or loss of feeling in the foot. Complications include neuropathy (nerve damage), skin changes, calluses, foot ulcers and poor circulation.
+              
+              What's tricky is that neuropathy, or nerve damage, can make it harder for you to feel pain, heat or cold. For example, you could have a stone in your shoe all day and not know it, or have a blister and not realize it. These instances can break down skin and cause it to become infected
+              
+              Besides keeping your diabetes under control there are other things you can do to avoid foot problems. No. 1, don't smoke, as smoking makes arteries harden faster, limiting blood flow. Next, exercise daily as it stimulates blood flow. Finally, keep your blood pressure and cholesterol in check. Remember, the best treatment for diabetic foot problems is prevention. </p>
+            <button class="btn"> Read More </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <h4 class="comment"> Archive </h4>
+            <ul class="archive">
+              <li class=""><a href="/blogs?date=2017-04-20+00%3A00%3A00+%2B0000">Apr 2017 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2017-03-20+00%3A00%3A00+%2B0000">Mar 2017 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2017-02-20+00%3A00%3A00+%2B0000">Feb 2017 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2017-01-20+00%3A00%3A00+%2B0000">Jan 2017 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2016-12-20+00%3A00%3A00+%2B0000">Dec 2016 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2016-11-20+00%3A00%3A00+%2B0000">Nov 2016 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+              <li class=""><a href="/blogs?date=2016-10-20+00%3A00%3A00+%2B0000">Oct 2016 <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="comment"> Subscribe By Mail </h4>
+            <form class="subscribe">
+              <div class="form-group">
+                <div class="col-md-7 clear-box">
+                  <input type="text" class="form-control" id="usr" placeholder="subscribe"/>
+                </div>
+                <div class="col-md-5">
+                  <button>Subscribe Us</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="clearfix"></div>
+          <div>
+            <h4 class="comment"> Most Popular Blog </h4>
+            <div class="sidePost">
+              <div class="sidePostImg"> <img src="http://yuva-website.s3.amazonaws.com/:blog/21/original/python.png?1473418122" alt=""> </div>
+              <div class="sidePostCont"> <a href="blogSingle.html">Aug 25, 2016</a>
+                <p><a href="blogSingle.html">Steps to run python code on windows</a></p>
+              </div>
+            </div>
+            <div class="sidePost">
+              <div class="sidePostImg"> <img src="http://yuva-website.s3.amazonaws.com/:blog/21/original/python.png?1473418122" alt=""> </div>
+              <div class="sidePostCont"> <a href="blogSingle.html">Aug 25, 2016</a>
+                <p><a href="blogSingle.html">Steps to run python code on windows</a></p>
+              </div>
+            </div>
+            <div class="sidePost">
+              <div class="sidePostImg"> <img src="http://yuva-website.s3.amazonaws.com/:blog/21/original/python.png?1473418122" alt=""> </div>
+              <div class="sidePostCont"> <a href="blogSingle.html">Aug 25, 2016</a>
+                <p><a href="blogSingle.html">Steps to run python code on windows</a></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="comment"> Follow Us On </h4>
+            <ul class="social-icon">
+              <li> <i class="fa fa-facebook-square facebbok" aria-hidden="true"></i></li>
+              <li><i class="fa fa-twitter-square twitter" aria-hidden="true"></i> </li>
+              <li> <i class="fa fa-linkedin-square linked" aria-hidden="true"></i> </li>
+              <li> <i class="fa fa-google-plus-square googleplus" aria-hidden="true"></i> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <%= will_paginate @blogs, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>

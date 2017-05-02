@@ -1,0 +1,6 @@
+<ul class="archive">
+  <%((7..0).first).downto((7..0).last).reverse_each do |val| %>
+  <li class="">
+    <a href="/blogs/archive?m=<%= (Date.today>>val).strftime('%m')%>&y=<%=(Date.today>>val).strftime('%Y')%>"><%= (Date.today>>val).strftime("%B %Y")%> <i class="fa fa-chevron-right" aria-hidden="true"></i> </a></li>
+  <%end%>
+</ul>

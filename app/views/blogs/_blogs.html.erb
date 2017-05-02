@@ -1,0 +1,18 @@
+<div class="col-md-8 col-sm-8">
+  <%unless @blogs.empty? %>
+    <%@blogs.each do |blog|%>
+    <div class="blog-post">
+      <div class="image"> <%= image_tag blog.blog_pic.url , width: '105px;'%> </div>
+      <h3> <%= blog.title%> </h3>
+      <h6><%= blog.updated_at.strftime("%A,%d %B %Y")%></h6>
+      <p><%= raw blog.content[0..300].gsub(/[^\w]\w+\s*$/, '....')%></p>
+      <%=link_to 'Read More',blog_path(blog),class: 'btn'%>
+    </div>
+    <%end%>
+  <%else%>
+  <div class="col-md-6 empty-blogs">
+    <%=image_tag '/assets/sorryno.jpg'%>
+    <p class="blogs-empty">No blogs Available</p>
+  </div>
+  <%end%>
+</div>

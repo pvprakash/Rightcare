@@ -1,0 +1,49 @@
+<section class="blog-banner">
+    <div class="banner-content">
+      <div class="container">
+        <h3> Blog </h3>
+        <ul>
+          <li>Home</li>
+          <li>/</li>
+          <li class="active"><b>Blog</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="">
+  <div class="container">
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1" role="tabpanel">
+        <div class="col-md-8 col-sm-8">
+					<div class="blog-post">
+					  <div class="image"> <%= image_tag @blog.blog_pic.url , width: '105px;'%> </div>
+					  <h3> <%= @blog.title%> </h3>
+					  <h6><%= @blog.updated_at.strftime("%A,%d %B %Y")%></h6>
+					  <p><%= raw @blog.content%></p>
+					</div>
+				</div>
+        <div class="col-md-4 col-sm-4">
+          <div>
+            <h4 class="comment"> Archive </h4>
+            <%= render partial: 'blogs/archive'%>
+          </div>
+          <div>
+            <h4 class="comment"> Subscribe By Mail </h4>
+            <form class="subscribe">
+              <div class="form-group">
+                <div class="col-md-7 clear-box">
+                  <input type="text" class="form-control" id="usr" placeholder="subscribe"/>
+                </div>
+                <div class="col-md-5">
+                  <button>Subscribe Us</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="clearfix"></div>
+          <%= render partial: 'blogs/popular_blogs'%>
+        </div>
+      </div>
+    </div>
+    
+  </div>
