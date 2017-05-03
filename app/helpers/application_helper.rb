@@ -12,7 +12,8 @@ module ApplicationHelper
       html += "<ul class='dropdown-menu' role='menu'> <li>#{link_to 'Logout',destroy_user_session_path, method: :delete }</li>"
       html += "<li>#{link_to 'Caregiver Details', caregiver_details_users_path }</li>" if user_signed_in?
       html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
-       html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
+      html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
+       html += "<li>#{link_to 'Dashboard', dashboard_users_path }</li>" if user_signed_in?
       html += "</ul>"
       html += "</div>"
      end
@@ -36,6 +37,15 @@ module ApplicationHelper
 
   def model_error_messages?(resource)
     !resource.errors.empty?
+  end
+
+  def selected_languages model_name
+    html=""
+    model_name.languages.each.with_index(1) do |condition,index|
+      html += User::LANGUAGE[condition.to_i-1][0]
+      html += index.eql?(model_name.languages.length) ? "" : "/" 
+    end
+    return html.html_safe
   end
 
 end

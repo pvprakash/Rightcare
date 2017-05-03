@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
   has_one :patient, :dependent  => :destroy
   has_many :payments
   has_one :assign_caregiver ,:foreign_key => :caregiver_id, :class_name => "AssignCaregiver"
-  
+  has_many :feedbacks
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
   before_destroy :remove_assign
+  serialize :languages, Array
   
   has_attached_file :avatar, styles: {
     thumb: '100x100>',
@@ -31,6 +32,7 @@ class User < ActiveRecord::Base
 
   # scope :active, -> { joins(:roles).where('roles.name = ? AND active = ?','caregiver', false ) }
   scope :active, -> { where('active = ?', true) }
+  # scope :caregiver_feedbacks, -> { Feedback.where(caregiver_id: self.id) }
 
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
@@ -39,7 +41,28 @@ class User < ActiveRecord::Base
   ROLES = [["Patient", "patient"],["User", "user"]]
   CAREFOR = ["Mother","Father","Husband","Wife","Grandmother","Grandfather","Myself","Sister","Brother","Daughter","Son","Relative","Friend","Neighor","Other"]
   AMOUNT = [["ENTRY LEVEL CAREGIVERS - 600/day", 600],["EXPERIENCED CAREGIVERS - 900/day", 900],["SPECIALIZED CAREGIVERS - 1200/day", 1200],["QUALIFIED NURSES - 2400/day", 2400]]
-  
+  LANGUAGE = 
+    [
+    ["American Sign Language/ ASL","1"],
+    ["Arabic","2"],
+    ["Cantonese (Chinese)","3"],
+    ["Mandrain (Chinese)","4"],
+    ["Farsi","5"],
+    ["Filipino(Tagalog)","6"],
+    ["French","7"],
+    ["German","8"],
+    ["Hebrew","9"],
+    ["Italian","10"],
+    ["Japanese","11"],
+    ["Korean","12"],
+    ["Polish","13"],
+    ["Portuguese","14"],
+    ["Russian","15"],
+    ["Spanish","16"],
+    ["Swahili","17"],
+    ["Tongan","18"],
+    ["Vietnamese","19"],
+    ["Other","20"]]
 
   def remove_assign
     unless self.is_caregiver?
@@ -50,6 +73,10 @@ class User < ActiveRecord::Base
       end
     end
   end 
+
+  def caregiver_feedbacks
+    Feedback.where(caregiver_id: self.id)
+  end
 
   def self.states
     states = CS.states(:in)
@@ -109,6 +136,10 @@ class User < ActiveRecord::Base
 
   def role?
   	self.roles.first.name
+  end
+
+  def full_name
+    return self.first_name+" "+self.last_name
   end
 end
 

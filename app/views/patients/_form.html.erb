@@ -1,0 +1,62 @@
+<%= form_for @patient, url: user_patients_path(current_user),class: "registration-form" do |f| %>
+  <fieldset>
+    <div class="form-top">
+      <div class="form-top-left">
+        <h4>Care Reciever's Detail</h4>
+      </div>
+    </div>
+    <div class="form-bottom">
+      <div class="">
+        <div class="form-group float-label-control">
+          <%= f.text_field :first_name, autofocus: true,class: "form-control input-md",placeholder: "Your #{current_user.care_for}'s First Name"%>
+        </div>
+        <div class="form-group float-label-control">
+          <%= f.text_field :last_name, autofocus: true,class: "form-control input-md",placeholder: "Your #{current_user.care_for}'s Last Name"%> 
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:3px;">
+        <div class="">
+          <div class="form-group float-label-control">
+            <%= select_tag "patient[health_conditions]", options_for_select(Patient::HEALTH_CONDITION),:multiple => true,:style => 'width: 100%',"data-required" => "true"
+            %>
+          </div>
+          <div class="form-group float-label-control">
+            <%= select_tag "patient[speciality_services]", options_for_select(Patient::SERVICE),:multiple => true,:style => 'width: 100%',"data-required" => "true"
+            %>
+          </div>
+          <div class="form-group float-label-control">
+            <%= select_tag "patient[languages]", options_for_select(Patient::LANGUAGE),:multiple => true,:style => 'width: 100%',"data-required" => "true"
+            %>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group float-label-control">
+        <label class="label-title">Care Reciver Gender</label>
+        <ul>
+          <li>
+            <%= radio_button("patient", "gender", "male", id: "f-option")%> 
+            <label for="f-option"> male </label>
+            <div class="check"></div>
+          </li>
+          <li>
+            <%= radio_button("patient", "gender", "female", id: "s-option")%>
+            <label for="s-option">female</label>
+            <div class="check">
+              <div class="inside"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group float-label-control">
+        <label class="label-title">Care Reciver DOB</label>
+        <div><%= f.date_field :dob, autofocus: true,class: "form-control input-md"%> 
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <center>
+        <%= f.submit "NEXT", class: "button btn btn-next"%>
+      </center>
+    </div>
+  </fieldset>
+<%end%>

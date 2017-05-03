@@ -63,6 +63,7 @@ index do
          user.amount = params[:amount]
          user.skills = params[:skills]
          user.video_url = params[:url]
+         user.languages = params[:languages]
      end
      if user.save
        user.add_role params[:role]

@@ -6,7 +6,7 @@ validates :first_name, presence: true
 validate :validate_health_condition,:validate_service
 serialize :health_conditions, Array
 serialize :speciality_services, Array
-
+serialize :languages, Array
 
 HEALTH_CONDITION =  [["ALS","1"],
 ["Alzheimer's Disease","2"],
@@ -70,6 +70,10 @@ def validate_service
 	unless self.health_conditions.present? 
 		errors.add(:speciality_services, "Invalid Service")
 	end
+end
+
+def full_name
+  return self.first_name+" "+self.last_name
 end
 end
 

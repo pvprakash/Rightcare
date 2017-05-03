@@ -1,0 +1,260 @@
+<section class="about-banner dashboard-banner">
+<div class="banner-content">
+  <div class="container">
+    <h3> Dashboard </h3>
+    <ul>
+      <li>Home</li>
+      <li>/</li>
+      <li class="active"><b>Dashboard</b></li>
+    </ul>
+  </div>
+</div>
+</section>                        
+<section class="about-sec">
+<div class="container">
+	<div class="col-md-12 well well-sm">
+	  <div>
+	    <div class="">
+	      <div>
+	        <h4>Patient Information</h4>
+	        <div class="col-sm-5 col-md-3  ">
+	          <div class="border-dashboard">
+	            <div class="col-sm-12">
+	              <div class="image"><img src="img/patient.jpg" alt="" class="img-rounded"> </div>
+	            </div>
+	            <div class="col-sm-12 text-center">
+	              <h5><%= @patient.full_name%></h5>
+	              <small> <i class="fa fa-map-marker"> </i> <%=current_user.city%></small> <small> <i class="fa fa-envelope"></i> </small> 
+	              
+	              <!-- Split button --> 
+	              
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-md-9 col-sm-7">
+	          <h3>General Information</h3>
+	          <div class="row-sec">
+	            <div class="col-md-6 col-sm-6 clear-box">
+	              <div class="col-md-6 ">
+	                <p><b>Emergency Contact:</b></p>
+	              </div>
+	              <div class="col-md-6">
+	                <p>00-000-000</p>
+	              </div>
+	            </div>
+	            <div class="col-md-6 col-sm-6 clear-box">
+	              <div class="col-md-6 ">
+	                <p><b>Gender:</b></p>
+	              </div>
+	              <div class="col-md-6">
+	                <p><%=@patient.gender%></p>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="row-sec">
+	            <div class="col-md-6 clear-box">
+	              <div class="col-md-6 ">
+	                <p><b>Payment details:</b> </p>
+	              </div>
+	              <div class="col-md-6 ">
+	                <p><%= link_to "Go to payment detail",payment_details_users_path %></p>
+	              </div>
+	            </div>
+	          </div>
+	           <div class="row-sec">
+	            <div class="col-md-12">
+	              <p><b>Past caregiver information</b></p>
+	              <p></p>
+	            </div>
+	            </div>
+	          <div class="row-sec">
+	            <div class="col-md-12">
+	              <p><b>Medical Records </b></p>
+	              <p>
+	              <ul class="tags">
+	               <%= patient_get_health @patient%>
+	              </ul>
+	              </p>
+	            </div>
+	          </div>
+	           <div class="row-sec">
+	           <h6>When your caregiver is due for a break or if you prefer a change to your care-personnel, please raise a request
+	           <a href="#">Replace Caregiver</a>
+	           </h6>
+	           </div>
+	          <div> </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<%if @caregiver.present? %>
+		<div class="col-md-12 well well-sm">
+		  <div >
+		    <div class="">
+		      <div >
+		        <h4>Caregiver Information</h4>
+		        <div class="col-sm-5 col-md-3  ">
+		          <div class="border-dashboard">
+		            <div class="col-sm-12">
+		              <div class="image">
+	                 <%= image_tag @caregiver.avatar.url,class: "img-rounded"%>
+		              </div>
+		            </div>
+		            <div class="col-sm-12 text-center">
+		              <h5> <%= @caregiver.full_name%></h5>
+		              <small> <i class="fa fa-map-marker"> </i> <%= @caregiver.city%></small> <small> <i class="fa fa-envelope"></i><%= @caregiver.email%> </small>
+		              <p class="text-center">
+		                <center>
+		                  <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> 4.0
+		                </center>
+		              </p>
+		            </div>
+		          </div>
+		        </div>
+		        <div class="col-md-9 col-sm-7">
+		          <h3>General Information</h3>
+		          <div class="row-sec">
+		            <div class="col-md-6 col-sm-6 clear-box">
+		              <div class="col-md-6">
+		                <p><b>Adhar card link:</b></p>
+		              </div>
+		              <div class="col-md-6">
+		                <p>Adhar card link</p>
+		              </div>
+		            </div>
+		            <div class="col-md-6 col-sm-6">
+		              <div class="col-md-6 no-space">
+		                <p><b>Mobile:</b></p>
+		              </div>
+		              <div class="col-md-6 no-space">
+		                <p><%= @caregiver.mobile_number%></p>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="row-sec">
+		            <div class="col-md-6 col-sm-6  clear-box">
+		              <div class="col-md-6">
+		                <p><b>Emergency Contact:</b></p>
+		              </div>
+		              <div class="col-md-6">
+		                <p>00-000-000</p>
+		              </div>
+		            </div>
+		            <div class="col-md-6 col-sm-6">
+		              <div class="col-md-6 no-space">
+		                <p><b>Experience:</b></p>
+		              </div> 
+		              <div class="col-md-6 no-space">
+		                <p>2.5 Year</p>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="row-sec">
+		            <div class="col-md-6 col-sm-6  clear-box">
+		              <div class="col-md-6">
+		                <p><b>Languages known:</b></p>
+		              </div>
+		              <div class="col-md-6">
+		                <p><%= selected_languages @caregiver%></p>
+		              </div>
+		            </div>
+		            <div class="col-md-6 col-sm-6">
+		              <div class="col-md-6 no-space">
+		                <p><b>Daily rate:</b></p>
+		              </div>
+		              <div class="col-md-6 no-space">
+		                <p><%=@caregiver.amount.to_i%>/day</p>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="row-sec">
+		            <div class="col-md-6 col-sm-6  clear-box">
+		              <div class="col-md-6">
+		                <p><b>Attendance at work:</b></p>
+		              </div>
+		              <div class="col-md-6">
+		                <p>Full</p>
+		              </div>
+		            </div>
+		            <div class="col-md-6 col-sm-6">
+		              <div class="col-md-6 no-space">
+		                <p><b>Monthly off days</b></p>
+		              </div>
+		              <div class="col-md-6 no-space">
+		                <p>21/4/17</p>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="clearfix"></div>
+		          <div class="row-sec">
+		            <div class="col-md-6  clear-box">
+		              <div class="col-md-6">
+		                <p><b>Customer Feedback:</b></p>
+		              </div>
+		              <div class="col-md-6">
+		                <p><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> 4.0</p>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="row-sec">
+		            <div class="col-md-12">
+		              <p><b>Profile</b></p>
+		              <p>Lorem ipsum dolor sit amet, ut nibh eleifend similique pri, discere cotidieque mea eu, dolor nominati abhorreant at vel. Simul democritum ad quo, libris mollis tibique eam no. Sed id meliore mandamus, eos noluisse consequat cu. Per putant gubergren ei. Mei ne assum sanctus, usu in velit blandit quaestio. Eos cibo tempor comprehensam te.</p>
+		            </div>
+		          </div>
+		          <div class="row-sec">
+		            <div class="col-md-12">
+		              <p><b>Skills</b></p>
+		              <p><%=@caregiver.skills%>
+		              <!-- <ul>
+		                <li> <i class="fa fa-arrow-right" aria-hidden="true"></i> Specialty care for Cancer care, Dementia, Parkinson's, Alzheimer's, Diabetic care, Stroke/ Paralysis </li>
+		                <li><i class="fa fa-arrow-right" aria-hidden="true"></i> Assistance with Physiotherapy & Simple Massage / Pain Management /  Fluid Management </li>
+		              </ul> -->
+		              </p>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		
+		  <div class="clearfix"></div>
+		  <div class="col-md-12 testiminial-block">
+		    <h3>Customer Feedback</h3>
+		    <div class="container">
+					<div class="row">
+					</div>
+    			<div class="row">
+					  <div class="col-md-6">
+  						<div class="widget-area no-padding blank">
+							<div class="status-upload">
+								<%= form_for Feedback.new, url: user_feedbacks_path(@current_user) do |f|%>
+								  <%= f.hidden_field :caregiver_id, value:  @caregiver.id %>
+								  <%= f.text_area :content ,placeholder:"What are you doing right now?"%>
+									<%=f.submit "feedback",class: 'btn btn-success green'%>
+								<%end%>
+							</div><!-- Status Upload  -->
+						</div><!-- Widget Area -->
+					</div>
+				</div>
+			</div>
+		    <div class="">
+		    	<% @feedbacks.each do |feedback|%>
+			      <div class="row">
+			        <div class="col-md-2 col-sm-2">
+			          <div class="feedback-image"><img src="img/patient.jpg" class="img-responsive img-circle"/></div>
+			        </div>
+			        <div class="col-md-11 col-sm-9 testimonial-content">
+			          <p><%= feedback.content%></p>
+			          <div class="testimonial-author"> <%=feedback.user.full_name%></span> </div>
+			        </div>
+			      </div>
+		      <%end%>
+		    </div>
+		    <%= will_paginate @feedbacks,renderer: BootstrapPagination::Rails %>
+		  </div>
+		</div>
+	<%end%>
+</div>
+</section>

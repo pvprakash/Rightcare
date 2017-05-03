@@ -28,7 +28,8 @@
         </div>
       	</div>
       <%end%>
-      <%= will_paginate @caregivers %>
+      <div class="clearfix"></div>
+      <%= will_paginate @caregivers ,renderer: BootstrapPagination::Rails%>
     </div>
   </div>
   </div>

@@ -15,6 +15,6 @@ class PatientsController < ApplicationController
    
    protected
    def patient_params
-     params.require(:patient).permit(:first_name, :last_name,:gender,:dob, :health_conditions => [], :speciality_services => [])
+     params.require(:patient).permit(:first_name, :last_name,:gender,:dob, :health_conditions => [], :speciality_services => [],:languages => [])
    end
 end

@@ -53,11 +53,24 @@ class UsersController < ApplicationController
   def caregiver_details
     if (caregiver_id = current_user.patient.try(:assign_caregiver).try(:caregiver_id)) && (current_user.patient.try(:assign_caregiver).try(:assign) == true)
       @caregiver = User.find(caregiver_id)
-      last_payment = current_user.payments.order(:created_at).try(:last)
+      last_payment = current_user.payments.active.try(:last)
       last_payment_date = last_payment.try(:created_at)
       caregiver_releasing_date = last_payment.try(:delayed_job).try(:run_at)
       @remain_releasing_time = ((caregiver_releasing_date - last_payment_date) / 3600).round
     end
+  end
+
+
+  def dashboard
+    if (caregiver_id = current_user.patient.try(:assign_caregiver).try(:caregiver_id)) && (current_user.patient.try(:assign_caregiver).try(:assign) == true)
+      @caregiver = User.find(caregiver_id)
+      @feedbacks = @caregiver.caregiver_feedbacks.paginate(:page => params[:page], :per_page => 1).order(created_at: :desc)
+      last_payment = current_user.payments.active.try(:last)
+      last_payment_date = last_payment.try(:created_at)
+      caregiver_releasing_date = last_payment.try(:delayed_job).try(:run_at)
+      @remain_releasing_time = ((caregiver_releasing_date - last_payment_date) / 3600).round
+    end
+    @patient = current_user.patient
   end
 
   def select_city

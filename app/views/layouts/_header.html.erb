@@ -47,90 +47,19 @@
         <!--/ main nav --> 
         
         <!-- mobile nav -->
-        <nav id="mobile-main-nav" class="mobile-main-nav"> <i class="fa fa-bars"></i><a href="#" class="opener">Navigation</a>
-          <ul>
-            <li> <i></i><a href="<%= root_path%>" class="active">Home</a>
-              <ul>
-                <li> <i></i><a href="<%= root_path%>">Medical Style</a>
-                  <ul>
-                    <li class="text">
-                      <h2>Main Campus</h2>
-                      <hr>
-                      <p>123 Fashion Avenue<br>
-                        New York, MO 265984</p>
-                      <hr>
-                      <a href="#" class="more fa fa-angle-double-right"></a> </li>
-                  </ul>
-                </li>
-                <li><a href="home-news.html">News Style</a></li>
-                <li><a href="wellness-home.html">Wellness Style</a></li>
-                <li><a href="home-one-page.html">Home Alternative</a></li>
-              </ul>
-            </li>
-            <li> <a href="services.html">Servives</a> </li>
-            <li> <i></i><a href="timetable-week.html">Timetable</a>
-              <ul>
-                <li><a href="timetable-month.html">Month View</a></li>
-                <li><a href="timetable-week.html">Week View</a></li>
-                <li><a href="timetable-list.html">List View</a></li>
-              </ul>
-            </li>
-            <li> <i></i><a href="news-default.html">News</a>
-              <ul>
-                <li><a href="news-four-columns.html">Four columns</a></li>
-                <li><a href="news-three-columns.html">Three columns</a></li>
-                <li><a href="news-two-columns.html">Two columns</a></li>
-                <li><a href="news-full-width.html">Full width</a></li>
-                <li><a href="news-blog-post.html">Blog post</a></li>
-              </ul>
-            </li>
-            <li> <i></i><a href="index.html">Features</a>
-              <ul>
-                <li><a href="widgets.html">Various widgets</a></li>
-                <li> <i></i><a href="#">Huge number of pages</a>
-                  <ul>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="doctors.html">Our Doctors</a></li>
-                    <li><a href="full-width-page.html">Full-Width Page</a></li>
-                    <li><a href="page-with-sidebar.html">Page with Sidebar</a></li>
-                    <li><a href="page-with-double-sidebar.html">Double Sidebars Page</a></li>
-                    <li><a href="page-404.html">404 Page</a></li>
-                    <li><a href="page-pricing-table.html">Pricing tables</a></li>
-                  </ul>
-                </li>
-                <li> <a href="feature-unlimited-color.html">Unlimited Color Variations</a> </li>
-                <li><a href="responsive_and_retina_ready.html">Retina Ready & Responsive</a></li>
-                <li><a href="features-accordion.html">Styled Content Items</a></li>
-              </ul>
-            </li>
-            <li> <i></i><a href="photo-gallery.html">Photo Tour</a>
-              <ul>
-                <li> <i></i><a href="photo-four-filter.html">Four columns</a>
-                  <ul>
-                    <li><a href="photo-four-filter.html">With filter</a></li>
-                    <li><a href="photo-four.html">Without filter</a></li>
-                  </ul>
-                </li>
-                <li> <i></i><a href="photo-three-filter.html">Three columns</a>
-                  <ul>
-                    <li><a href="photo-three-filter.html">With filter</a></li>
-                    <li><a href="photo-three.html">Without filter</a></li>
-                  </ul>
-                </li>
-                <li> <i></i><a href="photo-two-filter.html">Two columns</a>
-                  <ul>
-                    <li><a href="photo-two-filter.html">With filter</a></li>
-                    <li><a href="photo-two.html">Without filter</a></li>
-                  </ul>
-                </li>
-                <li><a href="photo-one.html">One column</a></li>
-                <li><a href="photo-single.html">Single item</a></li>
-              </ul>
-            </li>
-            <li> <a href="contacts.html">Contacts</a> </li>
-          </ul>
-        </nav>
+      <div class="nav-side-menu mobile-main-nav">
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                 <li> <a href="<%= root_path %>" class="active">Home</a> </li>
+                <li> <a href="<%= about_pages_path %>">About Us</a> </li>
+                <li> <a href="<%= faqs_pages_path %>">FAQs</a> </li>
+                <li class="right"> <a href="<%= blogs_path %>">Blog</a> </li>
+            </ul>
+        </div>
+</div>
+     
+    
         
         <!--/ mobile nav --> 
       </div>
