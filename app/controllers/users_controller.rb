@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-   # layout false, :only => :show_caregiver
+   # layout false, :only => :
+  before_action :authenticate_user! ,except: :select_city
   def patients
     @patients = User.joins(:roles).where("roles.name = 'patient' AND users.assign = false")
     respond_to do |format|

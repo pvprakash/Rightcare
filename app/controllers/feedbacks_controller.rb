@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :authenticate_user!
 	def create
 		@feedback = Feedback.new(feedback_params.merge(user_id: params[:user_id]))
   	@feedback.save

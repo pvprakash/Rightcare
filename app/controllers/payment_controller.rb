@@ -1,5 +1,6 @@
 class PaymentController < ApplicationController
    skip_before_action :verify_authenticity_token, except: [:show]
+   before_action :authenticate_user!, except: [:show]
 
   def show
     @payment = Payment.find(params[:id])
