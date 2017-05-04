@@ -22,7 +22,7 @@ class BlogsController < ApplicationController
 			@blogs = Blog.all.paginate(:page => params[:page], :per_page => 3)
 			@popular_blogs = Blog.order("blogs.hit_counts DESC").limit(3)
 			@blog = Blog.find(params[:id])
-			@blog.update_attibutes(hit_counts: @blog.hit_counts+1)
+			@blog.update_attributes(hit_counts: @blog.hit_counts+1)
 	  rescue Exception
 	  	flash[:error] = "something went wrong"
 	    redirect_to blogs_path
