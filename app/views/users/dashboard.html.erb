@@ -229,8 +229,8 @@
 					  <div class="col-md-6">
   						<div class="widget-area no-padding blank">
 							<div class="status-upload">
-								<%= form_for Feedback.new, url: user_feedbacks_path(@current_user) do |f|%>
-								  <%= f.hidden_field :caregiver_id, value:  @caregiver.id %>
+								<%= form_for Feedback.new, url: user_feedbacks_path(@current_user),remote: true do |f|%>
+								  <%= f.hidden_field :caregiver_id, value: @caregiver.id %>
 								  <%= f.text_area :content ,placeholder:"What are you doing right now?"%>
 									<%=f.submit "feedback",class: 'btn btn-success green'%>
 								<%end%>
@@ -239,20 +239,13 @@
 					</div>
 				</div>
 			</div>
-		    <div class="">
-		    	<% @feedbacks.each do |feedback|%>
-			      <div class="row">
-			        <div class="col-md-2 col-sm-2">
-			          <div class="feedback-image"><img src="img/patient.jpg" class="img-responsive img-circle"/></div>
-			        </div>
-			        <div class="col-md-11 col-sm-9 testimonial-content">
-			          <p><%= feedback.content%></p>
-			          <div class="testimonial-author"> <%=feedback.user.full_name%></span> </div>
-			        </div>
-			      </div>
-		      <%end%>
+		    <div id="feedbacks-sec" >
+		    	<%= render partial: 'feedbacks/feedback', locals: {caregiver_id: @caregiver.id}%>
+		    	<%# @feedbacks.each do |feedback|%>
+			      <%#= render partial: 'feedbacks/feedback', locals: {feedback: feedback}%>
+		      <%#end%>
 		    </div>
-		    <%= will_paginate @feedbacks,renderer: BootstrapPagination::Rails %>
+		    
 		  </div>
 		</div>
 	<%end%>

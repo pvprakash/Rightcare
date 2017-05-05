@@ -1,0 +1,13 @@
+<div>
+  <h4 class="comment"> Subscribe By Mail </h4>
+  <%= form_tag subscribes_path, class: 'subscribe' do %>
+    <div class="form-group">
+      <div class="col-md-7 clear-box">
+        <%= text_field_tag :email, nil,placeholder: "subscribe" ,class: "form-control"%>
+      </div>
+      <div class="col-md-5">
+      	<%= submit_tag "Subscribe Us", class: 'btn btn-primary'%>
+      </div>
+    </div>
+  <%end%>
+</div>

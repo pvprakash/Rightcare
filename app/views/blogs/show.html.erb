@@ -27,19 +27,7 @@
             <h4 class="comment"> Archive </h4>
             <%= render partial: 'blogs/archive'%>
           </div>
-          <div>
-            <h4 class="comment"> Subscribe By Mail </h4>
-            <form class="subscribe">
-              <div class="form-group">
-                <div class="col-md-7 clear-box">
-                  <input type="text" class="form-control" id="usr" placeholder="subscribe"/>
-                </div>
-                <div class="col-md-5">
-                  <button>Subscribe Us</button>
-                </div>
-              </div>
-            </form>
-          </div>
+          <%=  render 'subscribes/new'%>
           <div class="clearfix"></div>
           <%= render partial: 'blogs/popular_blogs'%>
         </div>

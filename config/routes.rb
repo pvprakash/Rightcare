@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :subscribes
   mount Ckeditor::Engine => '/ckeditor'
   match "/admin/users/:id/refund/:payment_id" => 'admin/users#refund', via: [:get,:post], as: "admin_users_refund"
   match "/admin/users/:id/payment_details" => 'admin/users#payment_details', via: :get, as: "admin_users_payment_details"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions',confirmations: 'confirmations'}
+  resources :subscribes
   resources :blogs do
     collection do
       get 'archive'

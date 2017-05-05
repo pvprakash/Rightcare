@@ -50,4 +50,9 @@ ActiveAdmin.register Blog do
   before_create do |blog|
     blog.publisher_id = current_admin_user.id
   end
+
+  after_create do |blog|
+    @blog = blog
+    @blog.delay(run_at: (1).minutes.from_now).subscribes_email
+  end
 end

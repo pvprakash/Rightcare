@@ -1,1 +1,6 @@
-create.js.erb
+// if($("#feedbacks-sec .row").length > 2)
+// {
+//   $("#feedbacks-sec .row:last").remove()
+// }
+// $("#feedbacks-sec").prepend("<%=j render partial: 'feedbacks/feedback', locals: {feedback: @feedback}%>")
+ $("#feedbacks-sec").html("<%=j render partial: 'feedbacks/feedback'%>")

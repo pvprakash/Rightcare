@@ -1,0 +1,16 @@
+<% @feedbacks.each do |feedback|%>
+	<div class="row" id="feedback_<%=feedback.id%>">
+	<div class="col-md-2 col-sm-2">
+	  <div class="feedback-image"><img src="img/patient.jpg" class="img-responsive img-circle"/></div>
+	</div>
+	<div class="col-md-11 col-sm-9 testimonial-content" >
+	  <p><%= feedback.content%></p>
+	  <div class="testimonial-author"> <%=feedback.user.full_name%></span> 
+	  </div>
+	  <div style="float:right;">
+	  <%= link_to 'Remove', user_feedback_path(current_user,feedback, caregiver_id: @caregiver.id), method: :delete, remote: true if current_user.id.eql?(feedback.user_id) %>
+		</div>
+	</div>
+	</div>
+<%end%>
+<%= will_paginate @feedbacks,renderer: BootstrapPagination::Rails %>

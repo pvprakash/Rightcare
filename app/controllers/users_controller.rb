@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   def dashboard
     if (caregiver_id = current_user.patient.try(:assign_caregiver).try(:caregiver_id)) && (current_user.patient.try(:assign_caregiver).try(:assign) == true)
       @caregiver = User.find(caregiver_id)
-      @feedbacks = @caregiver.caregiver_feedbacks.paginate(:page => params[:page], :per_page => 1).order(created_at: :desc)
+      @feedbacks = @caregiver.caregiver_feedbacks.paginate(:page => params[:page], :per_page => 3).order(created_at: :desc)
       last_payment = current_user.payments.active.try(:last)
       last_payment_date = last_payment.try(:created_at)
       caregiver_releasing_date = last_payment.try(:delayed_job).try(:run_at)
