@@ -1,5 +1,5 @@
 ActiveAdmin.register Blog do
-  menu priority: 3
+  menu priority: 4
   permit_params :title, :relevant_to, :content, :blog_pic
 
   index do
