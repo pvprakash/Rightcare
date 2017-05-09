@@ -26,4 +26,15 @@ module UsersHelper
     "QUALIFIED NURSE"
     end
   end
+
+  def static_rating_star(rating)
+    html = ""
+
+    (1..5).each do |num|
+       html += "<i class='#{rating.to_i >= num ? "fa fa-star" : "fa fa-star-o" }' aria-hidden='true'></i>"
+       
+    end 
+    html += rating.to_s  
+    return html.html_safe
+  end
 end

@@ -8,6 +8,16 @@ serialize :health_conditions, Array
 serialize :speciality_services, Array
 serialize :languages, Array
 
+has_attached_file :avatar, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  
+
 HEALTH_CONDITION =  [["ALS","1"],
 ["Alzheimer's Disease","2"],
 ["Cancer","3"],

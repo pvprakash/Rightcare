@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     last_caregiver = User.find(payment.caregiver_id)
     last_caregiver.update_attributes(assign: false)
     @caregiver.update_attributes(assign: true)
+    current_user.patient.assign_caregiver.update_attributes(caregiver_id: params[:id])
     payment.update_attributes(caregiver_id: @caregiver.id)
     replacement = Replacement.new(user_id: current_user.id, caregiver_id: @caregiver.id,last_caregiver_id: last_caregiver.id)
     replacement.save
@@ -80,6 +81,29 @@ class UsersController < ApplicationController
     @cities = @all_cities
     respond_to do |format|
       format.js
+    end
+  end
+
+  def set_rating
+    caregiver = User.find(params[:caregiver_id])
+    unless (caregiver.extra_data["rater_ids"].include?(current_user.id) rescue false)
+      rating = params[:rating].to_i
+      hash = {5 => 252,4 => 124,3 => 40,2 => 29,1 => 33}
+      rating = rating*hash[rating]/hash[rating]
+      rating = (rating*hash[rating]+caregiver.extra_data["rating"].to_i*hash[caregiver.extra_data["rating"].to_i])/(hash[rating]+ hash[caregiver.extra_data["rating"].to_i])  if caregiver.extra_data["rating"].present?
+      caregiver.extra_data["rating"] = rating
+      if caregiver.extra_data["rater_ids"].present?
+        caregiver.extra_data["rater_ids"] = caregiver.extra_data["rater_ids"].push(current_user.id)
+      else
+        caregiver.extra_data["rater_ids"] = [current_user.id]
+      end
+     
+      caregiver.update_attributes(extra_data: caregiver.extra_data)
+    end
+    respond_to do |format|
+      format.json{
+          render :json => caregiver.extra_data["rating"]
+       }
     end
   end
 end

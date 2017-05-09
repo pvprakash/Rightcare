@@ -11,7 +11,7 @@ class PaymentController < ApplicationController
   def purchase_status
     begin
       last_payment = current_user.payments.active.order(:created_at)
-      last_payment_date = last_payment.try(:created_at)
+      last_payment_date = last_payment.last.try(:created_at)
       caregiver_releasing_date = last_payment.try(:delayed_job).try(:run_at)
       continue_with_same_caregiver = (last_payment_date && caregiver_releasing_date && (((caregiver_releasing_date - last_payment_date) / 3600).round <= 24) && (((caregiver_releasing_date - last_payment_date) / 3600) > 0) && current_user.patient.try(:assign_caregiver).try(:caregiver_id) == params[:caregiver_id].to_i && ((remain_time = (caregiver_releasing_date - last_payment_date) / 3600)).round)
 

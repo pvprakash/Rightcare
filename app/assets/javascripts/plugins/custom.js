@@ -17,3 +17,5 @@ $(document).ready(function(){
  // setInterval(function(){ $(".notice").fadeOut(100) }, 3000);
   $(".notice").fadeOut(10000)
 })
+
+

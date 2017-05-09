@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
   before_destroy :remove_assign
   serialize :languages, Array
+  serialize :extra_data, Hash
   
   has_attached_file :avatar, styles: {
     thumb: '100x100>',
@@ -66,7 +67,7 @@ class User < ActiveRecord::Base
 
   def remove_assign
     unless self.is_caregiver?
-      if self.patient.assign_caregiver.present?
+      if self.patient.try(:assign_caregiver).present?
         caregiver_id = self.patient.assign_caregiver.caregiver_id
         User.find(caregiver_id).update_attributes(assign: false)
         self.patient.assign_caregiver.destroy

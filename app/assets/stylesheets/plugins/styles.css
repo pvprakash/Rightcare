@@ -35,7 +35,7 @@
 }
 .about-sec .well-sm .row-sec h6 {
 	color: #333;
-	font-size: 19px;
+	font-size: 18px;
 	letter-spacing: 0.3px;
 	margin-top:6px;
 	line-height:24px;
@@ -115,7 +115,7 @@
 .about-sec .well h4 {
 	background-color: #0173bc;
 	color: #fff;
-	font-size: 22px;
+	font-size: 21px;
 	margin-bottom: 20px;
 	padding: 7px 20px;
 	text-transform: uppercase;
@@ -134,7 +134,7 @@
 }
 .row-sec {
 	border-bottom: 1px solid #eee;
-	padding:6px 0;
+	padding:10px 0;
 	overflow-y:auto;
 }
 .about-sec .well small {
@@ -144,7 +144,7 @@
 	margin-top:8px;
 	color:#666;
 }
-.page .about-sec .well h3 {
+.about-sec .well h3 {
 	background-color: #eee;
 	color: #333;
 	font-size: 22px;
@@ -181,7 +181,6 @@
 .about-sec .well h5 {
 	color: #333;
 	font-size: 25px;
-	font-weight: bold;
 }
 
 
@@ -226,13 +225,13 @@
     width: 200px;
     border: 1px solid #0173bc;
     display: inline-block;
-    margin-right: 58px;
+    margin-right: 12px;
     height: 49px;
     /* margin: 50px; */
 }
 .package-detail h3 span {
 	font-size:38px;
-	font-weight:bold;
+	font-weight:normal;
 	color:#333;
 }
 .package-detail h3 {
@@ -960,7 +959,7 @@ form.registration-form fieldset {
 .about-sec img {
 	width:100%;
 }
-.page .about-sec .text-color {
+.about-sec .text-color {
 	color:#0173bc;
 }
 .image .overbox, .investor-image .overbox {
@@ -1076,7 +1075,7 @@ form.registration-form fieldset {
 	height: 250px;
 	width: 100%;
 }
-.page .about-sec h3 {
+.about-sec h3 {
 	text-transform:uppercase;
 	font-size:32px;
 }
@@ -1163,7 +1162,7 @@ form.registration-form fieldset {
 .team-member li a {
 	color:#fff;
 }
-.page .about-sec span {
+.about-sec span {
 	font-size:32px;
 }
 .no-padding {
@@ -1298,9 +1297,10 @@ form.registration-form fieldset {
 }
 .resp-sec p {
 	color: #333;
-	text-indent: inherit;
-	font-size: 18px;
-	padding: 15px;
+    text-indent: inherit;
+    font-size: 17px;
+    padding: 15px;
+    line-height: 24px;
 }
 .work-sec {
 	background-color:#fff;
@@ -1358,9 +1358,9 @@ form.registration-form fieldset {
 }
 .quality-sec p {
 	font-size: 24px !important;
-	font-weight: 700;
+	font-weight: normal;
 	margin-bottom: 28px;
-	color:#252525;
+	color:#333;
 	text-transform:uppercase;
 	text-align:center;
 	text-indent: inherit;
@@ -1370,7 +1370,7 @@ form.registration-form fieldset {
 	color: #252525;
 	display: inline-block;
 	float: left;
-	font-size: 21px;
+	font-size: 20px;
 	line-height: normal;
 	margin-bottom: 25px;
 	text-align: center;
@@ -1396,14 +1396,14 @@ form.registration-form fieldset {
 .testimony h3, .resp-sec h3, .quality-sec h3, .about-sec h3 ,.profile-caregiver h3 {
 	color: #252525;
 	font-family: "Montserrat", sans-serif !important;
-	font-size: 34px;
+	font-size: 32px;
 	text-align: center;
 }
-.testimony h3 span, .resp-sec h3 span, .quality-sec span, .about-sec1 span , .profile-caregiver span {
+.testimony h3 span, .resp-sec h3 span, .quality-sec span, .about-sec span , .profile-caregiver span {
 	color: #0173bc;
 	font-weight:bold;
 	display:initial;
-	font-size: 34px;
+	font-size: 32px;
 }
 .testimony span {
 	display:block;
@@ -1788,7 +1788,7 @@ a, button {
 	text-indent:initial;
 }
 html, body {
-	background: #f2f2f2;
+	background: #fff;
 	font: 14px/1.55 Lato, sans-serif;
 	color: #7c7c7c;
 }
@@ -1930,7 +1930,7 @@ textarea {
  width:25px;
  height:25px;
 }
-.page .blog-post h3 {
+.blog-post h3 {
  font-size: 20px;
  line-height: 26px;
 }
@@ -3126,6 +3126,18 @@ i.pic:after {
  margin-right: 0;
  margin-left: 0;
 }
+#en .modal-dialog, #ex .modal-dialog, #sc .modal-dialog, #qn .modal-dialog{
+	width: 95%;
+	margin: 0 auto;
+	max-width: 360px;
+	float: none;
+}
+.modal-body{
+	padding: 7px;
+}
+.package-detail .btn-new{
+	
+}
  .services li {
  width: 100%;
  margin-right: 0;
@@ -3144,7 +3156,7 @@ i.pic:after {
  margin-bottom:24px;
 }
 .quality-sec p {
- font-size:18px !important;
+ font-size:20px !important;
  margin-top:15px;
 }
 .resp-sec {
@@ -3157,7 +3169,7 @@ i.pic:after {
  height:auto;
 }
  .quality-sec li {
- font-size:20px;
+ font-size:19px;
  width:50%;
 }
 .slider-wrapper {
@@ -3186,12 +3198,12 @@ i.pic:after {
  margin:20px auto 0
 }
 .quality-sec li span {
- height: 110px;
+ height: 100px;
  line-height: 100px;
  margin: 0 auto;
  padding-top: 15px;
  vertical-align: middle;
- width: 110px;
+ width: 100px;
 }
 .quality-sec li span.refernce-block {
  line-height: 120px;
@@ -4508,7 +4520,7 @@ i.appointment {
 	padding: 20px 0;
 	background: #383838;
 	overflow-y:auto;
-	font-size:16px;
+	font-size:15px;
 	color:#fff;
 	margin-top:0px;
 }
@@ -4709,7 +4721,7 @@ i.appointment {
 .copyrights {
 	text-align: left;
 	color: #fff;
-	font-size:16px;
+	font-size:15px;
 }
 /*----------------------------------------------------------------------------*/
 /*                                 ANIMATIONS                                 */
@@ -5030,7 +5042,7 @@ a.phone-box.clear-box.text-center:hover{
 	width: 100%;
 }
 .blog-post {
-	border:2px solid #f5f5f5;
+	border:2px solid #eee;
 	margin-bottom: 30px;
 	padding: 15px;
 }
@@ -5042,7 +5054,11 @@ a.phone-box.clear-box.text-center:hover{
 	margin-bottom: 35px;
 	overflow-y: auto;
 }
-.subscribe button {
+.social-icon{
+	margin-bottom:40px;
+	overflow-y:auto;
+}
+.subscribe input[type=submit] {
 	background-color: #0173bc;
 	border-radius: 6px;
 	color: #fff;
@@ -5143,7 +5159,7 @@ a.phone-box.clear-box.text-center:hover{
 	width: 35px;
 	background-color:#0173BC;
 }
-.page .blog-post h3 {
+.blog-post h3 {
 	text-align:left;
 	font-size:24px;
 	font-weight:bold;
@@ -5183,7 +5199,7 @@ a.phone-box.clear-box.text-center:hover{
 	color: #fff;
 	font-size: 18px;
 	margin-top: 20px;
-	padding: 9px 30px;
+	padding: 8px 26px;
 	border:1px solid #0173bc;
 }
 .blog-post .btn:hover {
@@ -5191,7 +5207,7 @@ a.phone-box.clear-box.text-center:hover{
 	background-color: #fff;
 }
 .blog-post img {
-	width:38%;
+	width:100%;
 }
 .empty-blogs{text-align: center;}
 .blogs-empty
@@ -5230,4 +5246,53 @@ a.phone-box.clear-box.text-center:hover{
     resize: vertical;
     outline: none;
     border: 1px solid #F2F2F2;
+}
+
+
+
+
+
+
+
+
+
+
+.inputfile {
+    width: 0.1px; 
+    height: 0.1px; 
+    opacity: 0; 
+    overflow: hidden; 
+    position: absolute;
+    z-index: -1;
+}
+.inputfile-6 + label {
+    border: 1px solid #d3394c;
+    background-color: #f1e5e6;
+    padding: 0;
+}
+.inputfile-6 + label {
+    color: #d3394c;
+}
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+.inputfile-6 + label span, .inputfile-6 + label strong {
+    padding: 0.625rem 1.25rem;
 }

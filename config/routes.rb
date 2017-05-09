@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get 'caregiver_details'
       get 'select_city'
       get 'dashboard'
+      get 'set_rating'
     end
     member do
       get 'show_caregiver'
