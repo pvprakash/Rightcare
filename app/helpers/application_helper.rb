@@ -21,6 +21,26 @@ module ApplicationHelper
   end
 
 
+  def mobile_link_account
+    html = ""
+    unless user_signed_in?
+      html+= "<a data-toggle='modal' href='#login5' class ='phone-box login-sec' style='width: 100%;' >My Account</a>"
+       # html += link_to "My Account","#tallModal5",class: "phone-box  clear-box text-center"
+    else
+      # html += "<div class='btn-group show-on-hover'> <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'> Action <span class='caret'></span> </button> <ul class='dropdown-menu' role='menu'> <li><a href='#'>Action</a></li></ul> </div>"
+          # html += "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'> Action <span class='caret'></span> </button>"
+      html += "<li>#{link_to 'Logout',destroy_user_session_path, method: :delete }</li>"
+      html += "<li>#{link_to 'Caregiver Details', caregiver_details_users_path }</li>" if user_signed_in?
+      html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
+      html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
+      html += "<li>#{link_to 'Dashboard', dashboard_users_path }</li>" if user_signed_in?
+     
+
+     end
+    return html.html_safe
+  end
+
+
    def model_error_messages(resource)
     return "" unless model_error_messages?(resource)
 

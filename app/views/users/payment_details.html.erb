@@ -1,5 +1,6 @@
+<div class="container">
 <div class="table-responsive">
-  <table class="table table-condensed">
+  <table class="table table-condensed pay-status">
     <thead>
       <tr>
           <th>Payment ID</th>
@@ -18,54 +19,59 @@
       </tr>
       <tr style="padding:0">
         <td style="padding:0"></td>
-        <td colspan=2 style="padding:0px;">
+        <td colspan=1 style="padding:0px;">
           <div class="deliverable-infos" id="details_1">
             <table class="table table-condensed table-user-content" id="hidden_table_1">
               <tbody>
                 <tr>
                   <td>Entity :</td>
-                  <td class="right-col"><%= payment.extra_records["entity"]%></td>
+                  <td ><%= payment.extra_records["entity"]%></td>
                 </tr>
                 <tr>
                   <td>Currency :</td>
-                  <td class="right-col"><%= payment.extra_records["currency"]%></td>
+                  <td ><%= payment.extra_records["currency"]%></td>
                 </tr>
                 <tr>
                   <td>Refund Status :</td>
-                  <td class="right-col"><%= payment.extra_records["refund_status"]%></td>
+                  <td ><%= payment.extra_records["refund_status"]%></td>
                 </tr>
                 <tr>
                   <td>Amount_Refunded :</td>
-                  <td class="right-col"><%= payment.extra_records["amount_refunded"]%></td>
+                  <td ><%= payment.extra_records["amount_refunded"]%></td>
                 </tr>
                 <tr>
                   <td>Bank :</td>
-                  <td class="right-col"><%= payment.extra_records["bank"]%></td>
+                  <td ><%= payment.extra_records["bank"]%></td>
                 </tr>
 
                 <tr>
                   <td>Email :</td>
-                  <td class="right-col"><%= payment.extra_records["email"]%></td>
+                  <td ><%= payment.extra_records["email"]%></td>
                 </tr>
 
                 <tr>
                   <td>Contact :</td>
-                  <td class="right-col"><%= payment.extra_records["contact"]%></td>
+                  <td ><%= payment.extra_records["contact"]%></td>
                 </tr>
                 <tr>
                   <td>Fee :</td>
-                  <td class="right-col"><%= payment.extra_records["fee"]/100.to_f %></td>
+                  <td ><%= payment.extra_records["fee"]/100.to_f %></td>
                 </tr>
                 <tr>
                   <td>Service Tax :</td>
-                  <td class="right-col"><%= payment.extra_records["service_tax"]/100.to_f%></td>
+                  <td ><%= payment.extra_records["service_tax"]/100.to_f%></td>
                 </tr>
                 <tr>
                   <td>Created At :</td>
-                  <td class="right-col"><%= payment.created_at.strftime('%d-%m-%Y')%></td>
+                  <td ><%= payment.created_at.strftime('%d-%m-%Y')%></td>
                 </tr>
-                <tr><td><%= link_to 'Receipt', payment_receipt_user_payment_path(current_user,payment, format: :pdf), class: 'btn btn-primary' %>
-                </td></tr>
+                <tr ><td colspan="2">
+                  <center>
+                  <%= link_to 'Receipt', payment_receipt_user_payment_path(current_user,payment, format: :pdf), class: 'btn btn-primary' %>
+                </center>
+                </td>
+               
+              </tr>
               </tbody>
             </table>
           </div>
@@ -76,6 +82,7 @@
       <% end %>
     </tbody>
   </table>
+</div>
 </div>
 <script>
 $(document).ready(function() {

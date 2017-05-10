@@ -3,42 +3,42 @@
   <div class="form-group">
     <%= label_tag :first_name, nil, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= text_field_tag :first_name,nil, class: "form-control"%>
+      <%= text_field_tag :first_name,@resource.try(:first_name), class: "form-control"%>
     </div>
   </div>
 
     <div class="form-group">
       <%= label_tag :last_name, nil, class: "col-md-3 control-label" %>
       <div class="col-md-5">
-        <%= text_field_tag :last_name,nil, autofocus: true,class: "form-control input-md"%> 
+        <%= text_field_tag :last_name,@resource.try(:last_name), autofocus: true,class: "form-control input-md"%> 
       </div>
     </div>
 
   <div class="form-group">
     <%= label_tag :email, nil, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= email_field_tag :email,nil, class: "form-control"%>
+      <%= email_field_tag :email,@resource.try(:email), class: "form-control"%>
     </div>
   </div>
 
     <div class="form-group">
     <%= label_tag :password, nil, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= password_field_tag :password,nil, class: "form-control"%>
+      <%= password_field_tag :password,@resource.try(:password), class: "form-control"%>
     </div>
   </div>
 
     <div class="form-group">
     <%= label_tag :password_confirmation, nil, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= password_field_tag :password_confirmation,nil, class: "form-control"%>
+      <%= password_field_tag :password_confirmation,@resource.try(:password_confirmation), class: "form-control"%>
     </div>
   </div>
 
   <div class="form-group">
       <%= label_tag :mobile,nil,class: "col-md-4 control-label"%>
       <div class="col-md-5">
-        <%= number_field_tag :mobile, autofocus: true,class: "form-control input-md"%> 
+        <%= number_field_tag :mobile,@resource.try(:mobile) ,autofocus: true,class: "form-control input-md"%> 
       </div>
   </div>
 
@@ -52,21 +52,21 @@
   <div class="form-group">
     <%= label_tag :state,nil,class: "col-md-4 control-label"%>
     <div class="col-md-5">
-    <%= select_tag "state", options_for_select(User.states,"patient"), :prompt => "Select State",class: " selectBox" %>
+    <%= select_tag "state", options_for_select(User.states, @resource.try(:state)), :prompt => "Select State",class: " selectBox" %>
     </div>
   </div>
 
   <div class="form-group">
     <%= label_tag :city,nil,class: "col-md-4 control-label"%>
      <div class="col-md-5">
-    <%= select_tag "city", options_for_select([],"patient"),:prompt => "Select City",class: " selectBox" %>
+    <%= select_tag "city", options_for_select([],@resource.try(:city)),:prompt => "Select City",class: " selectBox" %>
      </div>
   </div>
 
     <div class="form-group">
       <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
       <div class="col-md-5">
-        <%= number_field_tag :pin_code, autofocus: true,class: "form-control input-md"%> 
+        <%= number_field_tag :pin_code, @resource.try(:pin_code),autofocus: true,class: "form-control input-md"%> 
       </div>
     </div>
 
@@ -74,7 +74,7 @@
      <div class="form-group">
       <%= label_tag :role,nil,class: "col-md-4 control-label" %>
       <div class="col-md-5">
-        <%= select_tag "role", options_for_select(['user','caregiver'],"user"),id: 'user-role' ,class: "form-control input-md" %>
+        <%= select_tag "role", options_for_select(['user','caregiver'],@resource.try(:role?)),id: 'user-role' ,class: "form-control input-md" %>
       </div>
     </div>
 
@@ -91,14 +91,14 @@
 <%end%>
 
 
-<script>
-$(document).ready(function(){
-  $("#user-role").change(function(){
-    if($(this).val() == "caregiver")
-    {
 
-         
-      $("#caregiver-field").html("<div class='form-group'> <%=j label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j file_field_tag 'avatar',class: 'form-control input-md'%> </div> </div> <div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,600),class: 'form-control input-md'%></div><%=j label_tag :skills,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'skills', nil,class: 'form-control input-md'%> </div> <%=j label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'url', nil,class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>  <%=j label_tag 'Language ',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'languages', options_for_select(User::LANGUAGE,600),class: 'form-control input-md',multiple: true%></div><div class='form-group'> <%=j label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'id_prof',nil,class: 'form-control input-md'%> </div> <div class='form-group'> <%=j label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'emergency_contact',nil,class: 'form-control input-md'%> </div><div class='form-group'> <%=j label_tag 'experience',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j number_field_tag 'experience',nil,class: 'form-control input-md'%> </div></div> <div class='form-group'> <%=j label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_area_tag 'profile',nil,class: 'form-control input-md'%> </div></div></div>")
+
+<script>
+function value_set(d_value)
+{
+  if($(d_value).val() == "caregiver")
+    {      
+      $("#caregiver-field").html("<div class='form-group'> <%=j label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j file_field_tag 'avatar',class: 'form-control input-md'%> </div> </div> <div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,@resource.try(:amount)),class: 'form-control input-md'%></div><%=j label_tag :skills,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'skills', @resource.try(:skills),class: 'form-control input-md'%> </div> <%=j label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'url', @resource.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>  <%=j label_tag 'Language ',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'languages', options_for_select(User::LANGUAGE,@resource.try(:languages)),class: 'form-control input-md',multiple: true%></div><div class='form-group'> <%=j label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'id_prof',@resource.try(:id_prof),class: 'form-control input-md'%> </div> <div class='form-group'> <%=j label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'emergency_contact',@resource.try(:emergency_contact),class: 'form-control input-md'%> </div><div class='form-group'> <%=j label_tag 'experience',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j number_field_tag 'experience',@resource.try(:experience),class: 'form-control input-md'%> </div></div> <div class='form-group'> <%=j label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_area_tag 'profile',@resource.try(:profile),class: 'form-control input-md'%> </div></div></div>")
       $("#languages").select2({
            // templateResult: formatState;
           });
@@ -125,8 +125,13 @@ $(document).ready(function(){
       });
     }
     else{$("#caregiver-field").html('')}
-  })
+}
 
+
+$(document).ready(function(){
+  $("#user-role").change(function(){
+    value_set(this)
+  })
 
   $("#state").change(function(){
       $.ajax({
@@ -158,3 +163,8 @@ function status_flag(response)
    }
 }
 </script>
+<% if params[:action]=="edit"%>
+  <script>
+   value_set($("#user-role"))
+  </script>
+<%end%>

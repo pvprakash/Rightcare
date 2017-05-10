@@ -372,7 +372,25 @@
 	text-align: center;
 }
 .modal-content-one {
-	background-color:rgba(34, 182, 184, 0.95);
+	background-color:rgba(34, 182, 184, 1);
+	box-shadow:none;
+	border:none;
+}
+.modal-content-one p{
+	font-size: 19px;
+	margin-top: 10px;
+}
+.modal-content-one  .modal-header a span{
+	margin-right: 50px;
+    font-weight: bold;
+    width: 34px;
+    height: 34px;
+    background-color: rgba(225,225,225,0.95);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    font-size: 34px;
+    color: rgba(34, 182, 184, 1);
 }
 .pager .active a {
 	background-color : #337AB7;
@@ -382,20 +400,65 @@
 .tab-content .thumbnail {
 	padding:0px;
 }
-.tab-content .btn-primary:hover {
+.modal-content-one .btn-primary:hover {
 	background-color:#fff;
-	color:#0173bc;
+	color:#2b2b2b;
 }
-.tab-content .modal-body .btn-primary {
+.pay-status{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.pay-status.table-condensed>thead>tr>th{
+	font-size: 17px;
+	padding: 8px;
+	font-weight: bold;
+}
+.pay-status.table-condensed>tbody>tr>td{
+	padding: 8px;
+}
+.pay-status tbody tr:nth-child(even) {
+	background: #eee;
+}
+.pay-status tbody tr{
+	background: #fff;
+}
+.pay-status .btn-primary{
+	width: 70%;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.pay-status.table .table {
+    background-color: #fff;
+    width: 80%;
+    margin: 0 auto;
+}
+.pay-status .table tbody tr:nth-child(even) {
+	background: #fff;
+}
+.pay-status tbody tr td{
+	background-color: transparent !important;
+	color: #333;
+	font-size: 15px;
+}
+.pay-status .label-info {
+    padding: 5px 11px;
+    font-size: 15px;
+}
+.pay-status thead{
+	background-color:#0173bc;
+	color: #fff;
+}
+.modal-content-one .btn-primary {
 	background-color: #fff;
-	border-color: #fff;
-	color: #2b2b2b;
-	float: left;
-	font-size: 21px;
-	font-weight: 700;
-	height: 49px;
-	padding: 0;
-	width: 202px;
+    border-color: #fff;
+    color: #0173bc;
+    float: left;
+    font-size: 20px;
+    font-weight: 700;
+    height: 45px;
+    padding-top: 7px;
+    width: 194px;
+    margin-top: 25px;
 }
 .tab-content .modal-body .btn-primary:hover {
 	background-color:#fff;
@@ -1266,7 +1329,7 @@ form.registration-form fieldset {
 .main-nav {
 	background-color: #0173bc;
 	color: #fff;
-	margin-top: 31px;
+	margin-top: 32px;
 	padding: 0 18px;
 }
 .benefits .btn a:hover {
@@ -5199,7 +5262,7 @@ a.phone-box.clear-box.text-center:hover{
 	color: #fff;
 	font-size: 18px;
 	margin-top: 20px;
-	padding: 8px 26px;
+	padding: 7px 22px;
 	border:1px solid #0173bc;
 }
 .blog-post .btn:hover {
@@ -5209,12 +5272,20 @@ a.phone-box.clear-box.text-center:hover{
 .blog-post img {
 	width:100%;
 }
-.empty-blogs{text-align: center;}
+.empty-blogs{
+	text-align: center;
+    margin: 0 auto;
+    float: none;
+    margin-top: 40px;
+}
 .blogs-empty
 {
-	font-size: 25px;
+	font-size: 28px;
     font-weight: 700;
-    margin-left: 20px;
+    margin-left: 33px;
+    width: 100%;
+    margin-top: 13px;
+    color: #333;
 }
 .package-detail h2 {
 	color:#0173BC;
@@ -5265,16 +5336,9 @@ a.phone-box.clear-box.text-center:hover{
     position: absolute;
     z-index: -1;
 }
-.inputfile-6 + label {
-    border: 1px solid #d3394c;
-    background-color: #f1e5e6;
-    padding: 0;
-}
-.inputfile-6 + label {
-    color: #d3394c;
-}
+
 .inputfile + label {
-    max-width: 80%;
+     width: 100%;
     font-size: 1.25rem;
     font-weight: 700;
     text-overflow: ellipsis;
@@ -5282,10 +5346,12 @@ a.phone-box.clear-box.text-center:hover{
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
-    padding: 0.625rem 1.25rem;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 .inputfile-6 + label span {
-    width: 200px;
+    width: 350px;
     min-height: 2em;
     display: inline-block;
     text-overflow: ellipsis;
@@ -5294,5 +5360,11 @@ a.phone-box.clear-box.text-center:hover{
     vertical-align: top;
 }
 .inputfile-6 + label span, .inputfile-6 + label strong {
-    padding: 0.625rem 1.25rem;
+    padding: 6px 1.25rem;
+}
+.inputfile + label strong {
+    height: 100%;
+    color: #fff;
+    background-color: #22B6B8;
+    float:right;
 }

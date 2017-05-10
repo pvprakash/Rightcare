@@ -17,12 +17,47 @@
                 <div class="clearfix">
                 </div>
               <h1><%=@caregiver.first_name%> <%=@caregiver.last_name%></h1>
-              <p>Email: <%=@caregiver.email%></p>
-              <p>State: <%=@caregiver.state%></p>
-              <p>City: <%=@caregiver.city%></p>
-              <p>Pin-code: <%=@caregiver.pin_code%></p>
-              <p>Experience: <%=caregiver_experience @caregiver%></p>
-              <p>Skills: <%=@caregiver.skills%></p>
+              <div class="col-md-6 clear-box">
+                <div class="col-md-4 clear-box"><p>Email:</p></div> 
+                <div class="col-md-8">
+                  <p><%=@caregiver.email%></p>
+                </div>
+              </div>
+              <div class="col-md-6  clear-box">
+                <div class="col-md-4 clear-box"><p>State: </p></div>
+                <div class="col-md-8">
+                  <p>
+                  <%=@caregiver.state%></p>
+                </div>
+              </div>
+              <div class="col-md-6  clear-box">
+                <div class="col-md-4 clear-box"><p>City:</p>
+                </div>
+                <div class="col-md-8">
+                  <p>
+                 <%=@caregiver.city%></p></div>
+              </div>
+                <div class="col-md-6  clear-box">
+                <div class="col-md-4 clear-box"><p>Pin-code:</p></div>
+                  <div class="col-md-8">
+                  <p>
+                 <%=@caregiver.pin_code%></p></div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col-md-6  clear-box">
+                <div class="col-md-4 clear-box"><p>Experience:</p>
+                </div>
+                <div class="col-md-8">
+                  <p>
+                 <%=caregiver_experience @caregiver%></p>
+               </div>
+              </div>
+              <div class="col-md-6  clear-box"> 
+                <div class="col-md-4 clear-box"><p>Skills:</p></div>
+                 <div class="col-md-8">
+                  <p>
+                 <%=@caregiver.skills%></p></div>
+              </div>
               <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST"> 
                   <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
                   <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
@@ -105,11 +140,18 @@ $(document).ready(function(){
       rzp1.open();
       e.preventDefault();
   });
-
+  
+   $(".modal-content-one").css('min-height',$(window).height()+'px')
 });
 </script>
 
 <style>
+body{
+  background-color: rgba(34, 182, 184, 1) !important;
+  position: fixed;
+  height: 100%;
+  width:100%;
+}
 .prof-img {
     height: 332px;
     overflow: hidden;

@@ -21,8 +21,26 @@
 </section>
 <script>
 $(document).ready(function(){
-  $("#patient_health_conditions, #patient_speciality_services,#patient_languages").select2({
+  $("#patient_health_conditions").select2({
+    placeholder: "Please Select a Health Condition"
     // templateResult: formatState;
   });
+  $("#patient_speciality_services").select2({
+    placeholder: "Please Select a Special Service"
+    // templateResult: formatState;
+  });
+  $("#patient_languages").select2({
+    placeholder: "Please Select a Languages"
+    // templateResult: formatState;
+  });
+
+  $("#choose-file").click(function(){
+    $("#patient_avatar").click()
+  })
+   $("#patient_avatar").change(function(){
+    var str = $(this).val();
+    var result = /.*\\(.*)/.exec(str)[1];
+    $("#selected-file-name").html(result)
+   })
 })
 </script>

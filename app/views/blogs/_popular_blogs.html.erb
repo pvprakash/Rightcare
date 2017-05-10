@@ -3,7 +3,7 @@
   <%@popular_blogs.each do |blog|%>
 		<div class="sidePost">
 		  <div class="sidePostImg"> <%=image_tag blog.blog_pic.url %> </div>
-		  <div class="sidePostCont"> <a href="#"><%= blog.updated_at.strftime("%A,%d %B %Y")%> </a>
+		  <div class="sidePostCont"> <a href="<%= blog_path(blog)%>"><%= blog.updated_at.strftime("%A,%d %B %Y")%> </a>
 		    <p><%= blog.title%></p>
 		  </div>
 		</div>
