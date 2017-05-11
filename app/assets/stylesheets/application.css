@@ -19,6 +19,7 @@
 *= require plugins/jquery.mCustomScrollbar
 *= require plugins/layerslider
 *= require plugins/owl.carousel
+*= require plugins/jquery.rateyo.min
 *= require plugins/styles
 
  */
