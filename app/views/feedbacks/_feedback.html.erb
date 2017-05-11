@@ -1,14 +1,18 @@
 <% @feedbacks.each do |feedback|%>
 	<div class="row" id="feedback_<%=feedback.id%>">
-	<div class="col-md-2 col-sm-2">
+	
 	  <div class="feedback-image"><img src="img/patient.jpg" class="img-responsive img-circle"/></div>
-	</div>
-	<div class="col-md-11 col-sm-9 testimonial-content" >
+	
+	<div class="col-md-10 col-sm-9 testimonial-content clear-box" >
 	  <p><%= feedback.content%></p>
-	  <div class="testimonial-author"> <%=feedback.user.full_name%></span> 
+	  <div class="testimonial-author col-md-9"> <%=feedback.user.full_name%></span> 
 	  </div>
-	  <div style="float:right;">
-	  <%= link_to 'Remove', user_feedback_path(current_user,feedback, caregiver_id: @caregiver.id), method: :delete, remote: true if current_user.id.eql?(feedback.user_id) %>
+	  <div class="col-md-3 pull-right text-right clear-box ">
+	  	<% if current_user.id.eql?(feedback.user_id) %>
+	      <%= link_to user_feedback_path(current_user,feedback, caregiver_id: @caregiver.id), method: :delete, remote: true  do %>
+	      <i class="fa fa-times" aria-hidden="true" target="_blank"></i> 
+	      <%end%>
+	      <%end%>
 		</div>
 	</div>
 	</div>

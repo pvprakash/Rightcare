@@ -49,12 +49,13 @@
 	padding: 8px 20px;
 }
 .testiminial-block .feedback-image {
-	width:85px;
-	height:85px;
+	width:75px;
+	height:75px;
 	overflow:hidden;
 	border-radius:50%;
 	border:1px solid #ccc;
 	box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+	float: left;
 }
 .testiminial-block .row {
 	border-bottom: 1px solid #eee;
@@ -64,12 +65,30 @@
 .testiminial-block p {
 	margin-left:10px;
 	font-size:15px;
+	padding-top:3px;
 }
 .testimonial-author {
 	color: #0173bc;
-	font-size: 18px;
-	margin-left: 10px;
+	font-size: 17px;
 	font-weight: bold;
+}
+.testiminial-block i{
+	font-size: 16px;
+}
+.testiminial-block a{
+	position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    text-align: center;
+    
+    border: 1px solid #008fd5;
+}
+.testiminial-block a:hover{
+	border: 1px solid #666;
+
 }
 .testiminial-block .col-md-2 {
 	width:8%;
@@ -206,10 +225,10 @@
 	background-color: #0173bc;
     border-radius: 6px;
     color: #fff;
-    font-size: 22px;
+    font-size: 21px;
     margin-top: 20px;
     padding: 7px;
-    width: 200px;
+    width: 175px;
     border: 1px solid #0173bc;
     display: inline-block;
     margin-right: 10px;
@@ -219,14 +238,14 @@
     background-color: #0173bc;
     border-radius: 6px;
     color: #fff;
-    font-size: 22px;
+    font-size: 21px;
     margin-top: -5px;
     padding: 7px;
-    width: 200px;
+    width: 175px;
     border: 1px solid #0173bc;
     display: inline-block;
     margin-right: 12px;
-    height: 49px;
+    height: 46px;
     /* margin: 50px; */
 }
 .package-detail h3 span {
@@ -5011,6 +5030,7 @@ a.phone-box.clear-box.text-center:hover{
     padding: 8px;
     width: 100%;
 	margin:0px 0 15px;
+	border:none;
 	
 }
 .login-form  p{
@@ -5299,12 +5319,8 @@ a.phone-box.clear-box.text-center:hover{
 /*==end====*/
 
 .status-upload form textarea {
-    background: none repeat scroll 0 0 #eee;
+    background: none;
     border: medium none;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-    -ms-border-radius: 4px 4px 0 0;
-    -o-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
     color: #777777;
     float: left;
@@ -5316,9 +5332,21 @@ a.phone-box.clear-box.text-center:hover{
     width: 100%;
     resize: vertical;
     outline: none;
-    border: 1px solid #F2F2F2;
+    border: 1px solid #ccc;
 }
-
+.status-upload .btn{
+	background-color: #22B6B8;
+    color: #fff;
+    font-size: 17px;
+    font-weight: normal;
+    padding: 5px 18px;
+    margin-top: 10px;
+}
+.status-upload form textarea{
+	height: 90px;
+	font-size: 15px;
+	color: #333
+}
 
 
 

@@ -232,7 +232,7 @@
 		  <div class="col-md-12 testiminial-block">
 		    <h3>Customer Feedback</h3>
 		    <br>
-		    <div class="container">
+		    <div >
 					
     			<div >
 					  <div class="col-md-6 clear-box">
@@ -241,14 +241,15 @@
 								<%= form_for Feedback.new, url: user_feedbacks_path(@current_user),remote: true do |f|%>
 								  <%= f.hidden_field :caregiver_id, value: @caregiver.id %>
 								  <%= f.text_area :content ,placeholder:"What are you doing right now?"%>
-									<%=f.submit "feedback",class: 'btn btn-success green'%>
+									<%=f.submit "feedback",class: 'btn'%>
 								<%end%>
 							</div><!-- Status Upload  -->
 						</div><!-- Widget Area -->
 					</div>
 				</div>
 			</div>
-		    <div id="feedbacks-sec" >
+			<div class="clearfix"></div>
+		    <div id="feedbacks-sec" class="col-md-6 clear-box" >
 		    	<%= render partial: 'feedbacks/feedback', locals: {caregiver_id: @caregiver.id}%>
 		    	<%# @feedbacks.each do |feedback|%>
 			      <%#= render partial: 'feedbacks/feedback', locals: {feedback: feedback}%>
@@ -260,11 +261,14 @@
 	<%end%>
 </div>
 </section>
+<% if @caregiver.present? %>
 <script>
 $(function () {
   $("#rateYo").rateYo({
-  	"rating": "<%=@caregiver.extra_data['rating']%>",
+  	"rating": "<%=@caregiver.extra_data['rating'] || 0 %>",
+  	 starWidth: "20px",
   	 "fullStar": true,
+
   	onSet: function (rating, rateYoInstance) {
       	$.ajax({
 		      url: "/users/set_rating",
@@ -277,3 +281,4 @@ $(function () {
   });
 });
 </script>
+<% end %>
