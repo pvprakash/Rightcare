@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
 
   def remove_assign
     unless self.is_caregiver?
-      if self.patient.try(:assign_caregiver).present?
+      if self.try(:patient).try(:assign_caregiver).present?
         caregiver_id = self.patient.assign_caregiver.caregiver_id
         User.find(caregiver_id).update_attributes(assign: false)
         self.patient.assign_caregiver.destroy
