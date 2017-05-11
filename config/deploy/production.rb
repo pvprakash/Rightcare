@@ -7,9 +7,9 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-role :app, %w{ec2-54-149-71-101.us-west-2.compute.amazonaws.com}
-role :web, %w{ec2-54-149-71-101.us-west-2.compute.amazonaws.com}
-role :db,  %w{ec2-54-149-71-101.us-west-2.compute.amazonaws.com}
+role :app, %w{ec2-34-208-242-231.us-west-2.compute.amazonaws.com}
+role :web, %w{ec2-34-208-242-231.us-west-2.compute.amazonaws.com}
+role :db,  %w{ec2-34-208-242-231.us-west-2.compute.amazonaws.com}
 
 # Extended Server Syntax
 # ======================
@@ -17,7 +17,7 @@ role :db,  %w{ec2-54-149-71-101.us-west-2.compute.amazonaws.com}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'ec2-54-149-71-101.us-west-2.compute.amazonaws.com', user: 'deploy', password: 'rightcare12', roles: %w{web app}, my_property: :my_value
+server 'ec2-34-208-242-231.us-west-2.compute.amazonaws.com', user: 'deploy', password: 'rightcare12', roles: %w{web app}, my_property: :my_value
 
 
 
