@@ -4,11 +4,16 @@ class SubscribesController < ApplicationController
 
 	def create
 		if params[:email].include? "gmail.com"
-			subscribe = Subscribe.new(email: params[:email])
-    	@message = "successfully subscribe" if subscribe.save
+		  subscribe = Subscribe.new(email: params[:email])
+    	
+    	if subscribe.save
+    		flash[:notice] = "Successfully Subscribe" 
+    	else
+    		flash[:warning] = "Already Subscribed" 
+    	end
 		else
-			@message = "email domain should be gmail"
+			flash[:warning] = "Email Domain Should be gmail"
 		end
-		flash[:notice] = @message
+		redirect_to :back
 	end
 end
