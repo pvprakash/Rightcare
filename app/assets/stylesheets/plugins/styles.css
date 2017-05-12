@@ -3,6 +3,19 @@
     right: 0;
     z-index: 1111;
 }
+
+.register-form .btn {
+    background-color: #22b6b8;
+    border-radius: 3px;
+    clear: both;
+    color: #fff;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 25px auto 25px;
+    padding: 6px 30px;
+    width: auto;
+    border: 2px solid #22b6b8;
+}
 #login5 .modal-dialog{
      height: 100%;
     margin: 0;
@@ -1418,6 +1431,7 @@ form.registration-form fieldset {
 	padding:45px 0;
 	background-repeat: no-repeat;
 	background-size: cover;
+	height: 540px;
 }
 .m_top {
 	margin-top:65px;

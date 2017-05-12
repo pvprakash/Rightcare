@@ -33,10 +33,10 @@ class RegistrationsController < Devise::RegistrationsController
     "/users/#{resource.id}/patients/new"
   end
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :patient_id,:care_for, :pin_code, :state, :city)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role, :patient_id,:care_for, :pin_code, :state, :city,:avatar)
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password,:care_for,:role, :patient_id, :pin_code, :state, :city,:avatar)
   end
 end

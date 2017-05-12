@@ -1,8 +1,9 @@
 <% @feedbacks.each do |feedback|%>
 	<div class="row" id="feedback_<%=feedback.id%>">
 	
-	  <div class="feedback-image"><img src="img/patient.jpg" class="img-responsive img-circle"/></div>
-	
+	  <div class="feedback-image">
+        <%= image_tag feedback.user.avatar_url, class: "img-responsive img-circle"%>
+	  	</div>
 	<div class="col-md-10 col-sm-9 testimonial-content clear-box" >
 	  <p><%= feedback.content%></p>
 	  <div class="testimonial-author col-md-9"> <%=feedback.user.full_name%></span> 

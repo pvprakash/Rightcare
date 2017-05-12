@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @caregiver_list = User.joins(:roles).active.where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
     @caregivers = @caregiver_list.where(pin_code: current_user.pin_code)  if current_user.pin_code.present?
     @caregivers = @caregiver_list  unless @caregivers.present?
+    @caregivers = @caregivers.order(gender: current_user.patient.extra_data[:caregiver_gender].eql?('f') ? :ASC : :DESC)  if current_user.patient.extra_data[:caregiver_gender].present?
     @caregivers = @caregivers.paginate(:page => params[:page], :per_page => 16).order(created_at: :desc)
   end
 

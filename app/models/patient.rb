@@ -7,7 +7,7 @@ validate :validate_health_condition,:validate_service
 serialize :health_conditions, Array
 serialize :speciality_services, Array
 serialize :languages, Array
-
+serialize :extra_data, Hash
 has_attached_file :avatar, styles: {
     thumb: '100x100>',
     square: '200x200#',

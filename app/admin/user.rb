@@ -57,14 +57,14 @@ index do
   controller do
 
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true)
+     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar])
      
      if params[:role].eql?('caregiver')
-      user.avatar =  params[:avatar]
       user.amount = params[:amount]
       user.skills = params[:skills]
       user.video_url = params[:url]
       user.languages = params[:languages]
+      user.gender = params[:gender]
       user.extra_data = {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]}
      end
      if user.save
@@ -85,10 +85,10 @@ index do
     end
     def update
       user = User.find(params[:id])
-     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true}
+     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar]}
      
      if params[:role].eql?('caregiver')
-      user_hash = user_hash.merge(avatar: params[:avatar],amount:params[:amount],skills:params[:skills],video_url: params[:url],languages: params[:languages],extra_data: {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]})
+      user_hash = user_hash.merge(amount:params[:amount],skills:params[:skills],video_url: params[:url],languages: params[:languages] ,gender: params[:gender],extra_data: {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]})
      end
      if user.update_attributes(user_hash)
        redirect_to admin_users_path

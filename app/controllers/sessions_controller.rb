@@ -1,12 +1,16 @@
 class SessionsController < Devise::SessionsController 
   def new
-    self.resource = resource_class.new(sign_in_params)
-    clean_up_passwords(resource)
-    yield resource if block_given?
-    # respond_with(resource, serialize_options(resource))
-    @resource = resource
-    respond_to do |format|
-      format.js
+    begin
+      self.resource = resource_class.new(sign_in_params)
+      clean_up_passwords(resource)
+      yield resource if block_given?
+      # respond_with(resource, serialize_options(resource))
+      @resource = resource
+      respond_to do |format|
+        format.js
+      end
+    rescue 
+      redirect_to root_path
     end
   end
 

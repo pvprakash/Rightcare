@@ -1,4 +1,4 @@
-<%= form_for @patient, url: user_patients_path(current_user),class: "registration-form", html: { multipart: true } do |f| %>
+<%= form_for @patient, url: user_patients_path(current_user),id: "#patient-registration-form", html: { multipart: true } do |f| %>
   <fieldset>
     <div class="form-top">
       <div class="form-top-left">
@@ -24,10 +24,7 @@
             <%= select_tag "patient[speciality_services]", options_for_select(Patient::SERVICE),:multiple => true,:style => 'width: 100%',"data-required" => "true"
             %>
           </div>
-          <div class="form-group float-label-control">
-            <%= select_tag "patient[languages]", options_for_select(Patient::LANGUAGE),:multiple => true,:style => 'width: 100%',"data-required" => "true"
-            %>
-          </div>
+          
           <div class="form-group float-label-control">
             <%= f.file_field :avatar,class: "inputfile inputfile-6" %>
             <label for="file-7"><span id="selected-file-name"></span> <strong id="choose-file"><i class="fa fa-upload" aria-hidden="true"></i> Choose a file…</strong></label>
@@ -56,15 +53,75 @@
           </li>
         </ul>
       </div>
-      <div class="form-group float-label-control">
-        <label class="label-title">Care Reciver DOB</label>
-        <div><%= f.date_field :dob, autofocus: true,class: "form-control input-md"%> 
-        </div>
-      </div>
       <div class="clearfix"></div>
       <center>
-        <%= f.submit "NEXT", class: "button btn btn-next"%>
+        <a href="javascript:void(0)" class="btn btn-next">Next</a>
+        <%#= f.submit "NEXT", class: "button btn btn-next"%>
       </center>
     </div>
+  </fieldset>
+  <fieldset style="display:none">
+    <div class="form-top">
+      <div class="form-top-left">
+        <h4>Care Reciever's Detail</h4>
+      </div>
+    </div>
+    <div class="form-bottom">
+    <div class="form-group float-label-control">
+      <%= select_tag "patient[languages]", options_for_select(Patient::LANGUAGE),:multiple => true,:style => 'width: 100%',"data-required" => "true"
+      %>
+    </div>
+    <div class="form-group float-label-control">
+      <%= text_field_tag "patient[extra_data][notes]",nil,placeholder: 'Additional notes'%>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group float-label-control">
+        <label class="label-title">Care Giver Gender(Optional)</label>
+        <ul>
+          <li>
+            <%= radio_button_tag "patient[extra_data][caregiver_gender]", "m",'j-option' %> 
+            <label for="j-option"> male </label>
+            <div class="check"></div>
+          </li>
+          <li>
+            <%= radio_button_tag "patient[extra_data][caregiver_gender]", 'f',"k-option" %>
+            <label for="k-option">female</label>
+            <div class="check">
+              <div class="inside"></div>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group float-label-control">
+      <label class="label-title">Do you require a live in care giver?</label>
+      <ul>
+        <li>
+           <%= radio_button_tag "patient[extra_data][caregiver_live]", 'yes',"m-option" %>
+          <label for="m-option"> Yes </label>
+          <div class="check"></div>
+        </li>
+        <li>
+           <%= radio_button_tag "patient[extra_data][caregiver_live]", 'no',"n-option" %>
+          <label for="n-option">No</label>
+          <div class="check">
+            <div class="inside"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group float-label-control">
+      <label class="label-title">Care Reciver DOB</label>
+      <div><%= f.date_field :dob, autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class='btn-group'>
+        <center style="margin-left: 150px;">
+          <a href="javascript:void(0)" class="btn btn-previous">Previous</a>
+          <%= f.submit 'Submit',class: 'btn btn-primary'%></center>
+    </div>
+  </div>
   </fieldset>
 <%end%>
