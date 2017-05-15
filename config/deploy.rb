@@ -19,9 +19,7 @@ set :deploy_to, '/home/deploy/rightcare'
 
 # Default value for :pty is false
 # set :pty, true
-set :delayed_job_workers, 1
-set :delayed_job_roles, [:app, :background]
-set :delayed_job_queues, ['mailer','tracking']
+
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 
@@ -40,13 +38,10 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
-        # execute :touch, 'RAILS_ENV=production rake jobs:work &'
+        execute :touch, 'RAILS_ENV=production rake jobs:work &'
         execute :touch, 'sudo service nginx restart'
       # end
     end
-  end
-  after 'deploy:published', 'delayed_job:restart' do
-    invoke 'delayed_job:restart'
   end
   after :publishing, :restart 
 end
