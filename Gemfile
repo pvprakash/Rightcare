@@ -61,6 +61,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'capistrano'
   gem 'capistrano3-puma'
+  gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
