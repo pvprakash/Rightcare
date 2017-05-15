@@ -4,12 +4,13 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h5>Hello there </h5>
+    <h5>Hello <%= @email %>, </h5>
     <p>
       New blog has been created 
       <b>blog title <%= @blog.title %></b>
       <p>blog content: <%= @blog.content %></p><br>
       <%= link_to "click to see" , blog_url(@blog)%>
+       <%= link_to "unsubscribe" , unsubscribe_subscribes_url(token: @token)%>
       <br/>
     </p>
    

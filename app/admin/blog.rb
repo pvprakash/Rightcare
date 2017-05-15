@@ -53,6 +53,7 @@ ActiveAdmin.register Blog do
 
   after_create do |blog|
     @blog = blog
-    @blog.delay(run_at: (1).minutes.from_now).subscribes_email unless Subscribe.all.empty? 
+    Blog.delay(run_at: (1).minutes.from_now).subscribes_email(@blog) unless Subscribe.all.empty? 
+    # @blog.delay(run_at: (1).minutes.from_now).subscribes_email unless Subscribe.all.empty? 
   end
 end

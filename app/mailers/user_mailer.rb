@@ -7,9 +7,11 @@ class UserMailer < ApplicationMailer
     mail(:to => @user.email,:subject => "Payment successful")
   end
 
-  def subscribes_email(blog_id)
+  def subscribes_email(blog_id, email, token)
   	@blog = Blog.find(blog_id)
-  	emails = Subscribe.all.map(&:email).join(',')
-  	mail(:to => emails,:subject => "New blog created")
+    @token = token
+    @email = email
+  	#emails = Subscribe.all.map(&:email).join(',')
+  	mail(:to => @email,:subject => "New blog created")
   end
 end

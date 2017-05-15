@@ -16,4 +16,22 @@ class SubscribesController < ApplicationController
 		end
 		redirect_to :back
 	end
+
+	def show
+	end
+
+	def unsubscribe
+		begin
+		subscribe = Subscribe.find_by_token(params[:token])
+    if subscribe.destroy
+      flash[:notice] = "Successfully unsubscribed"
+    else
+    	flash[:warning] = "Already unsubscribed"
+    end
+    rescue Exception
+    	flash[:warning] = "Already unsubscribed"
+    end
+    redirect_to root_path
+	end
+
 end

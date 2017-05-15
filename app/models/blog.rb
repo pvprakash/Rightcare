@@ -6,8 +6,12 @@ class Blog < ActiveRecord::Base
  #  dropbox_credentials: "#{Rails.root}/config/dropbox.yml"
   validates_attachment_content_type :blog_pic, content_type: /\Aimage\/.*\z/
 
-  def subscribes_email
-    UserMailer.subscribes_email(self.id).deliver_now
+  def self.subscribes_email(blog)
+  	blog = Blog.find(blog.id)
+  	subscribes = Subscribe.all.collect{|k| {email: k.email, token: k.token}}
+  	subscribes.each do |subs|
+  	  UserMailer.subscribes_email(blog.id, subs[:email], subs[:token]).deliver_now
+  	end
   end
 
 end
