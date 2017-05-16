@@ -1356,7 +1356,7 @@ form.registration-form fieldset {
 .resp-sec {
 	background-color:#F8F8F8;
 	padding: 49px 0;
-	margin-top: 60px;
+	margin-top: 16px;
 }
 .main-nav {
 	background-color: #0173bc;
@@ -1492,14 +1492,14 @@ form.registration-form fieldset {
 .testimony h3, .resp-sec h3, .quality-sec h3, .about-sec h3 ,.profile-caregiver h3 {
 	color: #252525;
 	font-family: "Montserrat", sans-serif !important;
-	font-size: 32px;
+	font-size: 34px;
 	text-align: center;
 }
 .testimony h3 span, .resp-sec h3 span, .quality-sec span, .about-sec span , .profile-caregiver span {
 	color: #0173bc;
 	font-weight:bold;
 	display:initial;
-	font-size: 32px;
+	font-size: 34px;
 }
 .testimony span {
 	display:block;
@@ -1675,7 +1675,7 @@ form.registration-form fieldset {
 	font-size: 17px;
 	font-weight: normal;
 	padding: 12px 0;
-	width: 32%;
+	width: 33%;
 	line-height: normal;
     text-align: center;
 	float: right;
@@ -1696,6 +1696,10 @@ form.registration-form fieldset {
   [class*="vc_span"] {
  width:100% !important;
  margin-left:0 !important;
+}
+
+.no-spae{
+	padding: 0px;
 }
 .sidePostCont {
  width:100%;
@@ -1728,11 +1732,23 @@ right: 21px;
 top: 12px;
 color:#666;
 }
-.nav-side-menu li a {
+.nav-side-menu  a {
  color: #fff;
  padding-left: 10px;
  text-decoration: none;
  text-transform: uppercase;
+ text-align: left;
+}
+.nav-side-menu  .phone-box:hover{
+	line-height: 39px;
+	font-size: 15px;
+	text-align: left;
+	background-color: #008fd5;
+}
+.nav-side-menu .phone-box{
+	padding: 0px;
+	padding-left: 15px;
+	width: 100%;
 }
  .nav-side-menu {
  width: 90%;
@@ -1975,6 +1991,7 @@ textarea {
  .page-boxed {
  max-width: 1000px;
 }
+
 .float-label-control {
  width:45%;
 }
@@ -1997,7 +2014,10 @@ textarea {
 }
 .phone-box {
  padding: 10px 0;
- width: 39%;
+ width: 41%;
+}
+.phone-box:hover{
+	width: 41%;
 }
 .mobile-main-nav {
  display:none;
@@ -2178,22 +2198,10 @@ textarea {
  width: auto;
  margin: 0 20px 35px;
 }
-.login-form {
- width:100%;
- max-width:480px;
- margin:60px auto;
+.testimony{
+	height: 600px;
 }
-.login-form .squaredTwo {
- width:22px;
- height:22px;
-}
-.login-form .squaredTwo label {
- left:1px;
- top:1px;
-}
-.login-form span, .login-form a {
- font-size:16px;
-}
+
  .grid-col {
  float: none;
  width: 100%;
@@ -2441,15 +2449,12 @@ textarea {
 .second-sticky .logo img {
 	width:75% !important;
 }
-@media screen and (max-width: 1190px) { /* laptop */
- .logo {
- margin-left: -470px;
-}
-}
+
 @media screen and (max-width: 980px) { /* pad */
  .logo {
- margin-left: -369px;
+ margin-left: 0px;
 }
+
 }
 @media screen and (max-width: 767px) { /* phone */
  .logo {
@@ -2463,6 +2468,7 @@ textarea {
  height: 100%;
  text-align: center;
 }
+
 }
 /**/
 /* main nav */
@@ -2656,19 +2662,38 @@ nav p {
  font-size: 13px;
  font-weight: 400;
 }
+.testimony p{
+	font-size: 16px;
+
+}
+.resp-sec p{
+	font-size: 15px;
+}
+.main-nav li a{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.quality-sec li span{
+	width: 85px;
+	height: 85px;
+	line-height:104px;
+}
+.quality-sec li img{
+	width: 40px;
+}
 .logo img {
  display: block;
  height: auto;
- width: 90% !important;
+ width: 75% !important;
 }
 .main-nav li {
  padding: 16px 20px;
 }
 .myslider h2 {
- font-size: 3.2em;
+ font-size: 3em;
 }
 .second-sticky.sticky-container .main-nav {
- margin-top: -35px;
+ margin-top: -41px;
 }
 .show .second-sticky.sticky-container .main-nav {
  margin-top: 0px;
@@ -3045,7 +3070,7 @@ nav p {
  padding-top:200px;
 }
 .quality-sec li {
- font-size:18px;
+ font-size:16px;
 }
 .quality-sec p {
  font-size:20px !important;
@@ -3222,6 +3247,11 @@ i.pic:after {
  margin-right: 0;
  margin-left: 0;
 }
+#login5 .modal-dialog {
+    background-position: center top 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 #en .modal-dialog, #ex .modal-dialog, #sc .modal-dialog, #qn .modal-dialog{
 	width: 95%;
 	margin: 0 auto;
@@ -3256,7 +3286,7 @@ i.pic:after {
  margin-top:15px;
 }
 .resp-sec {
- margin-top:40px;
+ margin-top:0px;
 }
 .resp-sec h3 {
  padding :5px 15px
@@ -3605,6 +3635,7 @@ i.pic:after {
  width: 100%;
  margin: 0;
 }
+
 .about-sec .well h4 {
  font-size:18px;
 }
@@ -4957,7 +4988,7 @@ a.phone-box.clear-box.text-center:hover{
 	font-size: 17px;
 	font-weight: normal;
 	padding: 12px 0;
-	width: 32%;
+	width: 33%;
 	line-height: normal;
 	float: right;
 	border-radius: 0px;
@@ -5409,4 +5440,99 @@ a.phone-box.clear-box.text-center:hover{
     color: #fff;
     background-color: #22B6B8;
     float:right;
+}
+@media screen and (max-width: 1024px){
+	.phone-box , .phone-box:hover{
+		width:120px;
+	}
+	.copyrights , .page-footer a{
+		font-size: 14px;
+	}
+	.team-member h4{
+		font-size: 20px;
+	}
+	.investor-team h4 , .investor-team h6 , .investor-team ul{
+		text-align: center;
+		margin: 0 auto;
+	}
+	.comment{
+		font-size: 20px;
+	}
+	.blog-post .btn{
+		padding: 6px 16px;
+		font-size: 17px;
+	}
+}
+@media screen and (max-width: 767px){
+	.login-form{
+		width: 90%;
+	}
+
+	.login-form  h5{
+		font-size: 25px;
+    	padding: 8px 18px;
+	}
+	.blogs-empty{
+		margin-bottom: 30px;
+	}
+	.login-form  p{
+		font-size: 20px;
+	}
+	.login-form .squaredTwo{
+	width: 26px;
+	height: 26px;
+	margin: 10px 8px 5px;
+	}
+	.subscribe input{
+		margin-bottom: 20px;
+	}
+	.login-form  span , .login-form a{
+		font-size: 15px;
+	}
+	.login-form a{
+	    padding-top: 10px;
+	}
+	.blog-post .btn{
+		font-size: 17px;
+	    padding: 6px 17px;	
+	}
+	.login-form .squaredTwo label{
+		left: 3px;
+		top: 3px;
+	}
+	.login-form {
+	 width:100%;
+	 max-width:480px;
+	 margin:60px auto;
+	}
+	.login-form .squaredTwo {
+	 width:22px;
+	 height:22px;
+	}
+	.login-form .squaredTwo label {
+	 left:1px;
+	 top:1px;
+	}
+	.login-form span, .login-form a {
+	 font-size:16px;
+	}
+	.image .overbox, .investor-image .overbox , .team-member .image{
+	    height: 300px;
+	}
+	.investor-team h4 , .investor-team h6 , .investor-team ul , .investor-team .clear-box{
+	    text-align: center;
+	}
+	.investor-team{
+		padding: 0px;
+		padding-bottom: 12px;
+		padding-top: 12px;
+	}
+	.investor-team img{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.resp-sec .work-sec p{
+		text-align: center;
+	}
+
 }
