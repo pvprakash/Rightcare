@@ -21,7 +21,7 @@
     </div>
   </div>
 
-    <div class="form-group">
+  <div class="form-group">
     <%= label_tag :password, nil, class: "col-md-3 control-label" %>
     <div class="col-md-9">
       <%= password_field_tag :password,@resource.try(:password), class: "form-control"%>
@@ -59,9 +59,10 @@
   <div class="form-group">
     <%= label_tag :city,nil,class: "col-md-4 control-label"%>
      <div class="col-md-5">
-    <%= select_tag "city", options_for_select([],@resource.try(:city)),:prompt => "Select City",class: " selectBox" %>
+    <%= select_tag "city", options_for_select([@resource.try(:city)].compact,@resource.try(:city)),:prompt => "Select City",class: " selectBox" %>
      </div>
   </div>
+
 
     <div class="form-group">
       <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
@@ -86,7 +87,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="confirmation"></label>
       <div class="col-md-4">
-        <%= submit_tag "Sign up", class: "btn btn-primary"%>
+        <%= submit_tag params[:action].eql?('edit') ? 'Update': 'Sign Up', class: "btn btn-primary"%>
       </div>
     </div>
     </fieldset>
@@ -100,7 +101,7 @@ function value_set(d_value)
 {
   if($(d_value).val() == "caregiver")
     {      
-      $("#caregiver-field").html("<div class='form-group'> <%=j label_tag 'gender',nil,class: 'col-md-4 control-label'%> <div class='col-md-5'><%=j radio_button_tag 'gender', 'm','j-option',true %><label for='j-option'> male </label><%=j radio_button_tag 'gender','f','k-option' %><label for='k-option'>female</label></div><div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,@resource.try(:amount)),class: 'form-control input-md'%></div><%=j label_tag :skills,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'skills', @resource.try(:skills),class: 'form-control input-md'%> </div> <%=j label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'url', @resource.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>  <%=j label_tag 'Language ',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'languages', options_for_select(User::LANGUAGE,@resource.try(:languages)),class: 'form-control input-md',multiple: true%></div><div class='form-group'> <%=j label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'id_prof',@resource.try(:id_prof),class: 'form-control input-md'%> </div> <div class='form-group'> <%=j label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'emergency_contact',@resource.try(:emergency_contact),class: 'form-control input-md'%> </div><div class='form-group'> <%=j label_tag 'experience',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j number_field_tag 'experience',@resource.try(:experience),class: 'form-control input-md'%> </div></div> <div class='form-group'> <%=j label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_area_tag 'profile',@resource.try(:profile),class: 'form-control input-md'%> </div></div></div>")
+      $("#caregiver-field").html("<div class='form-group'> <%=j label_tag 'gender',nil,class: 'col-md-4 control-label'%> <div class='col-md-5'><%=j radio_button_tag 'gender', 'm','j-option',true %><label for='j-option'> male </label><%=j radio_button_tag 'gender','f','k-option' %><label for='k-option'>female</label></div><div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,@resource.try(:amount)),class: 'form-control input-md'%></div><%=j label_tag :skills,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'skills', @resource.try(:skills),class: 'form-control input-md'%> </div> <%=j label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'url', @resource.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>  <%=j label_tag 'Language ',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'languages', options_for_select(User::LANGUAGE,@resource.try(:languages)),class: 'form-control input-md',multiple: true%></div><div class='form-group'> <%=j label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'id_prof',@resource.extra_data[:id_prof],class: 'form-control input-md'%> </div> <div class='form-group'> <%=j label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'emergency_contact',@resource.extra_data[:emergency_contact],class: 'form-control input-md'%> </div><div class='form-group'> <%=j label_tag 'experience',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j number_field_tag 'experience',@resource.extra_data[:experience],class: 'form-control input-md'%> </div></div> <div class='form-group'> <%=j label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_area_tag 'profile',@resource.extra_data[:profile],class: 'form-control input-md'%> </div></div></div>")
       $("#languages").select2({
            // templateResult: formatState;
           });

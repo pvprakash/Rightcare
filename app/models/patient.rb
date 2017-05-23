@@ -18,7 +18,7 @@ has_attached_file :avatar, styles: {
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   
 
-HEALTH_CONDITION =  [["ALS","1"],
+HEALTH_CONDITION = [["ALS","1"],
 ["Alzheimer's Disease","2"],
 ["Cancer","3"],
 ["Cardiovascular Disorders","4"],
@@ -37,37 +37,27 @@ HEALTH_CONDITION =  [["ALS","1"],
 ["Stroke","17"],
 ["Other","18"]]
 
-SERVICE = [
-	["Ambulation","1"],
-["Hospice","2"],
-["Skin/Wound","3"],
-["Physical Therapy","4"],
-["Post Surgery Recovery","5"],
-["Prosthetics","6"],
-["Transportation","7"]]
+SERVICE = 
+[["Ambulation","1"],
+	["Hospice","2"],
+	["Skin/Wound","3"],
+	["Physical Therapy","4"],
+	["Post Surgery Recovery","5"],
+	["Prosthetics","6"],
+	["Transportation","7"]]
 
 LANGUAGE = 
-[
-["American Sign Language/ ASL","1"],
-["Arabic","2"],
-["Cantonese (Chinese)","3"],
-["Mandrain (Chinese)","4"],
-["Farsi","5"],
-["Filipino(Tagalog)","6"],
-["French","7"],
-["German","8"],
-["Hebrew","9"],
-["Italian","10"],
-["Japanese","11"],
-["Korean","12"],
-["Polish","13"],
-["Portuguese","14"],
-["Russian","15"],
-["Spanish","16"],
-["Swahili","17"],
-["Tongan","18"],
-["Vietnamese","19"],
-["Other","20"]]
+[["Hindi","1"],
+	["English","2"],
+	["Bengali","3"],
+  ["Telugu","4"],
+  ["Marathi","5"],
+  ["Tamil","6"],
+  ["Urdu","7"],
+  ["Kannada","8"],
+  ["Gujarati","9"],
+  ["OdiaMalayalam","10"],
+  ["Sanskrit","11"]]
 
 
 def validate_health_condition

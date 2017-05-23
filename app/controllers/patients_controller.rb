@@ -8,7 +8,7 @@ class PatientsController < ApplicationController
    	user = User.find params[:user_id]
     @patient = user.build_patient(patient_params)
     if @patient.save
-      redirect_to root_path
+      redirect_to dashboard_users_path
     else
       render :new
     end

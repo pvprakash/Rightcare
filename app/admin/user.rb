@@ -69,13 +69,14 @@ index do
      end
      if user.save
        user.add_role params[:role]
+        flash[:notice] = 'successfully saved'
        redirect_to admin_users_path
      else
        str = ""
         user.errors.messages.each do |key, value|
           str  << key.to_s+" "+value.join()+", "
         end
-        flash[:error] =  str
+        flash[:notice] =  str
         redirect_to '/admin/users/new'
       end
     end 
@@ -83,22 +84,24 @@ index do
     def edit
       @resource = User.find(params[:id])
     end
+
     def update
-      user = User.find(params[:id])
-     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar]}
-     
+     user = User.find(params[:id])
+     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar]}
+     user_hash.merge(password: params[:password],password_confirmation: params[:password_confirmation]) if params[:password] && params[:password_confirmation]
      if params[:role].eql?('caregiver')
       user_hash = user_hash.merge(amount:params[:amount],skills:params[:skills],video_url: params[:url],languages: params[:languages] ,gender: params[:gender],extra_data: {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]})
      end
      if user.update_attributes(user_hash)
-       redirect_to admin_users_path
+      flash[:notice] =  'successfully updated'
+      redirect_to admin_users_path
      else
        str = ""
         user.errors.messages.each do |key, value|
           str  << key.to_s+" "+value.join()+", "
         end
         flash[:error] =  str
-        redirect_to '/admin/users/new'
+        redirect_to "/admin/users/#{user.id}/edit"
       end
     end 
 

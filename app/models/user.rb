@@ -44,26 +44,18 @@ class User < ActiveRecord::Base
   AMOUNT = [["ENTRY LEVEL CAREGIVERS - 600/day", 600],["EXPERIENCED CAREGIVERS - 900/day", 900],["SPECIALIZED CAREGIVERS - 1200/day", 1200],["QUALIFIED NURSES - 2400/day", 2400]]
   LANGUAGE = 
     [
-    ["American Sign Language/ ASL","1"],
-    ["Arabic","2"],
-    ["Cantonese (Chinese)","3"],
-    ["Mandrain (Chinese)","4"],
-    ["Farsi","5"],
-    ["Filipino(Tagalog)","6"],
-    ["French","7"],
-    ["German","8"],
-    ["Hebrew","9"],
-    ["Italian","10"],
-    ["Japanese","11"],
-    ["Korean","12"],
-    ["Polish","13"],
-    ["Portuguese","14"],
-    ["Russian","15"],
-    ["Spanish","16"],
-    ["Swahili","17"],
-    ["Tongan","18"],
-    ["Vietnamese","19"],
-    ["Other","20"]]
+    ["Hindi","1"],
+    ["English","2"],
+    ["Bengali","3"],
+    ["Telugu","4"],
+    ["Marathi","5"],
+    ["Tamil","6"],
+    ["Urdu","7"],
+    ["Kannada","8"],
+    ["Gujarati","9"],
+    ["OdiaMalayalam","10"],
+    ["Sanskrit","11"]
+    ]
 
   def remove_assign
     unless self.is_caregiver?
