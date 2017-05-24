@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
         format.js
       end
     rescue 
-      redirect_to root_path
+      redirect_to dashboard_users_path
     end
   end
 
