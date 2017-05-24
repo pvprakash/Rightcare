@@ -10,12 +10,21 @@ class SessionsController < Devise::SessionsController
         format.js
       end
     rescue 
-      redirect_to dashboard_users_path
+      redirect_to root_path
     end
   end
+  
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    respond_with resource, location: dashboard_users_path
+  end
+
+  
 
   protected
-
   def sign_in_params
     devise_parameter_sanitizer.sanitize(:sign_in)
   end
