@@ -8,7 +8,7 @@ serialize :health_conditions, Array
 serialize :speciality_services, Array
 serialize :languages, Array
 serialize :extra_data, Hash
-has_attached_file :avatar, styles: {
+has_attached_file :avatar,:default_url => "default.png", styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'

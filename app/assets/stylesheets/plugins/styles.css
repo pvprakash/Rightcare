@@ -320,6 +320,7 @@
 	overflow:hidden;
 	border-radius:6px;
 }
+.prof-img img{width: 300px;}
 .profile-caregiver iframe {
 	margin-bottom:45px;
 	margin-top:45px;
