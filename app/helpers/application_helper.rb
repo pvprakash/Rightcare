@@ -10,10 +10,12 @@ module ApplicationHelper
       html += "<button class='phone-box  clear-box text-center m-phonebox dropdown-toggle ' type='button' data-toggle='dropdown'>Hi #{current_user.first_name} <span class='fa fa-angle-down'><span></button>"
       # html += "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'> Action <span class='caret'></span> </button>"
       html += "<ul class='dropdown-menu' role='menu'> <li>#{link_to 'Logout',destroy_user_session_path, method: :delete }</li>"
+      unless params[:action].eql?('dashboard')
       # html += "<li>#{link_to 'Caregiver Details', caregiver_details_users_path }</li>" if user_signed_in?
-      html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
+       html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
       # html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
        html += "<li>#{link_to 'Dashboard', dashboard_users_path }</li>" if user_signed_in?
+       end
       html += "</ul>"
       html += "</div>"
      end
@@ -31,10 +33,11 @@ module ApplicationHelper
           # html += "<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'> Action <span class='caret'></span> </button>"
       html += "<li>#{link_to 'Logout',destroy_user_session_path, method: :delete }</li>"
       # html += "<li>#{link_to 'Caregiver Details', caregiver_details_users_path }</li>" if user_signed_in?
+      unless params[:action].eql?('dashboard')
       html += "<li>#{link_to 'Payment Details', payment_details_users_path }</li>" if user_signed_in?
       # html += "<li>#{link_to 'Patient Details', patient_details_user_path(current_user) }</li>" if user_signed_in?
       html += "<li>#{link_to 'Dashboard', dashboard_users_path }</li>" if user_signed_in?
-     
+      end
 
      end
     return html.html_safe

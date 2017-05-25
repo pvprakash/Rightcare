@@ -36,7 +36,10 @@ class PaymentController < ApplicationController
     kit = WickedPdf.new.pdf_from_string(render_to_string('payment/payment_receipt.html.erb', layout: 'pdf.html.erb'))
     send_data kit,
     filename: "Reciept #{Date.today.strftime('%Y%m%d')}.pdf",
-    type: 'application/pdf'
+    type: 'application/pdf',
+    layout: 'pdf.html.erb'
+    
+
     # respond_to do |format|
     #   format.pdf do
     #     render pdf: "file_name", template: 'payment/payment_receipt.html.erb' # Excluding ".pdf" extension.

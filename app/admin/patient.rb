@@ -61,11 +61,16 @@ permit_params :first_name, :last_name,:gender,:dob,:health_conditions => [], :sp
 
 	controller do
     def create
-    	user_id = params[:patient][:user_id]
-    	user = User.find(user_id)
-    	patient = user.build_patient(patient_params)
-      patient.save
-      redirect_to admin_patient_path(patient)
+    begin
+	  user_id = params[:patient][:user_id]
+	  user = User.find(user_id)
+	  patient = user.build_patient(patient_params)
+    patient.save
+    redirect_to admin_patient_path(patient)
+    rescue Exception
+       flash[:error] = "something went wrong"
+      redirect_to admin_patients_path
+    end
     end
 
     def edit

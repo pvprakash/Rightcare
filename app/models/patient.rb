@@ -44,7 +44,22 @@ SERVICE =
 	["Physical Therapy","4"],
 	["Post Surgery Recovery","5"],
 	["Prosthetics","6"],
-	["Transportation","7"]]
+	["Transportation","7"],
+  ["Bathing","8" ],
+  ["Bed-Making","9"],
+  ["Diaper Change","10"],
+  ["Feeding","11"],
+  ["Oral Medication","12"],
+  ["Walking","13"],
+  ["Exercises","14"],
+  ["Wound Dressing","15"],
+  ["Rules Tube Feeding","16"],
+  ["Peg Feeding","17"],
+  ["Tracheostomy Care","18"],
+  ["Intramuscular (IM) Injection","19"],
+  ["Intravenous (IV) Injection","20"],
+  ["Catheter",'21'],
+  ["Colostomy Care","23"]]
 
 LANGUAGE = 
 [["Hindi","1"],
