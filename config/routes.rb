@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get 'faqs'
     end
   end
+  resources :careers
   resources :users do
     collection do
       get 'patients'
