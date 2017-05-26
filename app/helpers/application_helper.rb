@@ -78,4 +78,13 @@ module ApplicationHelper
     tag :input, html_options
   end
 
+  def email_logo_image_tag
+    attachments[image] = {
+      :data => File.read(Rails.root.join("app/assets/images/logo.png")),
+      :mime_type => "image/png",
+      :encoding => "base64"
+    }
+      image_tag attachments[image].url, **options
+  end
+
 end

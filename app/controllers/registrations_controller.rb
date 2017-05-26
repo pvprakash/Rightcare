@@ -2,8 +2,9 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     build_resource(sign_up_params)
-    if resource.save 
+    if resource.save
       resource.add_role 'user'
+      UserMailer.signed_up(resource.id).deliver_now
     end
     yield resource if block_given?
     if resource.persisted?

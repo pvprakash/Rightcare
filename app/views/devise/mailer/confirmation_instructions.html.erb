@@ -1,11 +1,13 @@
 
-<div class="container">
+<div class="container" style="border: 1px solid gray">
   <div class="row profile">
 		<div class="col-md-6">
 			<div class="profile-sidebar">
-				<div class="profile-userpic">
-					<img src="#{root_url}/assets/logo.png" class="img-responsive" alt="">
-				</div>
+        <center>
+    			<div class="profile-userpic">
+            <%= image_tag attachments['logo.png'].url -%>
+    			</div>
+        </center>
 				<div class="gray-sec">
 					<div class="profile-usertitle">
 						<div class="profile-usertitle-name">
@@ -56,7 +58,7 @@ margin-top:10px;
 .profile-userpic img {
   float: none;
   margin: 0 auto;
-  width: 37%;
+  width: 25%;
   height: 50%;
 }
 
@@ -71,6 +73,7 @@ margin-top:10px;
   font-weight: 600;
   margin-bottom: 7px;
 }
+.btn{color: white;}
 
 
 .profile-usertitle-job {

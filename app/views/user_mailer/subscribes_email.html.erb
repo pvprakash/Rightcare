@@ -1,19 +1,114 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  </head>
-  <body>
-    <h5>Hello <%= @email %>, </h5>
-    <p>
-      New blog has been created 
-      <b>blog title <%= @blog.title %></b>
-      <p>blog content: <%= @blog.content %></p><br>
-      <%= link_to "click to see" , blog_url(@blog)%>
-       <%= link_to "unsubscribe" , unsubscribe_subscribes_url(token: @token)%>
-      <br/>
-    </p>
-   
-    <p>Thanks have a great day!</p>
-  </body>
-</html>
+<div class="container" style="border: 1px solid gray">
+  <div class="row profile">
+    <div class="col-md-6">
+      <div class="profile-sidebar">
+        <center>
+          <div class="profile-userpic">
+            <%= image_tag attachments['logo.png'].url -%>
+          </div>
+        </center>
+        <div class="gray-sec">
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-job">
+              <p>Hello <%= @email %>,</p><br>
+              <p>
+              New blog has been created 
+              <b>blog title <%= @blog.title %></b>
+              <p>blog content: <%= @blog.content %></p><br>
+              <br/>
+              </p>
+            </div>
+          </div>
+          <div class="profile-userbuttons">
+            <%= link_to "click to see" , blog_url(@blog) ,class: 'btn btn-success btn-sm'%>
+            <%= link_to "unsubscribe" , unsubscribe_subscribes_url(token: @token), class: 'btn btn-danger btn-sm'%>
+          </div>
+          <p>Thanks have a great day!</p>
+        </div>
+        <center>
+          <div class="righcare-allright">
+            <br>#854, 10th main, 4th cross, Next to SVC Bank,
+            <br>Near Indiranagar Metro Station,Indiranagar,
+            <br>Bangalore, 560038<br>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<style  type="text/css" media="screen">
+body {
+  background: #F1F3FA;
+}
+
+.profile {
+  margin: 20px 0;
+}
+.gray-sec{
+background: #eee;
+height: auto;
+padding: 2px 20px 11px 20px;
+margin-top:10px;
+}
+.profile-sidebar {
+    padding: 45px 24px 97px 24px;
+    background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 25%;
+  height: 50%;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.btn{color: white;}
+
+
+.profile-usertitle-job {
+    /* text-transform: uppercase; */
+    color: #777;
+    font-size: 14px;
+    /* font-weight: 600; */
+    margin-bottom: 15px;
+}
+
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}</style>
