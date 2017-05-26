@@ -24,5 +24,8 @@ module Rightcare1
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :delayed_job
     VideoInfo.provider_api_keys = { youtube: ENV['GOOGLE_YOUTUBE_API_KEY']}
+    config.to_prepare do
+      Devise::Mailer.layout 'email' #specify the layout
+    end
   end
 end

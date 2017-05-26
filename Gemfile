@@ -15,7 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'pg'
 gem 'video_info'
-
+gem 'premailer-rails'
+gem 'nokogiri'
 gem 'devise'
 gem "rolify"
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'

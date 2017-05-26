@@ -1,5 +1,108 @@
-<p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<div class="container">
+  <div class="row profile">
+		<div class="col-md-6">
+			<div class="profile-sidebar">
+				<div class="profile-userpic">
+					<img src="#{root_url}/assets/logo.png" class="img-responsive" alt="">
+				</div>
+				<div class="gray-sec">
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							Rightcare activation mail
+						</div>
+						<div class="profile-usertitle-job">
+							<p>Welcome <%= @email %>!</p>
+							<p>You can confirm your account email through the link below:</p>
+						</div>
+					</div>
+					<div class="profile-userbuttons">
+						<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) ,class: 'btn btn-success btn-sm'%>
+					</div>
+				</div>
+				<center>
+					<div class="righcare-allright">
+						<br>#854, 10th main, 4th cross, Next to SVC Bank,
+		        <br>Near Indiranagar Metro Station,Indiranagar,
+		        <br>Bangalore, 560038<br>
+					</div>
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<style  type="text/css" media="screen">
+body {
+  background: #F1F3FA;
+}
+
+.profile {
+  margin: 20px 0;
+}
+.gray-sec{
+background: #eee;
+height: auto;
+padding: 2px 20px 11px 20px;
+margin-top:10px;
+}
+.profile-sidebar {
+    padding: 45px 24px 97px 24px;
+    background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 37%;
+  height: 50%;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+
+.profile-usertitle-job {
+    /* text-transform: uppercase; */
+    color: #777;
+    font-size: 14px;
+    /* font-weight: 600; */
+    margin-bottom: 15px;
+}
+
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}</style>
