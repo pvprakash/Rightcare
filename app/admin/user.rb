@@ -88,8 +88,8 @@ index do
     def update
      user = User.find(params[:id])
      user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true}
-     user_hash.merge(password: params[:password],password_confirmation: params[:password_confirmation]) if params[:password] && params[:password_confirmation]
-     user_hash.merge(avatar: params[:avatar]) if params[:avatar].present? 
+     user_hash.merge!(password: params[:password],password_confirmation: params[:password_confirmation]) if params[:password].present? && params[:password_confirmation].present?
+     user_hash.merge!(avatar: params[:avatar]) if params[:avatar].present? 
      if params[:role].eql?('caregiver')
       user_hash = user_hash.merge(amount:params[:amount],skills:params[:skills],video_url: params[:url],languages: params[:languages] ,gender: params[:gender],extra_data: {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]})
      end
