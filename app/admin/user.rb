@@ -55,20 +55,19 @@ index do
   end 
 
   controller do
+     def index
+      index! do |format|
+        @users = User.joins(:roles).where("roles.name = 'user'").page(params[:page]).per(10)
+        format.html {
+          render "active_admin/resource/index"
+        }   
+      end 
+    end 
 
     def create
-     user =  User.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar])
-     
-     if params[:role].eql?('caregiver')
-      user.amount = params[:amount]
-      user.skills = params[:skills]
-      user.video_url = params[:url]
-      user.languages = params[:languages]
-      user.gender = params[:gender]
-      user.extra_data = {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]}
-     end
+     user =  current_admin_user.users.new(first_name: params[:first_name],last_name: params[:last_name],email: params[:email],password: params[:password],password_confirmation: params[:password_confirmation], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true,avatar: params[:avatar])
      if user.save
-       user.add_role params[:role]
+       user.add_role 'user'
         flash[:notice] = 'successfully saved'
        redirect_to admin_users_path
      else
@@ -87,12 +86,9 @@ index do
 
     def update
      user = User.find(params[:id])
-     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true}
+     user_hash = {first_name: params[:first_name],last_name: params[:last_name],email: params[:email], pin_code: params[:pin_code],state: params[:state],city: params[:city],active: true, admin_user_id: current_admin_user.id}
      user_hash.merge!(password: params[:password],password_confirmation: params[:password_confirmation]) if params[:password].present? && params[:password_confirmation].present?
      user_hash.merge!(avatar: params[:avatar]) if params[:avatar].present? 
-     if params[:role].eql?('caregiver')
-      user_hash = user_hash.merge(amount:params[:amount],skills:params[:skills],video_url: params[:url],languages: params[:languages] ,gender: params[:gender],extra_data: {id_prof: params[:id_prof],emergency_contact: params[:emergency_contact],experience: params[:experience],profile: params[:profile]})
-     end
      if user.update_attributes(user_hash)
       flash[:notice] =  'successfully updated'
       redirect_to admin_users_path

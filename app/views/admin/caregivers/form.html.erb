@@ -1,4 +1,4 @@
-<%= form_tag(url: user_registration_path, method: "post",  :multipart => true, class: 'formtastic post') do %>
+<%= form_tag(create_admin_caregivers_path, method: "post",  :multipart => true, class: 'formtastic post') do %>
    <fieldset>
   <div class="form-group">
     <%= label_tag :first_name, nil, class: "col-md-3 control-label" %>
@@ -64,19 +64,45 @@
   </div>
 
 
-  <div class="form-group">
-    <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
-    <div class="col-md-5">
-      <%= number_field_tag :pin_code, @resource.try(:pin_code),autofocus: true,class: "form-control input-md"%> 
-    </div>
-  </div>
-
-  <div class='form-group'> <%= label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= file_field_tag 'avatar',class: 'form-control input-md'%> </div>
+    <div class="form-group">
+      <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
+      <div class="col-md-5">
+        <%= number_field_tag :pin_code, @resource.try(:pin_code),autofocus: true,class: "form-control input-md"%> 
+      </div>
     </div>
 
+    <div class='form-group'> <%= label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= file_field_tag 'avatar',class: 'form-control input-md'%> </div>
+    </div>
+    
     <%= @resource.try(:avatar).present? ? image_tag(@resource.avatar.url) : "" %>
 
-    <div id="caregiver-field">
+    <div class='form-group'> <%= label_tag 'gender',nil,class: 'col-md-4 control-label'%> <div class='col-md-5'><%= radio_button_tag 'gender', 'm','j-option',true %><label for='j-option'> male </label><%= radio_button_tag 'gender','f','k-option' %><label for='k-option'>female</label></div>
+
+    <div class='form-group'> <%= label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=  select_tag 'amount', options_for_select(User::AMOUNT,@resource.try(:amount)),class: 'form-control input-md'%></div>
+
+    <div class='form-group'>
+     <%= label_tag :skills,nil,class: 'col-md-4 control-label' %> 
+        <div class='col-md-5'> <%= text_field_tag 'skills', @resource.try(:skills),class: 'form-control input-md'%></div>
+    </div>
+
+    <div class='form-group'>
+      <%= label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=  text_field_tag 'url', @resource.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>
+    </div>
+    <div class='form-group'>
+      <%= label_tag 'Language ',nil,class: 'col-md-4 control-label' %> 
+      <div class='col-md-5'> <%=  select_tag 'languages', options_for_select(User::LANGUAGE,@resource.try(:languages)),class: 'form-control input-md',multiple: true%></div>
+    </div>
+
+    <div class='form-group'> <%= label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> 
+      <%= text_field_tag 'id_prof',(@resource.extra_data[:id_prof] rescue nil),class: 'form-control input-md'%> </div>
+    </div>
+
+    <div class='form-group'> <%= label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= text_field_tag 'emergency_contact',(@resource.extra_data[:emergency_contact] rescue nil),class: 'form-control input-md'%> </div></div>
+
+    <div class='form-group'> <%= label_tag 'experience',nil,class: 'col-md-4 control-label' %> 
+      <div class='col-md-5'> <%= number_field_tag 'experience',(@resource.extra_data[:experience] rescue nil),class: 'form-control input-md'%> </div></div> 
+
+    <div class='form-group'> <%= label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= text_area_tag 'profile',(@resource.extra_data[:profile] rescue nil),class: 'form-control input-md'%> </div>
     </div>
 
     <div class="form-group">
@@ -88,16 +114,9 @@
     </fieldset>
 <%end%>
 
-
-
-
 <script>
-function value_set(d_value)
-{
-  if($(d_value).val() == "caregiver")
-    {      
-      $("#caregiver-field").html("<div class='form-group'> <%=j label_tag 'gender',nil,class: 'col-md-4 control-label'%> <div class='col-md-5'><%=j radio_button_tag 'gender', 'm','j-option',true %><label for='j-option'> male </label><%=j radio_button_tag 'gender','f','k-option' %><label for='k-option'>female</label></div><div class='form-group'> <%=j label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'amount', options_for_select(User::AMOUNT,@resource.try(:amount)),class: 'form-control input-md'%></div><%=j label_tag :skills,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'skills', @resource.try(:skills),class: 'form-control input-md'%> </div> <%=j label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j text_field_tag 'url', @resource.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>  <%=j label_tag 'Language ',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= j select_tag 'languages', options_for_select(User::LANGUAGE,@resource.try(:languages)),class: 'form-control input-md',multiple: true%></div><div class='form-group'> <%=j label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'id_prof',(@resource.extra_data[:id_prof] rescue nil),class: 'form-control input-md'%> </div> <div class='form-group'> <%=j label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_field_tag 'emergency_contact',(@resource.extra_data[:emergency_contact] rescue nil),class: 'form-control input-md'%> </div><div class='form-group'> <%=j label_tag 'experience',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j number_field_tag 'experience',(@resource.extra_data[:experience] rescue nil),class: 'form-control input-md'%> </div></div> <div class='form-group'> <%=j label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=j text_area_tag 'profile',(@resource.extra_data[:profile] rescue nil),class: 'form-control input-md'%> </div></div></div>")
-      $("#languages").select2({
+$(document).ready(function(){
+   $("#languages").select2({
            // templateResult: formatState;
           });
       $("#url").on('focusout focusin',function(e){
@@ -121,15 +140,6 @@ function value_set(d_value)
           $('#invalid_url').html('')
         }
       });
-    }
-    else{$("#caregiver-field").html('')}
-}
-
-
-$(document).ready(function(){
-  $("#user-role").change(function(){
-    value_set(this)
-  })
 
   $("#state").change(function(){
       $.ajax({
@@ -161,8 +171,3 @@ function status_flag(response)
    }
 }
 </script>
-<% if params[:action]=="edit"%>
-  <script>
-   value_set($("#user-role"))
-  </script>
-<%end%>

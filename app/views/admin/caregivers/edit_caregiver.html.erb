@@ -1,0 +1,171 @@
+<%= form_tag(update_admin_caregivers_path, method: "post",  :multipart => true, class: 'formtastic post') do %>
+  <fieldset>
+    <div class="form-group">
+      <%= label_tag :first_name, nil, class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= text_field_tag :first_name,@user.try(:first_name), class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :last_name, nil, class: "col-md-3 control-label" %>
+      <div class="col-md-5">
+        <%= text_field_tag :last_name,@user.try(:last_name), autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :email, nil, class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= email_field_tag :email,@user.try(:email), class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password, nil, class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= password_field_tag :password,@user.try(:password), class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password_confirmation, nil, class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= password_field_tag :password_confirmation,@user.try(:password_confirmation), class: "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <%= label_tag :mobile,nil,class: "col-md-4 control-label"%>
+        <div class="col-md-5">
+          <%= number_field_tag :mobile,@user.try(:mobile) ,autofocus: true,class: "form-control input-md"%> 
+        </div>
+    </div>
+
+    <!--   <div class="form-group">
+        <%#= label_tag :address,nil,class: "col-md-4 control-label"%>
+        <div class="col-md-5">
+          <%#= text_field_tag :address,nil, autofocus: true,class: "form-control input-md"%> 
+        </div>
+    </div> -->
+
+    <div class="form-group">
+      <%= label_tag :state,nil,class: "col-md-4 control-label"%>
+      <div class="col-md-5">
+      <%= select_tag "state", options_for_select(User.states, @user.try(:state)), :prompt => "Select State",class: " selectBox" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :city,nil,class: "col-md-4 control-label"%>
+       <div class="col-md-5">
+      <%= select_tag "city", options_for_select([@user.try(:city)].compact,@user.try(:city)),:prompt => "Select City",class: " selectBox" %>
+       </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= label_tag :pin_code,nil,class: "col-md-4 control-label" %>
+      <div class="col-md-5">
+        <%= number_field_tag :pin_code, @user.try(:pin_code),autofocus: true,class: "form-control input-md"%> 
+      </div>
+    </div>
+
+    <div class='form-group'> <%= label_tag :avatar,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= file_field_tag 'avatar',class: 'form-control input-md'%> </div>
+    </div>
+    
+    <%= @user.try(:avatar).present? ? image_tag(@user.avatar.url,width:'175px;' ,height: '110px;') : ""  %>
+
+    <div class='form-group'> <%= label_tag 'gender',nil,class: 'col-md-4 control-label'%> <div class='col-md-5'><%= radio_button_tag 'gender', 'm','j-option',true %><label for='j-option'> male </label><%= radio_button_tag 'gender','f','k-option' %><label for='k-option'>female</label></div>
+
+    <div class='form-group'> <%= label_tag :amount,nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=  select_tag 'amount', options_for_select(User::AMOUNT,@user.try(:amount)),class: 'form-control input-md'%></div>
+
+    <div class='form-group'>
+     <%= label_tag :skills,nil,class: 'col-md-4 control-label' %> 
+        <div class='col-md-5'> <%= text_field_tag 'skills', @user.try(:skills),class: 'form-control input-md'%></div>
+    </div>
+
+    <div class='form-group'>
+      <%= label_tag 'Video Url',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%=  text_field_tag 'url', @user.try(:video_url),class: 'form-control input-md'%> <p id='valid_url'></p><p id='invalid_url'></p>
+    </div>
+    <div class='form-group'>
+      <%= label_tag 'Language ',nil,class: 'col-md-4 control-label' %> 
+      <div class='col-md-5'> <%=  select_tag 'languages', options_for_select(User::LANGUAGE,@user.try(:languages)),class: 'form-control input-md',multiple: true%></div>
+    </div>
+
+    <div class='form-group'> <%= label_tag 'Adhar card no.',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> 
+      <%= text_field_tag 'id_prof',(@user.extra_data[:id_prof] rescue nil),class: 'form-control input-md'%> </div>
+    </div>
+
+    <div class='form-group'> <%= label_tag 'emergency_contact',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= text_field_tag 'emergency_contact',(@user.extra_data[:emergency_contact] rescue nil),class: 'form-control input-md'%> </div></div>
+
+    <div class='form-group'> <%= label_tag 'experience',nil,class: 'col-md-4 control-label' %> 
+      <div class='col-md-5'> <%= number_field_tag 'experience',(@user.extra_data[:experience] rescue nil),class: 'form-control input-md'%> </div></div> 
+
+    <div class='form-group'> <%= label_tag 'profile',nil,class: 'col-md-4 control-label' %> <div class='col-md-5'> <%= text_area_tag 'profile',(@user.extra_data[:profile] rescue nil),class: 'form-control input-md'%> </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="confirmation"></label>
+      <div class="col-md-4">
+        <%= submit_tag params[:action].eql?('edit') ? 'Update': 'Sign Up', class: "btn btn-primary"%>
+      </div>
+    </div>
+  </fieldset>
+<%end%>
+
+<script>
+  $(document).ready(function(){
+    $("#languages").select2({
+     // templateResult: formatState;
+    });
+    $("#url").on('focusout focusin',function(e){
+      if($(this).val() != '')
+      {
+        $.ajax({
+          type: "GET",
+          url: "/admin/users/check_video_url",
+          data: {'video_url': $(this).val()},
+          dataType: 'json',
+          complete: function(response) {
+          status_flag(response)
+            
+          }
+        });
+      }
+      else
+      {
+        // $("input[Type='submit']").prop('disabled',false)
+        $('#valid_url').html('')
+        $('#invalid_url').html('')
+      }
+    });
+          
+    $("#state").change(function(){
+        $.ajax({
+          type: "GET",
+          url: "<%= admin_users_select_city_path %>",
+          data: {'state_name': this.value},
+        success: function(html) {
+          $("#city").prepend("<option value='''>Select City</option>");
+        },
+        error: function(e){
+          console.log(e);
+        }
+      })
+    })
+  })
+
+  function status_flag(response)
+  {
+    if (response.responseText == "Valid URL"){
+      $('#invalid_url').html('')
+      $('#valid_url').html(response.responseText)
+    }
+    else
+     {
+      $('#valid_url').html('')
+      $('#invalid_url').html(response.responseText)
+     }
+  }
+</script>

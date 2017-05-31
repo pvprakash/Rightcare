@@ -20,6 +20,7 @@ gem 'nokogiri'
 gem 'devise'
 gem "rolify"
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'active_admin_role'
 gem "paperclip", "<= 5.0.0"
 # gem "paperclip-dropbox", ">= 1.1.7"
 gem 'aws-sdk', '< 2.0'

@@ -4,7 +4,7 @@
       <div class="">
       	<% if params[:action] != "edit" %>
       	<div class="form-group float-label-control">
-          <%= select_tag "patient[user_id]", options_for_select(User.joins(:roles).active.where("roles.name = 'user'").where.not(id: Patient.select(:user_id)).collect{|k| [k.first_name, k.id]}),:style => 'width: 100%',"data-required" => "true"
+          <%= select_tag "patient[user_id]", options_for_select(User.joins(:roles).active.where("roles.name = 'user' and admin_user_id = '#{current_admin_user.id}'").where.not(id: Patient.select(:user_id)).collect{|k| [k.first_name, k.id]}),:style => 'width: 100%',"data-required" => "true"
             %>
         </div>
         <%end%>

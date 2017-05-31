@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   match "/admin/users/:id/payment_receipt/:payment_id" => 'admin/users#payment_receipt', via: :get, as: "admin_users_payment_receipt"
   match "/admin/users/select_city" => 'admin/users#select_city', via: :get, as: "admin_users_select_city"
   match "/admin/users/check_video_url" => 'admin/users#check_video_url', via: :get, as: "admin_users_check_video_url"
+  
+  match "/admin/caregivers" => 'admin/caregivers#caregivers', via: :get, as: "admin_caregivers"
+  match "/admin/caregivers/new" => 'admin/caregivers#form', via: :get, as: "new_admin_caregivers"
+  match "/admin/caregivers/:id/edit_caregiver" => 'admin/caregivers#edit_caregiver', via: :get, as: "edit_admin_caregivers"
+  post "/admin/caregivers" => 'admin/caregivers#create', as: "create_admin_caregivers"
+  match "/admin/caregivers/:id/update" => 'admin/caregivers#update', via: :post, as: "update_admin_caregivers"
+  match "/admin/caregivers/:id" => 'admin/caregivers#destroy', via: :delete, as: "destroy_admin_caregivers"
+
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

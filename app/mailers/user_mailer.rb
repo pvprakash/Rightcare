@@ -17,8 +17,8 @@ class UserMailer < ApplicationMailer
   end
 
   def signed_up(resourse_id)
-    "reach@rightcare.in"
+    
     @user = User.find(resourse_id)
-    mail(:to => "satyamyuvasoft158@gmail.com",:subject => "New User created")
+    mail(:to => "reach@rightcare.in",:subject => "New User created")
   end
 end

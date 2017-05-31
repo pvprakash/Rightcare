@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :payments
   has_one :assign_caregiver ,:foreign_key => :caregiver_id, :class_name => "AssignCaregiver"
   has_many :feedbacks
+  belongs_to :admin_user
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
   before_destroy :remove_assign

@@ -47,6 +47,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_admin_role (0.1.0)
+      activeadmin (>= 1.0.0.pre4)
+      cancancan (>= 1.15.0)
     activejob (4.2.7)
       activesupport (= 4.2.7)
       globalid (>= 0.3.0)
@@ -86,6 +89,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     cancan (1.6.10)
+    cancancan (2.0.0)
     capistrano (3.8.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -315,6 +319,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_role
   activeadmin!
   aws-sdk (< 2.0)
   byebug

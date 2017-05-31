@@ -11,6 +11,7 @@ class SessionsController < Devise::SessionsController
       end
     rescue 
       redirect_to root_path
+      flash[:errors] = "Invalid user email or password"
     end
   end
   
