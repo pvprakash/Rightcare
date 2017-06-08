@@ -2,6 +2,24 @@
   <fieldset>
     <div class="form-bottom">
       <div class="">
+       <div class="form-group float-label-control">
+          <%= f.label :name, class: 'col-md-3'%>
+           <div class="col-md-9">
+          <%= f.text_field :name, autofocus: true,class: "form-control input-md"%>
+           </div>
+        </div>
+        <div class="form-group float-label-control">
+          <%= f.label :address, class: 'col-md-3'%>
+           <div class="col-md-9">
+          <%= f.text_field :address, autofocus: true,class: "form-control input-md"%>
+           </div>
+        </div>
+        <div class="form-group float-label-control">
+          <%= f.label :mobile, class: 'col-md-3'%>
+           <div class="col-md-9">
+          <%= f.number_field :mobile, autofocus: true,class: "form-control input-md"%>
+           </div>
+        </div>
         <div class="form-group float-label-control">
         	<%= f.label :email, class: 'col-md-3'%>
            <div class="col-md-9">

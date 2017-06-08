@@ -7,6 +7,9 @@ ActiveAdmin.register AdminUser do
     selectable_column
     id_column
     column :email
+    column :name
+    column :address
+    column :mobile
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -84,7 +87,7 @@ ActiveAdmin.register AdminUser do
 
     private
     def admin_user
-       params.require(:admin_user).permit(:email,:password,:password_confirmation,:role)
+       params.require(:admin_user).permit(:name,:address,:mobile,:email,:password,:password_confirmation,:role)
     end
   end
 end
