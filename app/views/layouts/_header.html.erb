@@ -35,11 +35,10 @@
           <div class="col-md-9 col-sm-8 pull-right text-right clear-box">
             <nav class="main-nav pull-right">
               <ul>
-              	
-                <li> <a href="<%= root_path %>" class="active">Home</a> </li>
-                <li> <a href="<%= about_pages_path %>">About Us</a> </li>
-                <li> <a href="<%= faqs_pages_path %>">FAQs</a> </li>
-                <li class="right"> <a href="<%= blogs_path %>">Blog</a> </li>
+                <li class = "<%= current_class?(root_path)%>"> <%= link_to "Home", root_path %> </li>
+                <li  class =  "<%= current_class?(about_pages_path)%>"><%= link_to "About Us", about_pages_path %> </li>
+                <li  class =  "<%= current_class?(faqs_pages_path)%>"><%= link_to "FAQs", faqs_pages_path %> </li>
+                <li  class = "right <%= current_class?(blogs_path)%>"><%= link_to "Blog", blogs_path %> </li>
               </ul>
             </nav>
           </div>
@@ -51,10 +50,10 @@
         <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
-                 <li> <a href="<%= root_path %>" class="active">Home</a> </li>
-                <li> <a href="<%= about_pages_path %>">About Us</a> </li>
-                <li> <a href="<%= faqs_pages_path %>">FAQs</a> </li>
-                <li class="right"> <a href="<%= blogs_path %>">Blog</a> </li>
+              <li class = "<%= current_class?(root_path)%>"> <%= link_to "Home", root_path %> </li>
+              <li  class =  "<%= current_class?(about_pages_path)%>"><%= link_to "About Us", about_pages_path %> </li>
+              <li  class =  "<%= current_class?(faqs_pages_path)%>"><%= link_to "FAQs", faqs_pages_path %> </li>
+              <li  class = "right <%= current_class?(blogs_path)%>"><%= link_to "Blog", blogs_path %> </li>
                  <%= mobile_link_account %>
             </ul>
         </div>
@@ -66,3 +65,9 @@
       </div>
     </div>
 </header>
+
+<style type="text/css">
+  .active1{
+    border-bottom: 2px solid white;
+  }
+</style>

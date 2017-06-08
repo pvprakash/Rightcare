@@ -87,4 +87,7 @@ module ApplicationHelper
       image_tag attachments[image].url, **options
   end
 
+  def current_class?(test_path)
+    return 'active1' if request.path == test_path
+  end
 end
