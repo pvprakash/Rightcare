@@ -59,6 +59,7 @@
                   <p>
                  <%=@caregiver.skills%></p></div>
               </div>
+              
               <form action="<%= purchase_status_user_payment_index_path(current_user) %>" method="POST"> 
                   <input type="hidden" value="<%= "#{@caregiver.id}" %>" name="caregiver_id">
                   <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">

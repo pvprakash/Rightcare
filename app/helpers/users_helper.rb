@@ -2,11 +2,14 @@ module UsersHelper
   def payment_link caregiver
     
     html = ""
-    if @is_assign.nil? || @continue_caregiver
+    if (@is_assign.nil? || @continue_caregiver) && !caregiver.assign
 
     html += link_to(image_tag("/assets/razorpay.png"), "#", id:"rzp-button1", :class=>"work ")
-    elsif @has_payment.price.to_i.eql?(caregiver.amount.to_i*15)
+    elsif @has_payment.price.to_i.eql?(caregiver.amount.to_i*15) && (!current_user.patient.assign_caregiver.caregiver_id.eql?(caregiver.id) && !caregiver.assign_caregiver.present?)
     html +=  link_to "Replacement", replacement_user_path(caregiver.id), class: 'btn btn-primary'
+    elsif caregiver.assign && (!current_user.patient.assign_caregiver.caregiver_id.eql?(caregiver.id) rescue false)
+    html += link_to "Request For", request_caregiver_user_path(caregiver.id), class: 'btn btn-primary'
+    # html += '<span style="color: red; background: lightgoldenrodyellow;">Request for caregiver </span>'
     else
     html += '<span style="color: red; background: lightgoldenrodyellow;">You have already pay for caregiver </span>'
     end

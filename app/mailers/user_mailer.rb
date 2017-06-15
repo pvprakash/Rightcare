@@ -16,9 +16,19 @@ class UserMailer < ApplicationMailer
   	mail(:to => @email,:subject => "New blog created")
   end
 
+  def request_for_caregiver(admin, caregiver, user)
+    @caregiver = caregiver
+    @user = user
+    @admin = admin
+    mail(to: @admin.email, subject: 'Request for caregiver purchase')
+  end
+
   def signed_up(resourse_id)
-    
     @user = User.find(resourse_id)
     mail(:to => "reach@rightcare.in",:subject => "New User created")
   end
 end
+
+
+
+  

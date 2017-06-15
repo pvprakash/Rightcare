@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       get 'set_rating'
     end
     member do
+      get 'request_caregiver'
       get 'show_caregiver'
       get 'replacement'
       get 'patient_details'

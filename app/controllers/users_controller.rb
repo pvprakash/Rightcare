@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     code_hash = {"en" => 600, "ex" => 900, "sc" => 1200, "qn" =>2400}
     amount = code_hash[params["code"]]
   # @caregivers = User.joins(:roles).where("roles.name = 'caregiver' AND (users.assign = false AND users.amount = #{amount})")
-    @caregiver_list = User.joins(:roles).active.where("roles.name = 'caregiver' AND ( users.assign = false AND users.amount = #{amount})")
+    @caregiver_list = User.joins(:roles).active.where("roles.name = 'caregiver' AND  users.amount = #{amount}")
     @caregivers = @caregiver_list.where(pin_code: current_user.pin_code)  if current_user.pin_code.present?
     @caregivers = @caregiver_list  unless @caregivers.present?
     @caregivers = @caregivers.order(gender: current_user.patient.extra_data[:caregiver_gender].eql?('f') ? :ASC : :DESC)  if current_user.patient.extra_data[:caregiver_gender].present?
@@ -51,6 +51,13 @@ class UsersController < ApplicationController
 
   def patient_details
     @patient = current_user.patient
+  end
+
+  def request_caregiver
+    caregiver = User.find(params[:id])
+    admin = AdminUser.find_by_role(99)
+    UserMailer.request_for_caregiver(admin,caregiver,current_user).deliver_now
+    redirect_to "/users/#{caregiver.id}/show_caregiver"
   end
 
   def caregiver_details
