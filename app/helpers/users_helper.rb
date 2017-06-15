@@ -31,16 +31,8 @@ module UsersHelper
   end
 
   def caregiver_code caregiver
-    case caregiver.amount
-    when 600
-    "en"
-    when 900
-    "ex"
-    when 1200
-    "sc"
-    when 2400
-    "qn"
-    end
+   value =  Hash[600,"en",900,"ex",1200,"sc",2400,"qn"]
+   return value[caregiver.amount]
   end
 
   def static_rating_star(rating)
