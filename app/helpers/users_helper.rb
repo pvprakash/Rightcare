@@ -30,6 +30,19 @@ module UsersHelper
     end
   end
 
+  def caregiver_code caregiver
+    case caregiver.amount
+    when 600
+    "en"
+    when 900
+    "ex"
+    when 1200
+    "sc"
+    when 2400
+    "qn"
+    end
+  end
+
   def static_rating_star(rating)
     html = ""
     (1..5).each do |num|
